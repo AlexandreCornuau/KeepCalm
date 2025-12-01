@@ -1,0 +1,15 @@
+class CreateInterventions < ActiveRecord::Migration[7.1]
+  def change
+    create_table :interventions do |t|
+      t.string :address
+      t.string :title
+      t.integer :age
+      t.datetime :start_time
+      t.datetime :end_time
+      t.references :user, null: false, foreign_key: true
+      t.references :case, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
