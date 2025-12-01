@@ -1,3 +1,4 @@
 class Case < ApplicationRecord
-  has_many :interventions, :steps
+  has_many :interventions
+  has_many :steps
 end
