@@ -6,7 +6,7 @@
     <h4>Position</h4>
     <%= render partial: "step", locals: {steps: @steps} %>
     <div class ="button-container">
-      <%= link_to "J'ai compris, commencer", root_path %> <%# changer root_path %>
+      <%= link_to "J'ai compris, commencer", intervention_path(@case) %>
     </div>
   </div>
 </div>
