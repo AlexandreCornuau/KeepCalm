@@ -1,10 +1,12 @@
-<div>
-  <%= image_tag(@case.gif_url) %>
-  <%= link_to "J'ai compris, commencer", root_path %> <%# changer root_path %>
-</div>
-<div class="steps-container">
-  <h4>Position</h4>
-  <%= render partial: "step", locals: {steps: @steps} %>
-
-  <%= link_to "J'ai compris, commencer", root_path %> <%# changer root_path %>
+<div class="show-container">
+  <div class ="gif-container">
+      <%= image_tag(@case.gif_url) %>
+  </div>
+  <div class="steps-container">
+    <h4>Position</h4>
+    <%= render partial: "step", locals: {steps: @steps} %>
+    <div class ="button-container">
+      <%= link_to "J'ai compris, commencer", root_path %> <%# changer root_path %>
+    </div>
+  </div>
 </div>

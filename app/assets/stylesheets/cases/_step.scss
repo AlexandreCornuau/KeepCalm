@@ -1,12 +1,44 @@
-.steps-container {
+.show-container {
   background-color: rgb(212, 239, 255);
+  display: block;
+  .gif-container {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: white;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.steps-container {
+  width: 100%;
   padding: 15px;
+  .button-container {
+    background-color: red;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    a {
+      text-decoration: none;
+      color: white;
+      background-color: black;
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+    }
+  }
 }
 .step-card {
   background-color: red;
   padding: 5px;
   display: flex;
+  justify-content: center;
   margin-top: 10px;
+  margin-bottom: 10px;
   .number {
     background-color: black;
     color: white;
