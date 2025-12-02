@@ -1,5 +1,5 @@
-<% steps.order.each do |step| %>
-    <% if step.type == "instruction" %>
+<% steps.order(:id).each do |step| %>
+    <% if step.step_type == "instruction" %>
       <div>
         <p><%= step.number %></p>
         <div>
@@ -9,10 +9,10 @@
           <% end %>
         </div>
       </div>
-    <% elsif step.type == "information" %>
+    <% elsif step.step_type == "information" %>
       <div>
         <p> I </p> <%# changer pour in fontawesome %>
-        <p> <%= step.details %> </p>
+        <p> <%= sanitize step.details %> </p>
       </div>
     <% end %>
   <% end %>
