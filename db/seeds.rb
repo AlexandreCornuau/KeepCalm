@@ -4,7 +4,7 @@ Step.destroy_all
 puts "——— Clean done ———"
 
 
-put "+++ Creating Case and steps..."
+puts "+++ Creating Case and steps..."
 case1 = Case.create(name: "Massage Cardiaque", gif_url: "https://upload.wikimedia.org/wikipedia/commons/d/df/Chest_compressions.gif")
 
 step0 = Step.create!(step_type: "information", case: case1, details: "<p> Installez la victime en <b>position horizontale</b>, sur le <b>dos</b>, de préférence sur un <b>plan dur</b> (sol, table, etc).</p>")
