@@ -1,0 +1,7 @@
+
+<p>Page index de toutes les interventions</p>
+<ul>
+  <% @interventions.each do | intervention | %>
+    <li><%= link_to intervention.title, intervention_path(intervention) %></li>
+  <% end %>
+</ul>
