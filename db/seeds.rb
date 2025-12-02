@@ -1,16 +1,11 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+puts "+++ Clean Case and Steps..."
 Case.destroy_all
 Step.destroy_all
+puts "——— Clean done ———"
 
-case1 = Case.create!(name: "massage cardiaque", gif_url: "https://upload.wikimedia.org/wikipedia/commons/d/df/Chest_compressions.gif")
+
+put "+++ Creating Case and steps..."
+case1 = Case.create(name: "Massage Cardiaque", gif_url: "https://upload.wikimedia.org/wikipedia/commons/d/df/Chest_compressions.gif")
 
 step0 = Step.create!(step_type: "information", case: case1, details: "<p> Installez la victime en <b>position horizontale</b>, sur le <b>dos</b>, de préférence sur un <b>plan dur</b> (sol, table, etc).</p>")
 
