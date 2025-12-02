@@ -7,9 +7,9 @@ class InterventionsController < ApplicationController
     @intervention = Intervention.find(params[:id])
   end
 
-  def create
-    @intervention = Intervention.new(intervention_params)
-    @intervention.save
+  def update
+    @intervention = Intervention.find(params[:id])
+    @intervention.update(intervention_params)
   end
 
   def recap
