@@ -13,12 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chats, only: :show do
+  resources :chats, only: [:show, :create] do
     resources :messages, only: :create
   end
 
   resources :cases, only: [:index, :show]
-
 
 
   # Defines the root path route ("/")
