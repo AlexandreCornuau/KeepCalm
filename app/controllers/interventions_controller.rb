@@ -1,6 +1,7 @@
 class InterventionsController < ApplicationController
 
   def create
+    
   end
 
   def show
