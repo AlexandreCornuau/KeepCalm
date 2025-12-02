@@ -1,11 +1,8 @@
 <div>
-  <%= link_to "Arrêter", root_path %>
-</div>
-<div>
   <%= image_tag(@case.gif_url) %>
   <%= link_to "J'ai compris, commencer", root_path %> <%# changer root_path %>
 </div>
-<div>
+<div class="steps-container">
   <h4>Position</h4>
   <%= render partial: "step", locals: {steps: @steps} %>
 
