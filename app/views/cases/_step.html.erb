@@ -1,0 +1,20 @@
+<% steps.order(:id).each do |step| %>
+  <% if step.step_type == "instruction" %>
+    <div class ="step-card instruction">
+      <div  class = "number" >
+        <p><%= step.number %></p>
+      </div>
+      <div>
+        <p> <%= step.details %> </p>
+        <% if step.picture_url %>
+          <%= image_tag(step.picture_url) %>
+        <% end %>
+      </div>
+    </div>
+  <% elsif step.step_type == "information" %>
+    <div class ="step-card information">
+      <i class="fa-solid fa-circle-info"></i>
+      <p> <%= sanitize step.details %> </p>
+    </div>
+  <% end %>
+<% end %>
