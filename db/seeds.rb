@@ -5,14 +5,27 @@ puts "——— Clean done ———"
 
 
 puts "+++ Creating Case and steps..."
-case1 = Case.create(name: "Massage Cardiaque", gif_url: "https://upload.wikimedia.org/wikipedia/commons/d/df/Chest_compressions.gif")
+case_rcp = Case.create(name: "Massage Cardiaque", gif_url: "rcp-video.gif")
 
-step0 = Step.create!(step_type: "information", case: case1, details: "<p> Installez la victime en <b>position horizontale</b>, sur le <b>dos</b>, de préférence sur un <b>plan dur</b> (sol, table, etc).</p>")
+puts "Step 0 infos"
+Step.create!(step_type: "information", case: case_rcp, details: "<p> Installez la victime en <b>position horizontale</b>, sur le <b>dos</b>, de préférence sur un <b>plan dur</b> (sol, table, etc).</p>")
 
-step1 = Step.create!(step_type: "instruction", number: 1, case: case1, details: "Se placer à genoux au plus près de la victime sur son coté", picture_url: "https://www.espacesoignant.com/files/img/articles/soins/compressions-thoraciques-1.png")
+puts "Step 1"
+Step.create!(step_type: "instruction", number: 1, case: case_rcp, details: "Se placer à genoux au plus près de la victime sur son coté", picture_url: "img-step-01.jpg")
 
-step2 = Step.create!(step_type: "instruction", number: 2, case: case1, details: "Dénuder la poitrine de la victime, dans la mesure du possible")
+puts "Step 2"
+Step.create!(step_type: "instruction", number: 2, case: case_rcp, details: "Dénuder la poitrine de la victime, dans la mesure du possible")
 
-step3 = Step.create!(step_type: "instruction", number: 3, case: case1, details: "Joignez vos mains comme ceci:", picture_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJIPuHmmqdWde7lOh3_-GFCzvxQ-8reE1RDQ&s")
+puts "Step 3"
+step3 = Step.create!(step_type: "instruction", number: 3, case: case_rcp, details: "Joignez vos mains comme ceci :", picture_url: "img-step-03.jpg")
 
-step4 = Step.create!(step_type: "information", case: case1, details: "<ul><li> Appuyer verticalement </li><li> Garder le dos droit </li><li> Garder les bras tendus </li></ul><p><b>Rythme</b> : Entre 100 et 120 compressions <b>par minute</b></p>")
+puts "Step 4"
+Step.create!(step_type: "instruction", number: 4, case: case_rcp, details: "Réaliser les compression au centre de la poitrine (sur la ligne médiane, moitié inférieure du sternum)", picture_url: "img-step-04.jpg")
+
+puts "Step 5"
+Step.create!(step_type: "instruction", number: 5, case: case_rcp, details: "Réaliser des compressions thoraciques", picture_url: "img-step-05.jpg")
+
+puts "Last Step infos"
+Step.create!(step_type: "information", case: case_rcp, details: "<ul><li> Appuyer verticalement </li><li> Garder le dos droit </li><li> Garder les bras tendus </li></ul><p><b>Rythme</b> : Entre 100 et 120 compressions <b>par minute</b></p>")
+
+puts "——— All Seeds created ———"
