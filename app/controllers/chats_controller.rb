@@ -1,6 +1,16 @@
 class ChatsController < ApplicationController
-  def show
+  def create
+    @intervention = Intervention.new(user: current_user)
+    @chat = Chat.new(intervention: @intervention)
+    @intervention.chat = @chat
+    @intervention.save!
+      if @chat.save!
+        redirect_to chat_path(@chat)
+      end
+  end
 
+  def show
+    @chat = Chat.find(params[:id])
   end
 
   def destroy
