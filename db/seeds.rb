@@ -1,6 +1,10 @@
 puts "+++ Clean Case and Steps..."
+Chat.destroy_all
+Intervention.destroy_all
+User.destroy_all
 Case.destroy_all
 Step.destroy_all
+
 puts "——— Clean done ———"
 
 
