@@ -1,0 +1,2 @@
+class Dae < ApplicationRecord
+end
