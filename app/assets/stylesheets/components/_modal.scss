@@ -16,6 +16,20 @@
   animation-duration: 0.4s
 }
 
+.close {
+  color: #0E0000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #0e000070;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* Modal Content */
 .modal-content {
   position: fixed;
