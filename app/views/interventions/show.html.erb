@@ -18,23 +18,29 @@
   </div>
 
   <div class="buttons">
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn" data-modal-target="btn" data-action="click->modal#openModal">Open Modal</button>
-
-    <!-- The Modal -->
-    <div id="myModal" data-modal-target="modal" class="modal">
+    <button id="myBtn-recap" data-modal-target="btnRecap" data-action="click->modal#openModal">Infos récapitulatif</button>
+    <div id="myModal-recap" data-modal-target="modalRecap" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span data-modal-target="close" data-action="click->modal#closeModal" class="close">&times;</span>
-          <h2>Modal Header</h2>
+          <h2>Infos récapitulatif</h2>
         </div>
         <div class="modal-body">
           <%= render "modal_recap" %>
         </div>
-        
       </div>
-      </div>
+    </div>
 
+  <button id="myBtn-dae" data-modal-target="btnDae" data-action="click->modal#openModal">Défibrilateur le plus proche</button>
+      <div id="myModal-dae" data-modal-target="modalDae" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Défibrilateur le plus proche</h2>
+          </div>
+          <div class="modal-body">
+            <%= render "modal_dae" %>
+          </div>
+        </div>
+      </div>
   </div>
 
 </div>
