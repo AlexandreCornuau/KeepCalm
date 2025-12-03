@@ -75,4 +75,8 @@ group :test do
 end
 
 gem "cloudinary"
+<<<<<<< HEAD
 gem "httparty"
+=======
+gem "ruby_llm", "~> 1.2.0"
+>>>>>>> master

@@ -1,18 +1,27 @@
 require "json"
 
 class InterventionsController < ApplicationController
+    before_action :set_intervention, only: [:show, :update, :recap]
 
-  def create
-
+  def index
+    @interventions = Intervention.all
   end
 
   def show
+    @case = Case.find(params[:id])
+  end
+
+  def update
+    @intervention.update(intervention_params)
   end
 
   def recap
   end
 
-  def index
+private
+
+  def set_intervention
+    @intervention = Intervention.find(params[:id])
   end
 
   private
@@ -36,5 +45,8 @@ class InterventionsController < ApplicationController
       headers: { "Authorization" => "Bearer #{token}" }
       )
     response.parsed_response
+    
+  def intervention_params
+    params.require(:intervention).permit(:address, :title, :age, :start_time, :end_time)
   end
 end
