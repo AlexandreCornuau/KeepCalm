@@ -38,14 +38,20 @@ private
     response["token"]
   end
 
-  def
+  def dae_list
     token = dae_token
     response = HTTParty.get("https://api-geodae.sante.gouv.fr/api/dae",
       query: { offset: 0, _where: "and(eq(com_nom,Nantes),eq(etat_fonct,En fonctionnement),eq(etat_valid,validées))" },
       headers: { "Authorization" => "Bearer #{token}" }
       )
-    response.parsed_response
-    
+    lat = response.first["latCoor1"]
+    long = response.first["longCoor1"]
+    address = response.first["adrVoie"]
+    postcode = response.first["comCp"]
+    city = response.first["comNom"]
+
+  end
+
   def intervention_params
     params.require(:intervention).permit(:address, :title, :age, :start_time, :end_time)
   end
