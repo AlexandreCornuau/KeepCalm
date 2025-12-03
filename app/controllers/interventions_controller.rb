@@ -60,7 +60,6 @@ private
         postcode: dae["comCp"],
         city: dae["comNom"]
         )
-    daes = Dae.all
     end
   end
 
