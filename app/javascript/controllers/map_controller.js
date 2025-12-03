@@ -41,7 +41,7 @@ export default class extends Controller {
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
-    // location.assign(`/locations?place=${crd.latitude},${crd.longitude}`)
+    // location.assign(`/locations?place=${crd.latitude},${crd.longitude}`)    // faire la demande sur le page d'accueil ou de chargement et transferer les coordonnées du user dans l'url ?
   }
 
   error(err) {
