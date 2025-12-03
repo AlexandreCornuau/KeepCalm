@@ -12,11 +12,16 @@ class MessagesController < ApplicationController
    UNIQUEMENT Si une des deux est positive, ce n'est pas un arrêt cardiaque, repond 'Appelez le 15 ils vont vous guider'
   PROMPT
 
-
-
-
-
-
+  PROMPT_NO_CONSCIENS = <<-PROMPT
+  Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
+  La victime est inconsciente.
+  Tu dois répondre IMPERATIVEMENT 'Verifiez la respiration. Si la personne ne respire pas c'est un arrêt cardiaque. L'application vas vous guider pour les manoeuvre de secours, appelez ou faites appelez le 15'
+  PROMPT
+  PROMPT_AWAKE = <<-PROMPT
+   Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
+  La victime est consciente.
+  Tu dois répondre IMPERATIVEMENT 'Si la personne est consciente ne la touchez pas et appeler le 15'
+  PROMPT
   def create
     @chat = Chat.find(params[:chat_id])
     @message = Message.new(message_params)
@@ -27,19 +32,32 @@ class MessagesController < ApplicationController
       user = @chat.messages.where(role: "user")
       #premier message ejecté avec reject
       user_messages = user.reject{|message| message.content == "aidez moi"}
-      if user_messages.first.downcase == "non"
+      if user_messages.first.content.downcase == "non"
         #--> personne inconsciente --> declencher nouveau prompt
         @ruby_llm_chat = RubyLLM.chat
-
+        build_conversation_history
+        prompt = PROMPT_NO_CONSCIENS
         #nouveau prompt oriente directement sur l'arret cardiaque en cas de non respiration
-      #else premier message.downcase == oui --> personne consciente --> déclencher nouveau prompt
-        #nouveau prompt oriente sur la surveillance de la respiration/autre probleme
+        response = @ruby_llm_chat.with_instructions(PROMPT_NO_CONSCIENS).ask(@message.content)
+        Message.create(role: "assistant", content: response.content, chat: @chat)
+        # redirect_to chat_path(@chat)
 
-      @ruby_llm_chat = RubyLLM.chat
-      build_conversation_history
-      prompt = "#{emmergency_case},#{SYSTEM_PROMPT}"
-      response = @ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
-      Message.create(role: "assistant", content: response.content, chat: @chat)
+      else  #premier message.downcase == oui --> personne consciente --> déclencher nouveau prompt
+        #nouveau prompt oriente sur la surveillance de la respiration/autre probleme
+        @ruby_llm_chat = RubyLLM.chat
+        build_conversation_history
+        prompt = PROMPT_NO_CONSCIENS
+        #nouveau prompt oriente directement sur l'arret cardiaque en cas de non respiration
+        response = @ruby_llm_chat.with_instructions(PROMPT_AWAKE).ask(@message.content)
+        Message.create(role: "assistant", content: response.content, chat: @chat)
+        #redirect_to chat_path(@chat)
+      end
+
+      # @ruby_llm_chat = RubyLLM.chat
+      # build_conversation_history
+      # prompt = "#{emmergency_case},#{SYSTEM_PROMPT}"
+      # response = @ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
+      # Message.create(role: "assistant", content: response.content, chat: @chat)
       redirect_to chat_path(@chat)
     else
       render "chats/show", status: :unprocessable_content
