@@ -28,9 +28,10 @@
       <%= f.button :submit, 'Envoyer', class: 'btn btn-primary' %>
     <% end %>
   </div>
+
+
+  
 <p>lien temporaire pour faire le tour de l'appli</p>
 <% @cases.each do |cas| %>
   <%= link_to cas.name, case_path(cas.id) %>
   <% end %>
-
-
