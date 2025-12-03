@@ -1,16 +1,84 @@
+@import "colors";
+
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Outfit", sans-serif;
+$headers-font: "Outfit", sans-serif;
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+// VARIABLES
+$fs-s: 0.875rem; // 14px
+$fs-base: 1rem; // 16px
+$fs-m: 1.125rem; // 18px
+$fs-l: 1.25rem; // 20px
+$fs-xl: 1.5rem; // 24px
+
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+body {
+  letter-spacing: 2.0% !important;
+  color: $gray-900 !important;
+}
+
+// —————headings—————
+h1, h2, h3, h4 {
+font-weight: 600 !important;
+}
+h1 {
+  font-size: 2.5rem !important;
+}
+h2 {
+  font-size: 2rem !important;
+}
+h3 {
+  font-size: 1.5rem !important;
+}
+h4 {
+  font-size: 1.25rem !important;
+}
+.subtitle {
+  font-weight: 500;
+  font-size: $fs-m;
+}
+
+// ————— P texts —————
+p {
+  font-weight: 400 !important;
+}
+.font-card-title {
+    font-weight: 500;
+}
+p > strong {
+  font-weight: $fw-bold !important;
+}
+.fw-500 {
+  font-weight: 500 !important;
+}
+.fw-600 {
+  font-weight: $fw-semibold !important;
+}
+.fs-s {
+  font-size: $fs-s !important; // 14px
+}
+.fs-m {
+  font-size: $fs-m !important; // 18px
+}
+.fs-l {
+  font-size: $fs-l !important; // 20px
+}
+.text-secondary {
+  color: $gray-500 !important;
+}
+label, .text-label {
+    font-size: $fs-s;
+}
+
+// —————— buttons ——————
+$btn-text-sm: $fs-s;
+$btn-text: $fs-base;
+$btn-text-l: $fs-l;
+$btn-text-xl: $fs-xl;
+$btn-text-weight: $fw-semibold;
