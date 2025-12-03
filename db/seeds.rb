@@ -1,22 +1,3 @@
-require "json"
-require "rest-client"
-
-
-response = RestClient.post('https://api-geodae.sante.gouv.fr/api/login',{
-   username: ENV['GEODAE_USERNAME'],
-   password: ENV['GEODAE_PASSWORD']
-  }.to_json,
-  { content_type: :json, accept: :json }
-   )
-   result = JSON.parse(response.body)
-   result['token']
-
-response = RestClient.get(
-  "https://api-geodae.sante.gouv.fr/api/dae?limit=10",
-   { Authorization: "Bearer #{token}" }
-  )
-  JSON.parse(response.body)
-
 puts "+++ Clean Case and Steps..."
 Case.destroy_all
 Step.destroy_all
