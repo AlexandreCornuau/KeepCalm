@@ -12,7 +12,7 @@ class ChatsController < ApplicationController
     @intervention.chat = @chat
     @intervention.save!
       if @chat.save!
-       @message = Message.create(role: "user", content: "aidez moi", chat: @chat)
+       @message = Message.create(role: "user", content: "j'ai besoin d'aide", chat: @chat)
         @ruby_llm_chat = RubyLLM.chat
         prompt = "Ton but est d'accompagner l'utilisateur dans un contexte d'urgence médicale ,#{SYSTEM_PROMPT}"
         response = @ruby_llm_chat.with_instructions(prompt).ask(@message.content)

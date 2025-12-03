@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
     if @message.save
       user = @chat.messages.where(role: "user")
       #premier message ejecté avec reject
-      user_messages = user.reject{|message| message.content == "aidez moi"}
+      user_messages = user.reject{|message| message.content == "j'ai besoin d'aide"}
       if user_messages.first.content.downcase == "non"
         #--> personne inconsciente --> declencher nouveau prompt
         @ruby_llm_chat = RubyLLM.chat
