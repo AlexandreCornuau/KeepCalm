@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_03_100828) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_03_141837) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,11 +29,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_03_100828) do
   end
 
   create_table "daes", force: :cascade do |t|
-    t.string "status"
     t.float "lat"
     t.float "long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "street"
+    t.string "postcode"
+    t.string "city"
   end
 
   create_table "interventions", force: :cascade do |t|

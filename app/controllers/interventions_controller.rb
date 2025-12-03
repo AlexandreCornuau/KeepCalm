@@ -9,6 +9,8 @@ class InterventionsController < ApplicationController
 
   def show
     @case = Case.find(params[:id])
+    daes_list("nantes")
+    @daes = Dae.where(city: "nantes")
   end
 
   def update
@@ -24,8 +26,6 @@ private
     @intervention = Intervention.find(params[:id])
   end
 
-  private
-
   def dae_token
     response = HTTParty.post(
       "https://api-geodae.sante.gouv.fr/api/login",
@@ -38,18 +38,30 @@ private
     response["token"]
   end
 
-  def dae_list
+  def daes_list(city)
     token = dae_token
-    response = HTTParty.get("https://api-geodae.sante.gouv.fr/api/dae",
-      query: { offset: 0, _where: "and(eq(com_nom,Nantes),eq(etat_fonct,En fonctionnement),eq(etat_valid,validées))" },
+    response_capitalize = HTTParty.get("https://api-geodae.sante.gouv.fr/api/dae",
+      query: { offset: 0, _where: "and(eq(com_nom,#{city.capitalize}),eq(etat_fonct,En fonctionnement),eq(etat_valid,validées))" },
       headers: { "Authorization" => "Bearer #{token}" }
       )
-    lat = response.first["latCoor1"]
-    long = response.first["longCoor1"]
-    address = response.first["adrVoie"]
-    postcode = response.first["comCp"]
-    city = response.first["comNom"]
 
+    response_downcase = HTTParty.get("https://api-geodae.sante.gouv.fr/api/dae",
+    query: { offset: 0, _where: "and(eq(com_nom,#{city.downcase}),eq(etat_fonct,En fonctionnement),eq(etat_valid,validées))" },
+    headers: { "Authorization" => "Bearer #{token}" }
+    )
+
+    all_daes = response_capitalize.parsed_response + response_downcase.parsed_response
+
+    all_daes.each do |dae|
+      Dae.find_or_create_by(
+        lat: dae["latCoor1"],
+        long: dae["longCoor1"],
+        street: dae["adrVoie"],
+        postcode: dae["comCp"],
+        city: dae["comNom"]
+        )
+    daes = Dae.all
+    end
   end
 
   def intervention_params
