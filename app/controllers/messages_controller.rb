@@ -15,7 +15,12 @@ class MessagesController < ApplicationController
   PROMPT_NO_CONSCIENS = <<-PROMPT
   Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
   La victime est inconsciente.
-  Tu dois répondre IMPERATIVEMENT 'Verifiez la respiration. Si la personne ne respire pas c'est un arrêt cardiaque. L'application vas vous guider pour les manoeuvre de secours, appelez ou faites appelez le 15'
+  Tu dois IMPERATIVEMENT demander 'Est ce qu'elle respire?'
+  Tu as l'interdiction de répondre à l'utilisateur tant qu'il ne t'as pas répondu oui ou non.
+
+  Si la personne respire: cool
+
+  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'c'est un arrêt cardiaque. L'application vas vous guider pour les manoeuvre de secours, appelez ou faites appelez le 15'
   PROMPT
   PROMPT_AWAKE = <<-PROMPT
    Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
