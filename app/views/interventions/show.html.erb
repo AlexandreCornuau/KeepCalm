@@ -23,6 +23,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2>Infos récapitulatif</h2>
+          <span class="close" data-modal-target="closeRecap" data-action="click->modal#closeModal">&times;</span>
         </div>
         <div class="modal-body">
           <%= render "modal_recap" %>
@@ -35,9 +36,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h2>Défibrilateur le plus proche</h2>
+            <span class="close" data-modal-target="closeDae" data-action="click->modal#closeModal">&times;</span>
           </div>
           <div class="modal-body">
-            <%= render "modal_dae" %>
+            <%= render partial: "modal_dae", local: {daes: @daes} %>
           </div>
         </div>
       </div>
