@@ -13,6 +13,7 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
     @message = Message.new
     @cases = Case.all
+    @intervention = Intervention.find_by(chat: @chat)
   end
 
   def destroy

@@ -387,11 +387,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
-<<<<<<< HEAD
   geocoder
-=======
   httparty
->>>>>>> master
   importmap-rails
   jbuilder
   pg (~> 1.1)

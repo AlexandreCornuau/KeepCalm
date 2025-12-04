@@ -11,20 +11,27 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    interventionId: String,
+    caseId: String
   }
+  static targets = [
+    "mapContainer"
+  ]
   connect() {
+    console.log(this.idValue);
     mapboxgl.accessToken = this.apiKeyValue
     console.log("markers", this.markersValue);
-    this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
-    })
+    console.log(this.hasmapContainerTarget)
+    if (this.hasmapContainerTarget) {
+      this.map = new mapboxgl.Map({
+        container: this.mapContainerTarget,
+        style: "mapbox://styles/mapbox/streets-v10"
+      })
+    }
 
-    navigator.geolocation.getCurrentPosition(this.success, this.error, options);
 
-
-    this.#addMarkersToMap()
+    // this.#addMarkersToMap()
   }
 
   #addMarkersToMap() {
@@ -34,18 +41,40 @@ export default class extends Controller {
       .addTo(this.map)
   })
   }
-  success(pos) {
+  async success(pos) {
     const crd = pos.coords;
+    const lat = crd.latitude;
+    const long = crd.longitude;
 
+    const city = await this.reverseGeocode(lat, long);
+    console.log("Ville détectée :", city);
     console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`Latitude : ${lat}`);
+    console.log(`Longitude: ${long}`);
     console.log(`More or less ${crd.accuracy} meters.`);
-    // location.assign(`/locations?place=${crd.latitude},${crd.longitude}`)    // faire la demande sur le page d'accueil ou de chargement et transferer les coordonnées du user dans l'url ?
+    console.log(pos);
+    window.location.href = `/interventions/${this.interventionIdValue}?lat=${lat}&long=${long}&case_id=${this.caseIdValue}&city=${city}`
   }
 
   error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
+  async reverseGeocode(lat, lng) {
+    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${this.apiKeyValue}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // Récupère la ville (place_name ou "place" dans features)
+    const cityFeature = data.features.find(f => f.place_type.includes("place"));
+    const city = cityFeature ? cityFeature.text : null;
+
+    console.log("Ville :", city);
+    return city;
+  }
+
+  getLocation() {
+    navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error, options);
+  }
 }

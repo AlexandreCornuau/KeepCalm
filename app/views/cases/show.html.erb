@@ -5,12 +5,14 @@
   <div class="steps-container">
     <h4>Position</h4>
     <%= render partial: "step", locals: {steps: @steps} %>
-    <div class ="button-container">
-      <%= link_to "J'ai compris, commencer", intervention_path(@case) %>
+    <div class ="button-container"
+    data-controller="map"
+    data-map-intervention-id-value="<%= @intervention.id %>"
+    data-map-case-id-value="<%= @case.id%>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <button data-action="click->map#getLocation">J'ai compris, commencer</button>
+      <%# <%= link_to "J'ai compris, commencer", data: {action: "click->map#getLocation"} %>
+      <%# <%= link_to "J'ai compris, commencer", intervention_path(id: @intervention.id, case_id: @case.id)%>
     </div>
   </div>
 </div>
-
-<div style="width: 100%; height: 300px;"
-  data-controller="map"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

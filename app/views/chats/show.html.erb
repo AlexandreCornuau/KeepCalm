@@ -30,7 +30,5 @@
   </div>
 <p>lien temporaire pour faire le tour de l'appli</p>
 <% @cases.each do |cas| %>
-  <%= link_to cas.name, case_path(cas.id) %>
-  <% end %>
-
-
+  <%= link_to cas.name, case_path(cas.id, intervention_id: @intervention.id)%>
+<% end %>
