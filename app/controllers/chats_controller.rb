@@ -12,7 +12,7 @@ class ChatsController < ApplicationController
     @intervention.chat = @chat
     @intervention.save!
       if @chat.save!
-       @message = Message.create(role: "user", content: "j'ai besoin d'aide", chat: @chat)
+       @message = Message.create(role: "user", content: "J'ai besoin d'aide", chat: @chat)
         @ruby_llm_chat = RubyLLM.chat
         prompt = "Ton but est d'accompagner l'utilisateur dans un contexte d'urgence médicale ,#{SYSTEM_PROMPT}"
         response = @ruby_llm_chat.with_instructions(prompt).ask(@message.content)
@@ -25,6 +25,7 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
     @message = Message.new
     @cases = Case.all
+    @intervention = Intervention.find_by(chat: @chat)
   end
 
   def destroy

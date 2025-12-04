@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="modal"
 export default class extends Controller {
-    static targets = ["btnRecap", "btnDae", "modalRecap", "modalDae", "close"]
+  static targets = ["btnRecap", "btnDae", "modalRecap", "modalDae", "closeRecap", "closeDae"]
 
   connect() {
     this.element.addEventListener("click", (event) => {
@@ -10,7 +9,8 @@ export default class extends Controller {
         this.modalRecapTarget.style.display = "none";
       } else if (event.target == this.modalDaeTarget) {
         this.modalDaeTarget.style.display = "none";
-    }})
+      }
+    })
   }
 
   openModal(event) {
@@ -24,7 +24,5 @@ export default class extends Controller {
   closeModal(event) {
     this.modalRecapTarget.style.display = "none";
     this.modalDaeTarget.style.display = "none";
-
   }
-
 }

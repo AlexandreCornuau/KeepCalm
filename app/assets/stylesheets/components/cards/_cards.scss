@@ -1,0 +1,26 @@
+.card {
+  background-color: $white;
+
+  .card-head {
+    display: flex;
+    gap: 8px;
+    .ph-bold {
+      margin-top: 2px;
+      font-size: 20px;
+      color: $primary;
+    }
+    p {
+      font-size: $fs-s;
+      font-weight: $fw-semibold;
+    }
+  }
+
+  .card-img {
+    background-color: $primary-050;
+    height: 140px;
+    text-align: center;
+    img {
+      height: 100%;
+    }
+  }
+}

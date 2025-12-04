@@ -1,0 +1,11 @@
+@import "config/colors";
+
+.badge-s {
+  font-size: $fs-s;
+  font-weight: $fw-medium;
+}
+
+.badge-neutral {
+  color: $gray-700;
+  background-color: $gray-100;
+}

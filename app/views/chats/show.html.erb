@@ -1,24 +1,25 @@
-<h1>chat</h1>
+<div class="show-container" data-controller="modal-urgence">
+  <h1>Chat</h1>
 
-  <%#= link_to "envoyer un message (doit devenir un envoi vocal)", chat_messages_path(params[:id]), data: {turbo_method: :post} %>
+    <%#= link_to "envoyer un message (doit devenir un envoi vocal)", chat_messages_path(params[:id]), data: {turbo_method: :post} %>
 
-<div id="messages">
-  <% @chat.messages.each do |message| %>
-    <% if message.role == "user" %>
-      <div class="d-flex justify-content-end mb-2">
-        <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
-          <%= message.content %>
+  <div id="messages">
+    <% @chat.messages.each do |message| %>
+      <% if message.role == "user" %>
+        <div class="d-flex justify-content-end mb-2">
+          <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
+            <%= message.content %>
+          </div>
         </div>
-      </div>
-    <% elsif message.role == "assistant" %>
-      <div class="d-flex justify-content-start mb-5">
-        <div class="px-3 pb-0 pt-3">
-          <%= message.content %>
+      <% elsif message.role == "assistant" %>
+        <div class="d-flex justify-content-start mb-5">
+          <div class="px-3 pb-0 pt-3">
+            <%= message.content %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
 
 <%# turbo frame? %>
@@ -29,9 +30,25 @@
     <% end %>
   </div>
 
+<%# SI l'on retire l'IA, après le message "C'est un arrêt cardiaque", faire apparaître la le bouton (2sec après ??) %>
+  <div class="buttons">
+    <button id="myBtn-urgence" data-modal-urgence-target="btn" data-action="click->modal-urgence#openModal">Suivant</button>
+    <div id="myModal-urgence" data-modal-urgence-target="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Diagnostic</h2>
+          <span class="close" data-modal-urgence-target="close" data-action="click->modal-urgence#closeModal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <%= render partial: "modal_urgence", local: {chat: @chat, message: @message} %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  
-<p>lien temporaire pour faire le tour de l'appli</p>
-<% @cases.each do |cas| %>
-  <%= link_to cas.name, case_path(cas.id) %>
+  <p>Lien temporaire pour faire le tour de l'appli :</p>
+  <% @cases.each do |cas| %>
+    <%= link_to cas.name, case_path(cas.id, intervention_id: @intervention.id)%>
   <% end %>
+
+</div>
