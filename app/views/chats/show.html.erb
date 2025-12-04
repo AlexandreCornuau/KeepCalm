@@ -20,14 +20,18 @@
     </div>
 
     <div class= "btn-yes-or-no">
+
       <%= simple_form_for [@chat, @message], html: { class: 'd-flex gap-3' } do |f| %>
         <%= f.hidden_field :content, value: "oui" %>
-        <%= f.button :submit, "OUI", class: "btn btn-primary" %>
+        <%= f.button :submit, "OUI", class: "btn btn-primary flex-grow-1" %>
       <% end %>
+
+
       <%= simple_form_for [@chat, @message], html: { class: 'd-flex gap-3' } do |f| %>
         <%= f.hidden_field :content, value: "non" %>
-        <%= f.button :submit, "NON", class: "btn btn-secondary" %>
+        <%= f.button :submit, "NON", class: "btn btn-secondary flex-grow-1" %>
       <% end %>
+
     </div>
   </div>
 
