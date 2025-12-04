@@ -1,55 +1,51 @@
-<%= render "shared/navbar" %>
+  <%= render "shared/navbar" %>
 
-<!-- DIV CONTAINER -->
-<div class="home-container">
+  <!-- DIV Container -->
+  <div class="home-container min-vh-100">
 
-  <!-- DIV Section Help -->
-  <div class="py-5 px-2">
-    <!-- DIV CARD -->
-    <div class="card border-0 shadow-lg rounded-4 p-4 text-center w-100">
-      <div class="py-3">
-        <div class="d-flex align-items-center justify-content-center gap-2">
-          <%= image_tag "emergency-2.png", alt: "Urgence", style: "width: 64px; height: 64;" %>
+    <!-- DIV Section Help -->
+    <div class="home-hero position-relative shadow-sm">
+        <!-- Images de fond -->
+        <%= image_tag "heart_2.png", class: "home-bg-img home-bg-left" %>
+        <%= image_tag "ambu.png", class: "home-bg-img home-bg-right" %>
+      <!-- CARD -->
+      <div class="bg-blur rounded-4 p-4 text-center shadow-lg mt-5">
+        <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+          <%= image_tag "emergency-2.png", alt: "Urgence", class: "home-icon" %>
           <h2>Besoin d'aide ?</h2>
         </div>
         <p class="p-secondary fs-m">Restez calme<br>et laissez-vous guider</p>
+        <%= link_to chats_path, class: "btn-help d-flex align-items-center justify-content-center gap-2 w-100", data: { turbo_method: :post } do %>
+          <i class="ph-bold ph-first-aid"></i>
+          <span>Aidez-moi</span>
+        <% end %>
       </div>
-      <%= link_to chats_path, class: "btn btn-secondary fs-l rounded-3 py-3 px-5 d-flex align-items-center justify-content-center gap-2", style: "height: 88px;", data: { turbo_method:
-      :post } do %>
-        <i class="ph-bold ph-first-aid"></i>
-        <span class="fw-semibold">Aidez-moi</span>
-      <% end %>
-
     </div>
-  </div>
 
-  <!-- DIV Section Renseignements -->
-  <div class="info-container ps-3">
-    <p class="fs-m">Renseignements</p>
+    <!-- DIV Section Renseignements -->
+    <div class="ps-3 py-3">
+      <p class="fs-m mb-3">Renseignements</p>
 
-  <!-- DIV cards -->
-    <div class="scrolling-cards d-flex gap-3">
+      <div class="scrolling-cards d-flex gap-3 pb-2">
+        <!-- Card Défibrilateurs -->
+        <%= link_to "#", class: "card scrolling-card shadow-sm flex-shrink-0" do %>
+          <div class="d-flex align-items-center gap-2 mb-2 fw-semibold">
+            <i class="ph-bold ph-lightning"></i>
+            <p>Défibrilateurs</p>
+          </div>
+          <img src="https://about-france.com/cities/citypix/plan-nantes.jpg" alt="Carte">
+        <% end %>
 
-  <!-- DIV card -->
-      <%= link_to "#", class: "card bg-white border-0 shadow-sm rounded-4 text-decoration-none flex-shrink-0 overflow-hidden", style: "width: 287px; height:228px;" do %>
-      <div class="card-body">
-        <div class="card-title fs-m">Défibrilateurs</div>
-        <div class="card-img">
-          <img src="https://about-france.com/cities/citypix/plan-nantes.jpg" alt="Carte" class="img-fluid rounded-2">
-        </div>
+        <!-- Card Simulations -->
+        <%= link_to "#", class: "card scrolling-card shadow-sm flex-shrink-0" do %>
+          <div class="d-flex align-items-center gap-2 mb-2 text-dark fw-semibold">
+            <i class="ph-bold ph-ambulance"></i>
+            <p>Simulations</p>
+          </div>
+            <img src="https://www.shutterstock.com/image-vector/illustration-first-medical-aid-indirect-260nw-2516317979.jpg"
+  alt="Simulation">
+        <% end %>
       </div>
-      <% end %>
-
-  <!-- DIV card -->
-    <%= link_to "#", class: "card bg-white border-0 shadow-sm rounded-4 text-decoration-none flex-shrink-0 w-", style: "width: 287px;" do %>
-    <div class="card-body">
-      <div class="card-title fs-m">Simulations</div>
-      <img src="https://www.shutterstock.com/image-vector/illustration-first-medical-aid-indirect-260nw-2516317979.jpg" alt="simulation massage cardiaque" class="img-fluid">
-    </div>
-    <% end %>
-
     </div>
 
   </div>
-
-</div>

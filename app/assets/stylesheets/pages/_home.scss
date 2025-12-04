@@ -1,8 +1,71 @@
-// Specific CSS for your home-page
-.scrolling-cards {
- overflow-x: scroll;
-}
 
-.info-container {
-  overflow: visible;
-}
+  // Icône carte principale
+  .home-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  // Bouton Aidez-moi
+  .btn-help {
+    height: 88px;
+    background-color: $secondary-500;
+    color: $white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 16px;
+    margin-top: 28px;
+
+    &:hover {
+      background-color: $secondary-600;
+      color: $white;
+    }
+  }
+
+  // scrollbar
+  .scrolling-cards {
+    overflow-x: scroll;
+  }
+
+  // Carte info
+  .scrolling-card {
+    border-radius: 24px;
+    gap: 2px;
+    padding: 16px;
+    width: 280px;
+    text-decoration: none;
+    img {
+      border-radius: 8px;
+      overflow: hidden;
+      width: 100%;
+      height: 156px;
+      object-fit: cover;
+    }
+  }
+
+  // Hero section
+  .home-hero {
+    position: relative;
+    overflow: hidden;
+    background-color: $primary-050;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 24px;
+  }
+
+  // Images de fond
+  .home-bg-img {
+    position: absolute;
+    width: 150px;
+    height: auto;
+  }
+
+  .home-bg-left {
+    top: 0;
+    left: -30px;
+  }
+
+  .home-bg-right {
+    top: 0;
+    right: -30px;
+  }
