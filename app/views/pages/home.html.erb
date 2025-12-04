@@ -1,26 +1,46 @@
 <%= render "shared/navbar" %>
 
 <!-- DIV CONTAINER -->
-<div>
+<div class="container">
 
-  <!-- DIV CTA HELP -->
-  <div>
-    <h1>Besoin d'aide ?</h1>
-    <h2>Restez calme et laissez-vous guider</h2>
+  <!-- DIV HELP -->
+  <div class="d-flex align-items-center justify-content-center py-5 px-4">
+    <!-- DIV CARD -->
+    <div class="card border-0 shadow-lg rounded-4 p-4 text-center w-100">
+      <div class="d-flex align-items-center justify-content-center gap-2">
+        <%= image_tag "emergency-2.png", alt: "Urgence", style: "width: 64px; height: 64;" %>
+        <h2>Besoin d'aide ?</h2>
+      </div>
+      <p class="p-secondary fs-m">Restez calme<br>et laissez-vous guider</p>
 
-    <%= link_to "Commencer", chats_path, data: {turbo_method: :post} %>
+      <%= link_to "Aidez-moi", chats_path, class:"btn btn-danger btn-lg rounded- py-3 px-5 fw-semibold", data: {turbo_method: :post} %>
+    </div>
   </div>
 
   <!-- DIV Autres boutons -->
-  <div>
+  <div class="container py-4">
+    <p class="fs-m">Renseignements</p>
 
   <!-- DIV cards -->
-    <div>
+    <div class="d-flex gap-3 pb-3">
 
   <!-- DIV card -->
-      <div>
-
+      <%= link_to "#", class: "card bg-white border-0 shadow-sm rounded-4 text-decoration-none" do %>
+      <div class="card-body">
+        <div class="card-title fs-m">Défibrilateurs</div>
+        <div class="">
+          <img src="https://about-france.com/cities/citypix/plan-nantes.jpg" alt="Carte" class="img-fluid rounded-2">
+        </div>
       </div>
+      <% end %>
+
+  <!-- DIV card -->
+    <%= link_to "#", class: "card bg-white border-0 shadow-sm rounded-4 text-decoration-none" do %>
+    <div class="card-body">
+      <div class="card-title fs-m">Simulations</div>
+      <img src="https://www.shutterstock.com/image-vector/illustration-first-medical-aid-indirect-260nw-2516317979.jpg" alt="simulation massage cardiaque" class="img-fluid">
+    </div>
+    <% end %>
 
     </div>
 
