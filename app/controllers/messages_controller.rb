@@ -19,12 +19,12 @@ class MessagesController < ApplicationController
   Tu as l'interdiction de répondre à l'utilisateur tant qu'il ne t'as pas répondu oui ou non.
 
   Si l'utilisateur repond oui: tu dois IMPERATIVEMENT repondre 'appelez les secours et mettez la personne en PLS'
-  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'c'est un arrêt cardiaque. L'application vas vous guider pour les manoeuvre de secours, appelez ou faites appelez le 15'
+  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'Il s'agit d'un un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l'application vas vous guider pour les manoeuvre de secours.'
   PROMPT
   PROMPT_AWAKE = <<-PROMPT
    Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
   La victime est consciente.
-  Tu dois répondre IMPERATIVEMENT 'Si la personne est consciente ne la touchez pas et appeler le 15'
+  Tu dois répondre IMPERATIVEMENT 'Si la personne est consciente ne la touchez pas si vous n'êtes pas formée et appeler le 15'
   PROMPT
   def create
     @chat = Chat.find(params[:chat_id])
