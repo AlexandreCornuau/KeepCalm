@@ -1,55 +1,83 @@
 .chat-container{
   padding: 10px;
-#messages{
-  display: flex;
-  flex-direction: column;
-  gap:10px
-}
+  .header-chat{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+     padding: 16px;
+    padding-top: 8px;
+  }
 
   .the-chat{
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 32px;
+    padding: 8px;
     background-color:$white;
+    height: 100%;
 
-    .assistant{
-      display: flex;
-      flex-direction: column;
-      gap:20px;
+    #messages{
+    display: flex;
+    flex-direction: column;
+    gap:10px
+  }
+  .user{
+    display: flex;
+    padding: 12px;
+    justify-content: flex-end;
+    .message-user{
+      background: $gray-100;
+      padding: 12px;
+      border-radius: 16px;
+    }
+  }
+  .assistant{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    padding: 12px;
+    .message-assistant{
+      padding: 12px;
+      background: $primary-100;
+      border-radius: 16px;
+      }
       .logo{
         img{
-          height: 10px;
-
+          width:32px;
         }
-
       }
-
-    }
-    .pb-0.rounded-pill{
-      display: flex;
-      justify-content: flex-end;
-      background: $gray-100;
     }
 
     .px-3.pb-0.rounded-pill{
       display: flex;
       justify-content: flex-start;
-      background: $primary-100;
       text-align: center;
     }
+
+
+
+
     .btn-yes-or-no{
+      padding: 8px;
       display: flex;
-      justify-content: space-around;
+      flex-direction: row-reverse;
+      justify-content: center;
       margin-top: 10px;
+      background-color: $primary-050;
+      border-radius: 24px;
+      gap:8px;
+      // .yn-flex{
+      //   width: 100px;
+      // }
+      .btn.btn-secondary.no{
+        padding: 18px, 20px;
+        width: 150px;
+      }
+      .btn.btn-success.yes{
+        padding: 18px, 20px;
+        width: 150px;
+      }
+
     }
-
-
-
-
-
-
-
-
-
 
 
 
