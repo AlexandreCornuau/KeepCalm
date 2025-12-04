@@ -1,12 +1,20 @@
 .chat-container{
   padding: 10px;
-
+#messages{
+  display: flex;
+  flex-direction: column;
+  gap:10px
+}
 
   .the-chat{
+    border-radius: 20px;
     padding: 10px;
+    background-color:$white;
 
     .assistant{
       display: flex;
+      flex-direction: column;
+      gap:20px;
       .logo{
         img{
           height: 10px;
@@ -16,13 +24,22 @@
       }
 
     }
+    .pb-0.rounded-pill{
+      display: flex;
+      justify-content: flex-end;
+      background: $gray-100;
+    }
 
-    .px-3.pb-0.pt-3.rounded-pill{
-      background: $light-gray;
+    .px-3.pb-0.rounded-pill{
+      display: flex;
+      justify-content: flex-start;
+      background: $primary-100;
+      text-align: center;
     }
     .btn-yes-or-no{
       display: flex;
-      justify-content: space-around
+      justify-content: space-around;
+      margin-top: 10px;
     }
 
 
