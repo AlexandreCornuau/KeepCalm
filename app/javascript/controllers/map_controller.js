@@ -13,7 +13,9 @@ export default class extends Controller {
     apiKey: String,
     markers: Array,
     interventionId: String,
-    caseId: String
+    caseId: String,
+    lat: String,
+    long: String
   }
   static targets = [
     "mapContainer"
@@ -22,14 +24,21 @@ export default class extends Controller {
     console.log(this.idValue);
     mapboxgl.accessToken = this.apiKeyValue
     console.log("markers", this.markersValue);
-    console.log(this.hasmapContainerTarget)
-    if (this.hasmapContainerTarget) {
+    console.log(this.hasMapContainerTarget)
+    console.log(this.longValue);
+    if (this.hasMapContainerTarget) {
       this.map = new mapboxgl.Map({
         container: this.mapContainerTarget,
+        center: [parseFloat(this.longValue), parseFloat(this.latValue)],
+        zoom: 13.5,
+        maxZoom: 16,
+        minZoom: 13,
         style: "mapbox://styles/mapbox/streets-v10"
       })
+      new mapboxgl.Marker()
+        .setLngLat([ this.longValue, this.latValue ])
+        .addTo(this.map)
     }
-
 
     // this.#addMarkersToMap()
   }

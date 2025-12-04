@@ -4,5 +4,9 @@
   data-controller="map"
   data-map-intervention-id-value="<%= @intervention.id %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-map-target="mapContainer"></div>
+  data-map-lat-value="<%= params[:lat] %>"
+  data-map-long-value="<%= params[:long] %>"
+  data-map-target="mapContainer">
+
+</div>
 <%# attention @daes en daes %>
