@@ -1,6 +1,19 @@
 .alert {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+  // position: fixed;
+  // bottom: 16px;
+  // right: 16px;
+  // z-index: 1000;
+  margin: 0;
+
+  .ph-bold {
+    font-size: 20px;
+    margin-top: 2px;
+  }
+
+  &.alert-primary {
+    background-color: $primary-050;
+    .ph-bold {
+      color: $primary;
+    }
+  }
 }

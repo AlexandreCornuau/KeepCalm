@@ -5,16 +5,24 @@
     overflow: hidden;
     height: 140px;
     position: relative;
+    display: flex;
+    align-items: center;
 
     img {
-      object-fit: cover;
-      object-position: center;
+      width: 100%;
+      height: fit-content;
     }
 
     .btn-tuto-replay {
       position: absolute;
       bottom: 16px;
       right: 16px;
+    }
+  }
+
+  .gif-pulse {
+    img {
+      width: 100%;
     }
   }
 

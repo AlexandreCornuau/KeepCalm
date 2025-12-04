@@ -1,5 +1,5 @@
 <%= render "intervention-nav" %>
-<div class="intervention-container p-2" data-controller="modal">
+<div class="intervention-container p-2 d-flex flex-column gap-3" data-controller="modal">
 
   <div class ="gif-container rounded">
       <%= image_tag(@case.gif_url) %>
@@ -9,20 +9,22 @@
       <% end %>
   </div>
 
-
-
-
-  <div class="relais">
-    <p>Faites un relais afin de rester efficace</p>
+  <div class="alert alert-primary d-flex align-items-start gap-2" role="alert">
+    <i class="ph-bold ph-info"></i>
+    Si possible, faites un relais avec une autre personne afin de rester efficace
   </div>
 
+  <div class="gif-pulse">
+    <%= image_tag "gif-pulse.gif" %>
+  </div>
 
-  <div class="rcp">
-    <p>Suivez ce rythme pour votre RCP</p>
-    <%= image_tag "logo.png" %>
+  <div class="actions-cards d-flex gap-2">
+    <%= render "shared/cards/card-dae" %>
+    <%= render "shared/cards/card-recap" %>
   </div>
 
   <div class="buttons">
+
     <button id="myBtn-recap" data-modal-target="btnRecap" data-action="click->modal#openModal">Infos récapitulatif</button>
     <div id="myModal-recap" data-modal-target="modalRecap" class="modal">
       <div class="modal-content">
@@ -36,7 +38,7 @@
       </div>
     </div>
 
-  <button id="myBtn-dae" data-modal-target="btnDae" data-action="click->modal#openModal">Défibrilateur le plus proche</button>
+    <button id="myBtn-dae" data-modal-target="btnDae" data-action="click->modal#openModal">Défibrilateur le plus proche</button>
       <div id="myModal-dae" data-modal-target="modalDae" class="modal">
         <div class="modal-content">
           <div class="modal-header">
