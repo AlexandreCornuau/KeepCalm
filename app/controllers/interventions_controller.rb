@@ -8,9 +8,11 @@ class InterventionsController < ApplicationController
   end
 
   def show
-    @case = Case.find(params[:id])
-    daes_list("nantes")
-    @daes = Dae.where(city: "nantes")
+    @city = params[:city]
+    @case = Case.find(params[:case_id])
+    daes_list(@city)
+    @daes = Dae.where(city: @city)
+
   end
 
   def update
