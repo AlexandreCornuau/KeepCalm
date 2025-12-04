@@ -1,46 +1,23 @@
+.home-container {
 
-  // Icône carte principale
-  .home-icon {
-    width: 64px;
-    height: 64px;
+  // Images de fond
+  .home-bg-img {
+    position: absolute;
+    height: auto;
   }
 
-  // Bouton Aidez-moi
-  .btn-help {
-    height: 88px;
-    background-color: $secondary-500;
-    color: $white;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 16px;
-    margin-top: 28px;
-
-    &:hover {
-      background-color: $secondary-600;
-      color: $white;
-    }
+  .home-bg-left {
+    width: 155px;
+    top: 24px;
+    left: -30px;
+    transform: rotate(-15deg);
   }
 
-  // scrollbar
-  .scrolling-cards {
-    overflow-x: scroll;
-  }
-
-  // Carte info
-  .scrolling-card {
-    border-radius: 24px;
-    gap: 2px;
-    padding: 16px;
-    width: 280px;
-    text-decoration: none;
-    img {
-      border-radius: 8px;
-      overflow: hidden;
-      width: 100%;
-      height: 156px;
-      object-fit: cover;
-    }
+  .home-bg-right {
+    width: 190px;
+    top: -8px;
+    right: -30px;
+    transform: rotate(20deg);
   }
 
   // Hero section
@@ -48,24 +25,68 @@
     position: relative;
     overflow: hidden;
     background-color: $primary-050;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
     padding: 24px;
+    box-shadow: 0 10px 15px 0 rgba(31, 41, 55, 0.10), 0 0 6px 0 rgba(31, 41, 55, 0.05);
+
+    .home-cta-card {
+      margin-top: 84px;
+      border-radius: 24px;
+      box-shadow: 0 20px 25px 0 rgba(31, 41, 55, 0.10), 0 10px 10px 0 rgba(31, 41, 55, 0.04);
+
+      // Icône carte principale
+      .home-icon {
+        width: 64px;
+        height: 64px;
+      }
+
+      // Bouton Aidez-moi
+      .btn-help {
+        height: 88px;
+        background-color: $secondary-500;
+        color: $white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 16px;
+        margin-top: 28px;
+
+        &:hover {
+          background-color: $secondary-600;
+          color: $white;
+        }
+      }
+
+    }
+
   }
 
-  // Images de fond
-  .home-bg-img {
-    position: absolute;
-    width: 150px;
-    height: auto;
+  .informations {
+    overflow: visible;
+    padding: 32px 16px;
+
+    // scrollbar
+    .scrolling-cards {
+      overflow-x: scroll;
+    }
+
+    // Carte info
+    .scrolling-card {
+      border-radius: 24px;
+      gap: 2px;
+      padding: 16px;
+      width: 280px;
+      text-decoration: none;
+      img {
+        border-radius: 8px;
+        overflow: hidden;
+        width: 100%;
+        height: 156px;
+        object-fit: cover;
+      }
+    }
+
   }
 
-  .home-bg-left {
-    top: 0;
-    left: -30px;
-  }
-
-  .home-bg-right {
-    top: 0;
-    right: -30px;
-  }
+}
