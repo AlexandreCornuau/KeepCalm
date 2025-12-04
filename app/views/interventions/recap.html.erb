@@ -1,6 +1,8 @@
-<div class="show-container">
-
-  <h2>Recapitulatif intervention</h2>
+<div>
+  <div class="card-head">
+    <h4>Recapitulatif</h4>
+    <button class="btn btn-primary" type="button"> <i class="ph-bold ph-check"></i> Enregistrer</button> <%#= route + création pdf + création compte ici ?? %>
+  </div>
 
   <p>Faire un résumé avec l'IA ? Texte modifiable au besoin</p>
   <%# Faire render et utiliser les 3 prochaines lignes pour la page modal_recap ??? %>
@@ -8,6 +10,5 @@
   <p>Durée totale : <%#= @intervention.end_time - @intervention.start_time ??? %></p>
   <p>Adresse : <%= @intervention.address %></p>
 
-  <%= link_to "Envoyer le recapitulatif" %> <%#= route + création pdf + création compte ici ?? %>
   <%= link_to "Retour à l'acceuil", root_path %>
 <div>
