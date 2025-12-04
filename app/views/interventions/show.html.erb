@@ -1,23 +1,37 @@
-<div class="show-container" data-controller="modal">
-  <div class="buttons">
-    <%= link_to "Retourner au tutoriel", case_path(@intervention) %>
-    <%= link_to "Arrêter", recap_intervention_path(@intervention) %>
-  </div>
+<%= render "intervention-nav" %>
 
-  <div class="relais">
-    <p>Faites un relais afin de rester efficace</p>
-  </div>
+<div class="intervention-container p-2 d-flex flex-column gap-3" data-controller="modal">
 
-  <div class ="gif-container">
+  <%# GIF Tuto  %>
+  <div class ="gif-container rounded">
       <%= image_tag(@case.gif_url) %>
+      <%= link_to case_path(@intervention), class:"btn btn-blur btn-tuto-replay bg-blur" do %>
+        <i class="ph-bold ph-arrow-counter-clockwise"></i>
+        Revoir le tuto
+      <% end %>
   </div>
 
-  <div class="rcp">
-    <p>Suivez ce rythme pour votre RCP</p>
-    <%= image_tag "logo.png" %>
+  <%# ALERT Relais %>
+  <div class="alert alert-primary d-flex align-items-start gap-2" role="alert">
+    <i class="ph-bold ph-info"></i>
+    Si possible, faites un relais avec une autre personne afin de rester efficace
   </div>
 
+  <%# GIF PULSE %>
+  <div class="gif-pulse">
+    <%= image_tag "gif-pulse.gif" %>
+  </div>
+
+  <%# Cards à rendre fonctionnel : %>
+  <div class="actions-cards d-flex gap-2">
+    <%= render "shared/cards/card-dae" %>
+    <%= render "shared/cards/card-recap" %>
+  </div>
+
+
+  <%# CODE JULIEN BOUTONS MODAL FONCTIONNELS %>
   <div class="buttons">
+
     <button id="myBtn-recap" data-modal-target="btnRecap" data-action="click->modal#openModal">Infos récapitulatif</button>
     <div id="myModal-recap" data-modal-target="modalRecap" class="modal">
       <div class="modal-content">
@@ -31,7 +45,7 @@
       </div>
     </div>
 
-  <button id="myBtn-dae" data-modal-target="btnDae" data-action="click->modal#openModal">Défibrilateur le plus proche</button>
+    <button id="myBtn-dae" data-modal-target="btnDae" data-action="click->modal#openModal">Défibrilateur le plus proche</button>
       <div id="myModal-dae" data-modal-target="modalDae" class="modal">
         <div class="modal-content">
           <div class="modal-header">
