@@ -35,8 +35,8 @@ class MessagesController < ApplicationController
     if @message.save
       user = @chat.messages.where(role: "user")
       #premier message "j'ai besoin d'aide" (celui généré automatiquement)ejecté avec .reject
-      user_messages = user.reject{|message| message.content == "j'ai besoin d'aide"}
-      if user_messages.first.content.downcase == "non"
+      user_messages = user.reject{|message| message.content == "J'ai besoin d'aide"}
+      if user_messages.first.content.downcase.strip == "non"
         #--> personne inconsciente --> declencher nouveau prompt
         @ruby_llm_chat = RubyLLM.chat
         build_conversation_history #--> sinon on boucle sur la question
