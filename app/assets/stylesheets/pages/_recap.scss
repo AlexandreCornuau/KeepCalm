@@ -2,4 +2,40 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+
+  #btn-save {
+    gap: 8px;
+  }
+}
+
+#card-recap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px;
+}
+
+.row-label {
+  $primary-500:
+}
+
+.card-img-recap {
+  height: 70px;
+  text-align: center;
+  img {
+    height: 100%;
+  }
+}
+
+.btn-footer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+// ----- Non fonctionnel, à finir vendredi -----
+.link-recap {
+  text-decoration: none;
 }

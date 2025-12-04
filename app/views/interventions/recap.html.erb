@@ -1,14 +1,54 @@
-<div>
+<div class=" p-2 d-flex flex-column gap-3">
   <div class="card-head">
     <h4>Recapitulatif</h4>
-    <button class="btn btn-primary" type="button"> <i class="ph-bold ph-check"></i> Enregistrer</button> <%#= route + création pdf + création compte ici ?? %>
+    <button id="btn-save"class="btn btn-primary" type="button"><i class="ph-bold ph-check"></i>  Enregistrer</button> <%#= route + création pdf + création compte ici ?? %>
   </div>
 
-  <p>Faire un résumé avec l'IA ? Texte modifiable au besoin</p>
-  <%# Faire render et utiliser les 3 prochaines lignes pour la page modal_recap ??? %>
-  <p>Heure de commencement :<%= @intervention.start_time %></p>
-  <p>Durée totale : <%#= @intervention.end_time - @intervention.start_time ??? %></p>
-  <p>Adresse : <%= @intervention.address %></p>
+  <div class="card" id="card-recap">
+    <div class="card-img-recap"><%= image_tag "medical-app" %></div>
+    <p class="fw-500">Récapitulatif de votre intervention à transmettre aux secours ou au médecin si besoin :</p>
+  </div>
 
-  <%= link_to "Retour à l'acceuil", root_path %>
+<%# ----- Card principale ----- %>
+  <div class="card">
+    <div class="card">
+      <p class="row-label"><i class="ph-bold ph-clock"></i>Déclenchement de l'aide</p>
+      <p><%= @chat.created_at %> </p>
+    </div>
+
+    <div>
+      <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
+      <p>Faire un résumé avec l'IA ? Texte modifiable au besoin</p>
+    </div>
+
+    <%# Faire render et utiliser les 3 prochaines lignes pour la page modal_recap ??? %>
+    <div>
+      <p class="row-label"><i class="ph-bold ph-map-pin-area"></i>Adresse</p>
+      <p><%= @intervention.address %></p>
+    </div>
+
+    <div>
+      <p class="row-label"><i class="ph-bold ph-clock"></i>Début de la RCP estimée</p>
+      <p><%= @intervention.start_time %></p>
+    </div>
+
+    <div>
+      <p class="row-label"><i class="ph-bold ph-hourglass-low"></i>Durée de la RCP</p>
+      <p><%#= @intervention.end_time - @intervention.start_time ??? %></p>
+    </div>
+
+     <div>
+      <p class="row-label"><i class="ph-bold ph-clock-countdown"></i>Heure de fin</p>
+      <p><%= @intervention.end_time %></p>
+    </div>
+  </div>
+
+  <%# Faire le bouton partager %>
+  <div class="btn-footer">
+    <button class="btn btn-primary">Partager <i class="ph-bold ph-share"></i></button>
+  </div>
+
+  <div class="btn-footer">
+    <p class="link-recap"><%= link_to "Quitter sans enregistrer", root_path %></p>
+  </div>
 <div>
