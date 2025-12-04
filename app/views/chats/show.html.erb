@@ -1,4 +1,4 @@
-<div class="show-container" data-controller="modal">
+<div class="show-container" data-controller="modal-urgence">
   <h1>Chat</h1>
 
     <%#= link_to "envoyer un message (doit devenir un envoi vocal)", chat_messages_path(params[:id]), data: {turbo_method: :post} %>
@@ -30,17 +30,17 @@
     <% end %>
   </div>
 
-<%# SI l'on retire l'IA, après le message "C'est un arrêt cardiaque", faire apparaître la modal_urgence 2sec après en stimulus %>
+<%# SI l'on retire l'IA, après le message "C'est un arrêt cardiaque", faire apparaître la le bouton (2sec après ??) %>
   <div class="buttons">
-    <button id="myBtn-urgence" data-modal-target="btnUrgence" data-action="click->modal#openModal">Suivant</button>
-    <div id="myModal-urgence" data-modal-target="modalUrgence" class="modal">
+    <button id="myBtn-urgence" data-modal-urgence-target="btn" data-action="click->modal-urgence#openModal">Suivant</button>
+    <div id="myModal-urgence" data-modal-urgence-target="modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
           <h2>Diagnostic</h2>
-          <span class="close" data-modal-target="closeUrgence" data-action="click->modal#closeModal">&times;</span>
+          <span class="close" data-modal-urgence-target="close" data-action="click->modal-urgence#closeModal">&times;</span>
         </div>
         <div class="modal-body">
-          <%#= render partial: "modal_urgence", local: {chat: @chat, message: @message} %>
+          <%= render partial: "modal_urgence", local: {chat: @chat, message: @message} %>
         </div>
       </div>
     </div>
