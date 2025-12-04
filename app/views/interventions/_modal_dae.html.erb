@@ -1,4 +1,12 @@
-
 <p>Page modal dae</p>
 
+<div style="width: 100%; height: 300px;"
+  data-controller="map"
+  data-map-intervention-id-value="<%= @intervention.id %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-map-lat-value="<%= params[:lat] %>"
+  data-map-long-value="<%= params[:long] %>"
+  data-map-target="mapContainer">
 
+</div>
+<%# attention @daes en daes %>
