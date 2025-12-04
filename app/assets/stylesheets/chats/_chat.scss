@@ -1,20 +1,42 @@
-.the-chat{
+.chat-container{
   padding: 10px;
-  .btn-yes-or-no{
-    display: flex;
-    justify-content: space-around
+
+
+  .the-chat{
+    padding: 10px;
+
+    .assistant{
+      display: flex;
+      .logo{
+        img{
+          height: 10px;
+
+        }
+
+      }
+
+    }
+
+    .px-3.pb-0.pt-3.rounded-pill{
+      background: $light-gray;
+    }
+    .btn-yes-or-no{
+      display: flex;
+      justify-content: space-around
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
