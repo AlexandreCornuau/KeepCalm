@@ -1,4 +1,4 @@
-<div class="show-container" data-controller="modal">
+<div class="show-chat" data-controller="modal">
 
   <div class="the-chat">
     <div id="messages">
@@ -19,7 +19,7 @@
       <% end %>
     </div>
 
-    <div class= "form-chat col-9 p-2 p-md-4">
+    <div class= "btn-yes-or-no">
       <%= simple_form_for [@chat, @message], html: { class: 'd-flex gap-3' } do |f| %>
         <%= f.hidden_field :content, value: "oui" %>
         <%= f.button :submit, "OUI", class: "btn btn-primary" %>
