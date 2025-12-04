@@ -34,27 +34,29 @@ class MessagesController < ApplicationController
     @message.role = "user"
     @cases = Case.all
     if @message.save
-      user = @chat.messages.where(role: "user")
-      #premier message "j'ai besoin d'aide" (celui généré automatiquement)ejecté avec .reject
-      user_messages = user.reject{|message| message.content == "J'ai besoin d'aide"}
-      if user_messages.first.content.downcase.strip == "non"
-        #--> personne inconsciente --> declencher nouveau prompt
-        @ruby_llm_chat = RubyLLM.chat
-        build_conversation_history #--> sinon on boucle sur la question
+      if @chat.messages.where(role: "user").count < 4
+        user = @chat.messages.where(role: "user")
+        #premier message "j'ai besoin d'aide" (celui généré automatiquement)ejecté avec .reject
+        user_messages = user.reject{|message| message.content == "J'ai besoin d'aide"}
+        if user_messages.first.content.downcase.strip == "non"
+          #--> personne inconsciente --> declencher nouveau prompt
+          @ruby_llm_chat = RubyLLM.chat
+          build_conversation_history #--> sinon on boucle sur la question
 
-        #nouveau prompt doit savaoir que la personne est inconsciente --> oriente directement sur l'arret cardiaque en cas de non respiration
-        response = @ruby_llm_chat.with_instructions(PROMPT_NO_CONSCIENS).ask(@message.content)
-        Message.create(role: "assistant", content: response.content, chat: @chat)
+          #nouveau prompt doit savaoir que la personne est inconsciente --> oriente directement sur l'arret cardiaque en cas de non respiration
+          response = @ruby_llm_chat.with_instructions(PROMPT_NO_CONSCIENS).ask(@message.content)
+          Message.create(role: "assistant", content: response.content, chat: @chat)
 
 
-      else  #premier message.downcase == oui --> personne consciente --> déclencher nouveau prompt
-        #nouveau prompt oriente sur la surveillance de la respiration --> on part sur un autre probleme
-        @ruby_llm_chat = RubyLLM.chat
-        build_conversation_history
-        #nouveau prompt oriente  sur l'appel des secours nous ne sommes plus dans le cadre de l'arret cardio respi
-        response = @ruby_llm_chat.with_instructions(PROMPT_AWAKE).ask(@message.content)
-        Message.create(role: "assistant", content: response.content, chat: @chat)
+        else  #premier message.downcase == oui --> personne consciente --> déclencher nouveau prompt
+          #nouveau prompt oriente sur la surveillance de la respiration --> on part sur un autre probleme
+          @ruby_llm_chat = RubyLLM.chat
+          build_conversation_history
+          #nouveau prompt oriente  sur l'appel des secours nous ne sommes plus dans le cadre de l'arret cardio respi
+          response = @ruby_llm_chat.with_instructions(PROMPT_AWAKE).ask(@message.content)
+          Message.create(role: "assistant", content: response.content, chat: @chat)
 
+        end
       end
         #########code de initial sans essayer de fractionner le prompt##############################
       # @ruby_llm_chat = RubyLLM.chat
