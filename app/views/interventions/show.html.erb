@@ -5,7 +5,7 @@
   <%# GIF Tuto  %>
   <div class ="gif-container rounded">
       <%= image_tag(@case.gif_url) %>
-      <%= link_to case_path(@intervention), class:"btn btn-blur btn-tuto-replay bg-blur" do %>
+      <%= link_to case_path(@case.id, intervention_id: @intervention.id), class:"btn btn-blur btn-tuto-replay bg-blur" do %>
         <i class="ph-bold ph-arrow-counter-clockwise"></i>
         Revoir le tuto
       <% end %>
