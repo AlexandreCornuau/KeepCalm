@@ -12,7 +12,10 @@
     data-map-intervention-id-value="<%= @intervention.id %>"
     data-map-case-id-value="<%= @case.id%>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      <button data-action="click->map#getLocation">J'ai compris, commencer</button>
+      <button data-action="click->map#getLocation" class="btn btn-primary fs-l flex-grow-1">
+        Je suis prêt, commencer
+        <i class="ph-bold ph-arrow-right"></i>
+      </button>
       <%# <%= link_to "J'ai compris, commencer", data: {action: "click->map#getLocation"} %>
       <%# <%= link_to "J'ai compris, commencer", intervention_path(id: @intervention.id, case_id: @case.id)%>
     </div>

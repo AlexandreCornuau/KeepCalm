@@ -1,11 +1,16 @@
 <% steps.order(:id).each do |step| %>
   <% if step.step_type == "instruction" %>
     <div class ="card step-card instruction">
-      <div  class = "number" >
-        <p><%= step.number %></p>
+      <div class="row-instructions">
+        <div>
+          <div class="number" >
+            <p class="fs-m"><%= step.number %></p>
+          </div>
+        </div>
+        <p class="fw-500"> <%= step.details %> </p>
       </div>
+
       <div>
-        <p> <%= step.details %> </p>
         <% if step.picture_url %>
           <%= image_tag(step.picture_url) %>
         <% end %>

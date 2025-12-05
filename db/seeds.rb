@@ -8,12 +8,13 @@ Step.destroy_all
 puts "——— Clean done ———"
 
 last_step_info = "<div>
+                    <p>Faites attention à:</p>
                     <ul>
                         <li> Appuyer verticalement </li>
                         <li> Garder le dos droit </li>
                         <li> Garder les bras tendus </li>
                     </ul>
-                    <p><b>Rythme</b> : Entre 100 et 120 compressions <b>par minute</b></p>
+                    <p><b>Rythme</b> : Entre <b>100 et 120</b> compressions par minute</p>
                   </div>"
 
 puts "+++ Creating Case and steps..."
