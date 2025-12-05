@@ -1,60 +1,94 @@
 .show-container {
-  background-color: rgb(212, 239, 255);
   display: block;
+
   .gif-container {
     position: sticky;
     top: 0;
-    padding: 20px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    background-color: white;
+    padding: 16px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    box-shadow: 0 20px 25px 0 rgba(31, 41, 55, 0.10), 0 10px 10px 0 rgba(31, 41, 55, 0.04);
+    z-index: 99;
+
     img {
       width: 100%;
+      border-radius: 16px;
     }
   }
-}
 
-.steps-container {
-  width: 100%;
-  padding: 15px;
-  .button-container {
-    background-color: red;
+
+  .steps-container {
     width: 100%;
+    padding: 24px 8px 40px;
+
+    .steps-head {
+      text-align: center;
+      padding: 8px 32px;
+    }
+
+    .button-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      button {
+        padding: 18px 0;
+      }
+    }
+  }
+
+  .step-card {
     display: flex;
     justify-content: center;
-    a {
-      text-decoration: none;
-      color: white;
-      background-color: black;
-      width: 100%;
+    padding: 16px;
+
+    .number {
+      background-color: $primary;
+      color: $white;
+      border-radius: 50%;
+      width: 32px !important;
+      height: 32px !important;
       text-align: center;
-      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    &.information {
+      gap: 1rem;
+
+      .ph-bold {
+        font-size: 24px;
+      }
+      ul {
+        margin-bottom: 8px;
+      }
+    }
+
+    &.instruction {
+      border: none;
+      gap: 8px;
+
+      .row-instructions {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+
+        .text-instruction {
+          margin-top: 4px !important;
+        }
+      }
+
+      .img-instruction {
+        height: 148px;
+        text-align: center;
+
+        img {
+          height: inherit;
+        }
+      }
+
     }
   }
-}
-.step-card {
-  background-color: red;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  .number {
-    background-color: black;
-    color: white;
-    // padding: 5px;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-  }
-  img {
-    width: 80%;
-  }
-}
-.information {
-  background-color: rgb(209, 209, 209);
-}
-.instruction {
-  background-color: rgb(247, 247, 247);
+
 }

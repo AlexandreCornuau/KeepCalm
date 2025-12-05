@@ -1,16 +1,21 @@
 <div class="show-container">
-  <div class ="gif-container">
+  <div class ="gif-container bg-blur">
       <%= image_tag(@case.gif_url) %>
   </div>
-  <div class="steps-container">
-    <h4>Position</h4>
+  <div class="steps-container d-flex flex-column gap-3">
+    <div class="steps-head">
+      <h4>Suivez ces étapes pour vous former rapidement à faire un massage cardiaque :</h4>
+    </div>
     <%= render partial: "step", locals: {steps: @steps} %>
     <div class ="button-container"
-    data-controller="map"
-    data-map-intervention-id-value="<%= @intervention.id %>"
-    data-map-case-id-value="<%= @case.id%>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      <button data-action="click->map#getLocation">J'ai compris, commencer</button>
+      data-controller="map"
+      data-map-intervention-id-value="<%= @intervention.id %>"
+      data-map-case-id-value="<%= @case.id%>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <button data-action="click->map#getLocation" class="btn btn-primary fs-l flex-grow-1">
+        Je suis prêt, commencer
+        <i class="ph-bold ph-arrow-right"></i>
+      </button>
       <%# <%= link_to "J'ai compris, commencer", data: {action: "click->map#getLocation"} %>
       <%# <%= link_to "J'ai compris, commencer", intervention_path(id: @intervention.id, case_id: @case.id)%>
     </div>
