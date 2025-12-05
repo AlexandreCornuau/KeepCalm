@@ -1,54 +1,99 @@
 <div class=" p-2 d-flex flex-column gap-3">
   <div class="card-head">
     <h4>Recapitulatif</h4>
-    <button id="btn-save"class="btn btn-primary" type="button"><i class="ph-bold ph-check"></i>  Enregistrer</button> <%#= route + création pdf + création compte ici ?? %>
+      <%= link_to user_session_path, class: "btn btn-primary" do %>
+      <div class="btn-save">
+        <i class="ph-bold ph-check"></i>
+        <p class="fs-s">Enregistrer</p>
+      </div>
+      <% end %>
   </div>
 
-  <div class="card" id="card-recap">
+  <div class="card" id="info-recap">
     <div class="card-img-recap"><%= image_tag "medical-app" %></div>
     <p class="fw-500">Récapitulatif de votre intervention à transmettre aux secours ou au médecin si besoin :</p>
   </div>
 
 <%# ----- Card principale ----- %>
-  <div class="card">
-    <div class="card">
-      <p class="row-label"><i class="ph-bold ph-clock"></i>Déclenchement de l'aide</p>
-      <p><%= @chat.created_at %> </p>
+  <div class="card-recap d-flex flex-column gap-2">
+    <div class="text-recap justify-content-between">
+      <div class="row-label">
+        <i class="ph-bold ph-clock"></i>
+        <p>Déclenchement de l'aide</p>
+      </div>
+      <p class="fw-500"><%= @chat.created_at.in_time_zone("Europe/Paris").strftime("%kh%M") %></p>
     </div>
 
-    <div>
+    <div class="text-recap flex-column">
       <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
-      <p>Faire un résumé avec l'IA ? Texte modifiable au besoin</p>
+      <%# Integrer le rapport de l'IA %>
+      <p class="fw-500">Faire un résumé avec l'IA ? Texte modifiable au besoin ??</p>
     </div>
 
-    <%# Faire render et utiliser les 3 prochaines lignes pour la page modal_recap ??? %>
-    <div>
+    <div class="text-recap flex-column">
       <p class="row-label"><i class="ph-bold ph-map-pin-area"></i>Adresse</p>
-      <p><%= @intervention.address %></p>
+      <p class="fw-500"><%= @intervention.address %></p>
     </div>
 
-    <div>
-      <p class="row-label"><i class="ph-bold ph-clock"></i>Début de la RCP estimée</p>
-      <p><%= @intervention.start_time %></p>
+    <div class="text-recap justify-content-between">
+      <div class="row-label">
+        <i class="ph-bold ph-clock"></i>
+        <p>Début de la RCP estimée</p>
+      </div>
+      <p class="fw-500">
+        <%= if @intervention.start_time.present?
+              @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M")
+            else
+              "-"
+            end %>
+      </p>
     </div>
 
-    <div>
-      <p class="row-label"><i class="ph-bold ph-hourglass-low"></i>Durée de la RCP</p>
-      <p><%#= @intervention.end_time - @intervention.start_time ??? %></p>
+    <div class="text-recap justify-content-between">
+      <div class="row-label">
+        <i class="ph-bold ph-hourglass-low"></i>
+        <p>Durée de la RCP</p>
+      </div>
+      <p class="fw-500">
+        <% if @intervention.start_time && @intervention.end_time %>
+          <% duration = @intervention.end_time - @intervention.start_time %>
+          <% hours = (duration / 3600).to_i %>
+          <% minutes = ((duration % 3600) / 60).to_i %>
+          <%= "#{hours}h#{minutes.to_s.rjust(2, '0')}" %>
+          <% else %>
+            <%= "-" %>
+        <% end %>
+      </p>
     </div>
 
-     <div>
-      <p class="row-label"><i class="ph-bold ph-clock-countdown"></i>Heure de fin</p>
-      <p><%= @intervention.end_time %></p>
+    <div class="text-recap justify-content-between">
+      <div class="row-label">
+        <i class="ph-bold ph-clock-countdown"></i>
+        <p>Heure de fin</p>
+      </div>
+
+      <p class="fw-500">
+        <%= if @intervention.end_time.present?
+              @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M")
+            else
+              "-"
+            end %>
+      </p>
     </div>
   </div>
 
-  <%# Faire le bouton partager %>
+  <%# ----- Faire le lien du bouton partager ----- %>
   <div class="btn-footer">
-    <button class="btn btn-primary">Partager <i class="ph-bold ph-share"></i></button>
+    <%= link_to user_session_path, class: "btn btn-primary" do %>
+          <div class="btn-save">
+            <i class="ph-bold ph-check"></i>
+            <p class="fs-s">Enregistrer</p>
+          </div>
+          <% end %>    <button  type="button" class="share btn btn-outline-primary">Partager <i class="ph-bold ph-share"></i></button>
   </div>
 
   <div class="btn-footer">
-    <p class="link-recap"><%= link_to "Quitter sans enregistrer", root_path %></p>
+    <a class="link-recap fw-500" href="<%= root_path %>">Quitter sans enregistrer</a>
   </div>
+
 <div>
