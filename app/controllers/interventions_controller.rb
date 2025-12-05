@@ -11,7 +11,8 @@ class InterventionsController < ApplicationController
     @city = params[:city]
     @case = Case.find(params[:case_id])
     daes_list(@city)
-    @daes = Dae.where(city: @city)
+    # @daes = Dae.where(city: @city)
+    @daes = Dae.near([params[:lat], params[:long]], 1)
 
   end
 
@@ -20,6 +21,7 @@ class InterventionsController < ApplicationController
   end
 
   def recap
+    @chat = @intervention.chat
   end
 
 private
