@@ -1,58 +1,59 @@
 <div class="show-chat" data-controller="modal-urgence">
-  <div class="chat-container">
-    <div class="header-chat">
-    <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, root_path, class: "btn btn-secondary" %>
-    <h4>Quitter</h4>
 
+  <div class="chat-container">
+
+    <div class="header-chat">
+      <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, root_path, class: "btn btn-secondary" %>
+      <h4>Quitter</h4>
     </div>
 
     <div class="the-chat">
 
       <% @chat.messages.each do |message| %>
-      <div id="messages">
-        <% if message.role == "user" %>
-        <div class="user">
-          <div class="message-user">
-          <%= message.content %>
-          </div>
-        </div>
 
-        <% elsif message.role == "assistant" %>
-        <div class="assistant">
-          <div class="logo">
-            <%= image_tag "logo.png" %>
-          </div>
-          <div class="message-assistant">
-            <%= message.content %>
-          </div>
+        <div id="messages">
+          <% if message.role == "user" %>
+            <div class="user">
+              <div class="message-user">
+              <%= message.content %>
+              </div>
+            </div>
+
+          <% elsif message.role == "assistant" %>
+            <div class="assistant">
+              <div class="logo">
+                <%= image_tag "logo.png" %>
+              </div>
+              <div class="message-assistant">
+                <%= message.content %>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
       <% end %>
 
-      <div class= "btn-yes-or-no">
         <%if @chat.messages.where(role: "user").count < 3  %>
-          <%= simple_form_for [@chat, @message], html: { class: 'd-flex flex-grow-1' } do |f| %>
-            <%= f.hidden_field :content, value: "oui" %>
-            <%= f.button :submit, "OUI", class: "btn btn-success yes flex-grow-1" %>
-          <% end %>
+          <div class= "btn-yes-or-no">
+            <%= simple_form_for [@chat, @message], html: { class: 'd-flex flex-grow-1' } do |f| %>
+              <%= f.hidden_field :content, value: "oui" %>
+              <%= f.button :submit, "OUI", class: "btn btn-success yes flex-grow-1" %>
+            <% end %>
 
-
-          <%= simple_form_for [@chat, @message], html: { class: 'd-flex flex-grow-1' } do |f| %>
-            <%= f.hidden_field :content, value: "non" %>
-            <%= f.button :submit, "NON", class: "btn btn-secondary no flex-grow-1" %>
-          <% end %>
+            <%= simple_form_for [@chat, @message], html: { class: 'd-flex flex-grow-1' } do |f| %>
+              <%= f.hidden_field :content, value: "non" %>
+              <%= f.button :submit, "NON", class: "btn btn-secondary no flex-grow-1" %>
+            <% end %>
+          </div>
         <% else %>
 
-      </div>
-    </div>
+
 
   <!-- Boutton Modal -->
 
     <div class="buttons d-flex align-items-center justify-content-center">
-      <button id="myBtn-urgence" class="btn-massage d-flex align-items-center justify-content-center flex-grow-1 gap-2" data-modal-urgence-target="btn" data-action="click->modal-urgence#openModal">
-      <%= image_tag "emergency-2.png", alt: "Urgence", class: "btn-massage border-0" %>
-        <p class="fw-600">Aide massage cardiaque</p>
+      <button id="myBtn-urgence" class="btn-diagnostic fw-500 btn btn-primary d-flex align-items-center justify-content-center flex-grow-1 gap-2" data-modal-urgence-target="btn" data-action="click->modal-urgence#openModal">
+        <i class="ph-bold ph-hospital"></i>
+        Afficher mon diagnostic
       </button>
       <div id="myModal-urgence" data-modal-urgence-target="modal" class="modal">
         <div class="modal-content">
@@ -68,16 +69,19 @@
     </div>
   <% end %>
 
-
+  </div>
   </div>
 
 <%# SI l'on retire l'IA, après le message "C'est un arrêt cardiaque", faire apparaître la le bouton (2sec après ??) %>
 
   <!-- Lien temporaire
 
-  <p>Lien temporaire pour faire le tour de l'appli :</p>
+  <p>Lien temporaire pour faire le tour de l'appli :</p> -->
   <% @cases.each do |cas| %>
-    <%= link_to cas.name, case_path(cas.id, intervention_id: @intervention.id)%>
+    <%= link_to case_path(cas.id, intervention_id: @intervention.id),class: "btn-massage d-flex align-items-center justify-content-center gap-2" do %>
+        <%= image_tag "emergency-2.png", alt: "Urgence", class: "btn-massage border-0" %>
+        <p class="fw-600">Aide massage cardiaque</p>
+    <% end %>
   <% end %>
--->
+
 </div>
