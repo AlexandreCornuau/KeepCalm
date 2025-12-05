@@ -84,12 +84,12 @@
 
   <%# ----- Faire le lien du bouton partager ----- %>
   <div class="btn-footer">
-    <%= link_to user_session_path, class: "btn btn-primary" do %>
-          <div class="btn-save">
-            <i class="ph-bold ph-check"></i>
-            <p class="fs-s">Enregistrer</p>
-          </div>
-          <% end %>    <button  type="button" class="share btn btn-outline-primary">Partager <i class="ph-bold ph-share"></i></button>
+    <%= link_to user_session_path, class: "share btn btn-outline-primary" do %>
+      <div class="btn-share">
+        <p class="fs-s">Partager</p>
+        <i class="ph-bold ph-share"></i>
+      </div>
+      <% end %>
   </div>
 
   <div class="btn-footer">
