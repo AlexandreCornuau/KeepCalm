@@ -1,0 +1,17 @@
+.diagnostic-card {
+  background-color: $primary-050;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.alert-card {
+  background-color: $secondary-200;
+  border-radius: 16px;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+  .alert-icon {
+    width: 48px;
+    height: 48px;
+  }

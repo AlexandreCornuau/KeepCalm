@@ -1,5 +1,24 @@
 
-<p>Page urgence</p>
+<!-- Div Diagnotique -->
+<div class="diagnostic-card d-flex flex-column align-items-center">
+  <p class="diagnostic-text text-center">
+    Vous êtes en présence d'une personne<strong> inconsciente</strong> et qui ne <strong>respire plus</strong>.</p>
+</div>
+
+<!-- Div Alerte -->
+<div class="alert-card d-flex align-items-center justify-content-center gap-3">
+  <div class="d-flex align-items-center justify-content-center px-5">
+    <%= image_tag "emergency-2.png", alt: "Urgence", class: "alert-icon"%>
+    <p class="alert-text mb-0">Il semble s'agir d'un <br><strong>malaise cardiaque</strong>.</p>
+  </div>
+</div>
+
+<!-- Div CTA -->
+<div class="d-flex flex-column">
+  <button class="btn btn-primary w-100">J'appelle le 15</button>
+
  <% @cases.each do |cas| %>
-    <%= link_to "quelqu'un appel le 15", case_path(cas.id, intervention_id: @intervention.id)%>
+    <%= link_to "je délègue l'appel au 15", case_path(cas.id, intervention_id: @intervention.id), class: "flex-grow-1 w-100"%>
   <% end %>
+
+</div>

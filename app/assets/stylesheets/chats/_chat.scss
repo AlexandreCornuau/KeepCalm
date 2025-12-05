@@ -1,5 +1,14 @@
+.show-chat{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .chat-container{
   padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   .header-chat{
     display: flex;
     flex-direction: row;
@@ -15,6 +24,7 @@
     padding: 8px;
     background-color:$white;
     height: 680px;
+    flex: 1;
 
     #messages{
     display: flex;
@@ -61,8 +71,8 @@
       position: absolute;
       bottom: 0;
       bottom: 6px;
-      left: 16px;
-      right: 16px;
+      left: 8px;
+      right: 8px;
       padding: 8px;
       display: flex;
       flex-direction: row-reverse;
@@ -74,20 +84,33 @@
 
       .btn.btn-secondary.no{
         padding: 18px, 20px;
-        width: 150px;
         height: 52px;
+
       }
       .btn.btn-success.yes{
         padding: 18px, 20px;
-        width: 150px;
         height: 52px;
       }
 
     }
-
-
-
-
   }
 
+  .btn-massage {
+    height: 52px;
+    background-color: transparent;
+    border: 1px solid $secondary-500;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 16px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    p {
+      color: $secondary-500;
+    }
+    .btn-massage {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
