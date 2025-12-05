@@ -13,7 +13,9 @@ class InterventionsController < ApplicationController
     daes_list(@city)
     # @daes = Dae.where(city: @city)
     @daes = Dae.near([params[:lat], params[:long]], 1)
-
+    now = Time.current
+    @intervention.start_time = Time.zone.local(now.year, now.month, now.day, now.hour, now.min)
+    @intervention.save
   end
 
   def update
@@ -22,6 +24,9 @@ class InterventionsController < ApplicationController
 
   def recap
     @chat = @intervention.chat
+    now = Time.current
+    @intervention.end_time = Time.zone.local(now.year, now.month, now.day, now.hour, now.min)
+    @intervention.save
   end
 
 private
