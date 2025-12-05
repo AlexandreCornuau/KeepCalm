@@ -14,7 +14,7 @@
   <% elsif step.step_type == "information" %>
     <div class ="step-card information alert alert-warning">
       <i class="ph-bold ph-info"></i>
-      <p> <%= sanitize step.details %> </p>
+      <%= sanitize step.details %>
     </div>
   <% end %>
 <% end %>

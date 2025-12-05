@@ -7,6 +7,14 @@ Step.destroy_all
 
 puts "——— Clean done ———"
 
+last_step_info = "<div>
+                    <ul>
+                        <li> Appuyer verticalement </li>
+                        <li> Garder le dos droit </li>
+                        <li> Garder les bras tendus </li>
+                    </ul>
+                    <p><b>Rythme</b> : Entre 100 et 120 compressions <b>par minute</b></p>
+                  </div>"
 
 puts "+++ Creating Case and steps..."
 case_rcp = Case.create(name: "Massage Cardiaque", gif_url: "rcp-video.gif")
@@ -30,6 +38,6 @@ puts "Step 5"
 Step.create!(step_type: "instruction", number: 5, case: case_rcp, details: "Réaliser des compressions thoraciques", picture_url: "img-step-05.jpg")
 
 puts "Last Step infos"
-Step.create!(step_type: "information", case: case_rcp, details: "<ul><li> Appuyer verticalement </li><li> Garder le dos droit </li><li> Garder les bras tendus </li></ul><p><b>Rythme</b> : Entre 100 et 120 compressions <b>par minute</b></p>")
+Step.create!(step_type: "information", case: case_rcp, details: last_step_info)
 
 puts "——— All Seeds created ———"
