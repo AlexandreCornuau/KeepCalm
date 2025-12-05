@@ -1,5 +1,23 @@
+<div class="diagnostic-container d-flex flex-column align-items-center">
 
-<p>Page urgence</p>
- <% @cases.each do |cas| %>
-    <%= link_to "quelqu'un appel le 15", case_path(cas.id, intervention_id: @intervention.id)%>
-  <% end %>
+  <!-- Div Diagnotique -->
+  <div class="diagnostic-card d-flex flex-column align-items-center">
+    <p class="diagnostic-text text-center">
+      Vous êtes en présence d'une personne<strong> inconsciente</strong> et qui ne <strong>respire plus</strong>.</p>
+  </div>
+
+  <!-- Div Alerte -->
+  <div class="alert-card d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-center gap-3">
+      <%= image_tag "emergency-2.png", alt: "Urgence", class: "alert-icon" %>
+      <p class="alert-text mb-0">Il semble s'agir d'un <br><strong>malaise cardiaque</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Div CTA -->
+    <button class="btn-appel">J'appelle le 15</button>
+    <% @cases.each do |cas| %>
+        <%= link_to "Une autre personne appelle le 15", case_path(cas.id, intervention_id: @intervention.id), class: "btn-no-appel" %>
+      <% end %>
+
+  </div>
