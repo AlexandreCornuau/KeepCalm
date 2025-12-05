@@ -1,0 +1,85 @@
+.card-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .btn-save {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 2px;
+  }
+}
+// ----- Card with image -----
+#info-recap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px;
+}
+// ----- Main Card -----
+.row-label {
+  color: $primary-500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-img-recap {
+  height: 70px;
+  text-align: center;
+  img {
+    height: 100%;
+  }
+}
+.card-recap {
+  padding: 8px;
+  background-color: $white;
+  border: solid 1px $gray-200;
+  border-radius: 24px;
+
+  .text-recap {
+    padding: 16px;
+    background-color: $gray-050;
+    border: solid 1px $gray-200;
+    border-radius: 16px;
+    display: flex;
+
+  }
+ // ----- Button footer -----
+}
+.btn-footer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+
+  .btn-share {
+    color: $primary-500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 2px;
+  }
+
+  .share:hover {
+    color: white;
+  }
+
+  .share:active,
+  .share:focus {
+    color: white !important;
+
+  }
+
+  .link-recap {
+    text-decoration: none;
+    color: $gray;
+  }
+}
