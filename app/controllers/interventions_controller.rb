@@ -21,6 +21,7 @@ class InterventionsController < ApplicationController
   end
 
   def recap
+    @chat = @intervention.chat
   end
 
 private
