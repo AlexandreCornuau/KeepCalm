@@ -1,2 +1,5 @@
 
 <p>Page urgence</p>
+ <% @cases.each do |cas| %>
+    <%= link_to "quelqu'un appel le 15", case_path(cas.id, intervention_id: @intervention.id)%>
+  <% end %>

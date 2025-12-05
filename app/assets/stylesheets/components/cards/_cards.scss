@@ -6,12 +6,12 @@
     gap: 8px;
     .ph-bold {
       margin-top: 2px;
-      font-size: 20px;
+      font-size: 24px;
       color: $primary;
     }
     p {
-      font-size: $fs-s;
-      font-weight: $fw-semibold;
+      // font-size: $fs-s;
+      font-weight: $fw-semibold !important;
     }
   }
 
