@@ -27,7 +27,7 @@
     <div class="text-recap flex-column">
       <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
       <%# Integrer le rapport de l'IA %>
-      <p class="fw-500">Faire un résumé avec l'IA ? Texte modifiable au besoin ??</p>
+      <p class="fw-500"><%= @chat.messages.last.content %></p>
     </div>
 
     <div class="text-recap flex-column">

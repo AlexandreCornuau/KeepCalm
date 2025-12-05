@@ -24,6 +24,9 @@ class InterventionsController < ApplicationController
 
   def recap
     @chat = @intervention.chat
+    now = Time.current
+    @intervention.end_time = Time.zone.local(now.year, now.month, now.day, now.hour, now.min)
+    @intervention.save
   end
 
 private
