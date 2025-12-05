@@ -13,6 +13,7 @@ class InterventionsController < ApplicationController
     daes_list(@city)
     # @daes = Dae.where(city: @city)
     @daes = Dae.near([params[:lat], params[:long]], 1)
+    @intervention.address = params[:address]
     now = Time.current
     @intervention.start_time = Time.zone.local(now.year, now.month, now.day, now.hour, now.min)
     @intervention.save
