@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
 const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
+  enableHighAccuracy: false, // normalement sur true, Précision typique : 5 à 20 mètres En extérieur, souvent < 10 mètres, et sur false : En ville dense : souvent 20–50 m En campagne : 100 m voir plus
+  timeout: 5000, // essayer a 10 000 pour plus de temps
   maximumAge: 0
 };
 // Connects to data-controller="map"
@@ -15,7 +15,10 @@ export default class extends Controller {
     interventionId: String,
     caseId: String,
     lat: String,
-    long: String
+    long: String,
+    interactive: Boolean,
+    daeLat: String,
+    daeLong: String
   }
   static targets = [
     "mapContainer"
@@ -25,31 +28,69 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     console.log("markers", this.markersValue);
     console.log(this.hasMapContainerTarget)
-    console.log(this.longValue);
     if (this.hasMapContainerTarget) {
       this.map = new mapboxgl.Map({
         container: this.mapContainerTarget,
         center: [parseFloat(this.longValue), parseFloat(this.latValue)],
-        zoom: 13.5,
-        maxZoom: 16,
-        minZoom: 13,
-        style: "mapbox://styles/mapbox/streets-v10"
+        zoom: 15,
+        maxZoom: 17,
+        minZoom: 14,
+        style: "mapbox://styles/mapbox/streets-v10",
+        interactive: this.interactiveValue /////////////////////////////////////////////////////////////
       })
       new mapboxgl.Marker()
         .setLngLat([ this.longValue, this.latValue ])
         .addTo(this.map)
+      new mapboxgl.Marker()
+        .setLngLat([ parseFloat(this.daeLongValue), parseFloat(this.daeLatValue) ])
+        .addTo(this.map)
+
+      this.map.on("load", () => {
+        const url = `https://api.mapbox.com/directions/v5/mapbox/driving/` +
+          `${this.daeLongValue},${this.daeLatValue};${this.longValue},${this.latValue}` +
+          `?geometries=geojson&access_token=${this.apiKeyValue}`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const route = data.routes[0].geometry;
+
+            this.map.addSource('route', {
+              type: 'geojson',
+              data: {
+                type: "Feature",
+                geometry: route
+              }
+            });
+
+            this.map.addLayer({
+              id: 'route-line',
+              type: 'line',
+              source: 'route',
+              layout: {
+                'line-join': 'round',
+                'line-cap': 'round'
+              },
+              paint: {
+                'line-color': '#ff0505',
+                'line-width': 8
+              }
+            });
+          });
+      });
     }
 
     // this.#addMarkersToMap()
   }
 
-  #addMarkersToMap() {
-  this.markersValue.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([ marker.long, marker.lat ])
-      .addTo(this.map)
-  })
-  }
+  // #addMarkersToMap() {
+  // this.markersValue.forEach((marker) => {
+  //   new mapboxgl.Marker()
+  //     .setLngLat([ marker.long, marker.lat ])
+  //     .addTo(this.map)
+  // })
+  // }
+
   async success(pos) {
     const crd = pos.coords;
     const lat = crd.latitude;
