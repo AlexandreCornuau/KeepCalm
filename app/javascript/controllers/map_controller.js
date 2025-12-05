@@ -46,7 +46,7 @@ export default class extends Controller {
         .addTo(this.map)
 
       this.map.on("load", () => {
-        const url = `https://api.mapbox.com/directions/v5/mapbox/driving/` +
+        const url = `https://api.mapbox.com/directions/v5/mapbox/walking/` +
           `${this.daeLongValue},${this.daeLatValue};${this.longValue},${this.latValue}` +
           `?geometries=geojson&access_token=${this.apiKeyValue}`;
 
