@@ -16,4 +16,8 @@
       color: $primary;
     }
   }
+
+  &.alert-warning {
+    border-color: $warning-300;
+  }
 }
