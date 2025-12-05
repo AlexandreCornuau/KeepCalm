@@ -1,24 +1,25 @@
-<%= render "shared/navbar" %>
 
 <!-- DIV Container -->
 <div class="home-container">
-
-  <!-- DIV Section Help -->
-  <div class="home-hero position-relative">
-      <!-- Images de fond -->
-      <%= image_tag "heart_2.png", class: "home-bg-img home-bg-left" %>
-      <%= image_tag "ambu.png", class: "home-bg-img home-bg-right" %>
-    <!-- CARD -->
-    <div class="home-cta-card bg-blur p-2 text-center">
-      <div class="d-flex align-items-center justify-content-center gap-2 mb-2 mt-4">
-        <%= image_tag "emergency-2.png", alt: "Urgence", class: "home-icon" %>
-        <h2>Besoin d'aide ?</h2>
+  <div class="top-home">
+    <%= render "shared/navbar" %>
+    <!-- DIV Section Help -->
+    <div class="home-hero position-relative">
+        <!-- Images de fond -->
+        <%= image_tag "heart_2.png", class: "home-bg-img home-bg-left" %>
+        <%= image_tag "ambu.png", class: "home-bg-img home-bg-right" %>
+      <!-- CARD -->
+      <div class="home-cta-card bg-blur p-2 text-center">
+        <div class="d-flex align-items-center justify-content-center gap-2 mb-2 mt-4">
+          <%= image_tag "emergency-2.png", alt: "Urgence", class: "home-icon" %>
+          <h2>Besoin d'aide ?</h2>
+        </div>
+        <p class="p-secondary fs-m">Restez calme<br>et laissez-vous guider</p>
+        <%= link_to chats_path, class: "btn-help d-flex align-items-center justify-content-center gap-2 w-100", data: { turbo_method: :post } do %>
+          <i class="ph-bold ph-first-aid"></i>
+          <span>Aidez-moi</span>
+        <% end %>
       </div>
-      <p class="p-secondary fs-m">Restez calme<br>et laissez-vous guider</p>
-      <%= link_to chats_path, class: "btn-help d-flex align-items-center justify-content-center gap-2 w-100", data: { turbo_method: :post } do %>
-        <i class="ph-bold ph-first-aid"></i>
-        <span>Aidez-moi</span>
-      <% end %>
     </div>
   </div>
 
