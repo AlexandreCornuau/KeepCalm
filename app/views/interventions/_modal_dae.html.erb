@@ -1,35 +1,32 @@
+<div class="modal-dae">
 
-<%= link_to "Aller à cette adresse","https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}", target: "_blank" %>
 
-<p>Le plus proche se trouve <%= @daes.first.street %></p>
-<div style="width: 100%; height: 300px;"
-  data-controller="map"
-  data-map-intervention-id-value="<%= @intervention.id %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-map-lat-value="<%= params[:lat] %>"
-  data-map-long-value="<%= params[:long] %>"
-  <%# ligne supprimée, regarder .txt %>
-  data-map-dae-long-value="<%= @daes.first.long %>"
-  data-map-dae-lat-value="<%= @daes.first.lat %>"
-  data-map-interactive-value="true"
-  data-map-target="mapContainer">
+
+      <div class="maps" style="width: 100%; height: 300px;"
+        data-controller="map"
+        data-map-intervention-id-value="<%= @intervention.id %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-map-lat-value="<%= params[:lat] %>"
+        data-map-long-value="<%= params[:long] %>"
+        <%# ligne supprimée, regarder .txt %>
+        data-map-dae-long-value="<%= @daes.first.long %>"
+        data-map-dae-lat-value="<%= @daes.first.lat %>"
+        data-map-interactive-value="true"
+        data-map-target="mapContainer">
+      </div>
+      <div class="adresse-lien">
+
+      <%= link_to '<i class="ph-bold ph-map-pin"></i>' "Le plus proche se trouve  #{@daes.first.street}".html_safe,"https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}", target: "_blank" %>
+      </div>
+
+      <%# DEBUT DU QR CODE %>
+      <% url = "https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}"%>
+      <% qr = RQRCode::QRCode.new(url)%>
+
+      <% @svg = qr.as_svg(offset: 0, color: "000", shape_rendering: "crispEdges", module_size: 6, standalone: true )%>
+
+      <div >
+        <%= raw @svg %>
+      </div>
+      <%# FIN du QRCODE     %>
 </div>
-
-<%# DEBUT DU QR CODE %>
-<% url = "https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}"%>
-<% qr = RQRCode::QRCode.new(url)%>
-
-<%
-  @svg = qr.as_svg(
-      offset: 0,
-      color: "000",
-      shape_rendering: "crispEdges",
-      module_size: 6,
-      standalone: true
-    )
-  %>
-
-<div>
-  <%= raw @svg %>
-</div>
- <%# FIN du QRCODE          %>

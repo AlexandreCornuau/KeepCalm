@@ -1,0 +1,21 @@
+.modal-dae{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  .maps{
+    width: fit-content;
+    height: 200px !important;
+    border-radius: 16px;
+
+  }
+  .adresse-lien{
+    background-color: $primary-050;
+    border-radius: 16px;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+
+}
