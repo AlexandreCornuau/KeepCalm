@@ -7,14 +7,14 @@
             <p class="fs-m"><%= step.number %></p>
           </div>
         </div>
-        <p class="fw-500"> <%= step.details %> </p>
+        <p class="fw-500 text-instruction"> <%= step.details %> </p>
       </div>
 
-      <div>
         <% if step.picture_url %>
-          <%= image_tag(step.picture_url) %>
+          <div class="img-instruction">
+            <%= image_tag(step.picture_url) %>
+          </div>
         <% end %>
-      </div>
     </div>
   <% elsif step.step_type == "information" %>
     <div class ="step-card information alert alert-warning">

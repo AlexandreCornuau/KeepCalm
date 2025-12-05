@@ -8,10 +8,10 @@
     </div>
     <%= render partial: "step", locals: {steps: @steps} %>
     <div class ="button-container"
-    data-controller="map"
-    data-map-intervention-id-value="<%= @intervention.id %>"
-    data-map-case-id-value="<%= @case.id%>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      data-controller="map"
+      data-map-intervention-id-value="<%= @intervention.id %>"
+      data-map-case-id-value="<%= @case.id%>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       <button data-action="click->map#getLocation" class="btn btn-primary fs-l flex-grow-1">
         Je suis prêt, commencer
         <i class="ph-bold ph-arrow-right"></i>

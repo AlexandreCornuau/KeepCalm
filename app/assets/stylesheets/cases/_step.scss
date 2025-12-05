@@ -19,7 +19,7 @@
 
   .steps-container {
     width: 100%;
-    padding: 24px 8px;
+    padding: 24px 8px 40px;
 
     .steps-head {
       text-align: center;
@@ -35,6 +35,7 @@
       }
     }
   }
+
   .step-card {
     display: flex;
     justify-content: center;
@@ -52,26 +53,42 @@
       justify-content: center;
 
     }
-    img {
-      width: 80%;
-    }
-  }
-  .information {
-    // background-color: rgb(209, 209, 209);
-    gap: 1rem;
 
-    .ph-bold {
-      margin-top: 2px;
-    }
-  }
-  .instruction {
+    &.information {
+      gap: 1rem;
 
-    .row-instructions {
-      display: flex;
-      gap: 16px;
-      align-items: center;
+      .ph-bold {
+        font-size: 24px;
+      }
+      ul {
+        margin-bottom: 8px;
+      }
     }
 
+    &.instruction {
+      border: none;
+      gap: 8px;
+
+      .row-instructions {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+
+        .text-instruction {
+          margin-top: 4px !important;
+        }
+      }
+
+      .img-instruction {
+        height: 148px;
+        text-align: center;
+
+        img {
+          height: inherit;
+        }
+      }
+
+    }
   }
 
 }
