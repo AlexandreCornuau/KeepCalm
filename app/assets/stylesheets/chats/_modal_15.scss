@@ -1,17 +1,56 @@
+.diagnostic-container {
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
 .diagnostic-card {
   background-color: $primary-050;
   border-radius: 16px;
-  padding: 16px;
+  padding: 18px 18px;
   margin-bottom: 16px;
+  width: 100%;
+  font-size: 18px;
 }
 
 .alert-card {
-  background-color: $secondary-200;
+  background-color: $secondary-050;
+  border: 1px solid $secondary-200;
   border-radius: 16px;
-  padding: 8px;
+  padding: 18px 18px;
+  width: 100%;
   margin-bottom: 20px;
+  font-size: 18px;
+  color: $secondary-500;
 }
   .alert-icon {
     width: 48px;
     height: 48px;
+  }
+
+.btn-appel {
+    background: $primary-500;
+    border: none;
+    border-radius: 16px;
+    padding: 18px 18px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+
+  .btn-no-appel {
+    background-color: $gray-200;
+    border: none;
+    border-radius: 16px;
+    padding: 18px 18px;
+    color: $gray-800;
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 20px;
   }

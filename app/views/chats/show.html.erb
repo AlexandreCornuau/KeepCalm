@@ -60,7 +60,7 @@
             <p class="fs-m fw-500">Diagnostic</p>
             <span class="close" data-modal-urgence-target="close" data-action="click->modal-urgence#closeModal">&times;</span>
           </div>
-          <div class="modal-body d-flex flex-column align-items-center mb-4">
+          <div class="modal-body">
             <%= render partial: "modal_urgence", local: {chat: @chat, message: @message} %>
           </div>
         </div>
