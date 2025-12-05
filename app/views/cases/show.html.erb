@@ -1,9 +1,11 @@
 <div class="show-container">
-  <div class ="gif-container">
+  <div class ="gif-container bg-blur">
       <%= image_tag(@case.gif_url) %>
   </div>
-  <div class="steps-container">
-    <h4>Position</h4>
+  <div class="steps-container d-flex flex-column gap-3">
+    <div class="steps-head">
+      <h4>Suivez ces étapes pour vous former rapidement à faire un massage cardiaque :</h4>
+    </div>
     <%= render partial: "step", locals: {steps: @steps} %>
     <div class ="button-container"
     data-controller="map"
