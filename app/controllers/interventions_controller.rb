@@ -13,7 +13,7 @@ class InterventionsController < ApplicationController
     daes_list(@city)
     # @daes = Dae.where(city: @city)
     @daes = Dae.near([params[:lat], params[:long]], 1)
-
+    @intervention.address = params[:address]
   end
 
   def update
