@@ -15,7 +15,7 @@
   </div>
 
   <!-- Div CTA -->
-    <button class="btn-appel">J'appelle le 15</button>
+    <%= link_to "J'appelle le 15", "tel:0778194918", class: "btn-appel" %>
     <% @cases.each do |cas| %>
         <%= link_to "Une autre personne appelle le 15", case_path(cas.id, intervention_id: @intervention.id), class: "btn-no-appel" %>
       <% end %>
