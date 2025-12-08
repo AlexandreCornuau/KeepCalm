@@ -3,7 +3,7 @@
   <div class="chat-container">
 
     <div class="header-chat">
-      <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, root_path, class: "btn btn-secondary" %>
+      <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary" %>
       <h4>Quitter</h4>
     </div>
 
@@ -78,7 +78,7 @@
 
   <p>Lien temporaire pour faire le tour de l'appli :</p> -->
   <% @cases.each do |cas| %>
-    <%= link_to case_path(cas.id, intervention_id: @intervention.id),class: "btn-massage d-flex align-items-center justify-content-center gap-2" do %>
+    <%= link_to case_path(cas.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]),class: "btn-massage d-flex align-items-center justify-content-center gap-2" do %>
         <%= image_tag "emergency-2.png", alt: "Urgence", class: "btn-massage border-0" %>
         <p class="fw-600">Aide massage cardiaque</p>
     <% end %>
