@@ -4,8 +4,9 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-color: #E0E8FF;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
@@ -55,6 +56,25 @@
 </head>
 
 <body class="rails-default-error-page">
+
+
+  <div class="devise position-relative d-flex align-items-center justify-content-center">
+
+    <!-- Images de fond -->
+    <img src="../app/assets/images/doctor.png" alt="doctor" class="error-bg-img error-bg-left">
+    <img src="hospital.png" alt="hospital" class="error-bg-img error-bg-left">
+    <!-- CARD -->
+    <div class="devise-cta-card bg-blur p-3 w-100">
+
+      <h2 class="mb-4 text-center">500</h2>
+      <h1>We're sorry, but something went wrong.</h1>
+
+    </div>
+
+  </div>
+
+
+
   <!-- This file lives in public/500.html -->
   <div class="dialog">
     <div>
@@ -62,5 +82,6 @@
     </div>
     <p>If you are the application owner check the logs for more information.</p>
   </div>
+
 </body>
 </html>
