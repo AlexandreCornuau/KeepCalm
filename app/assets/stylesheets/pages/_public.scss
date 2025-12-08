@@ -1,0 +1,44 @@
+.public {
+  padding: 32px;
+  height: 100vh;
+  overflow: hidden;
+
+  .public-bg-img {
+    position: absolute;
+    height: auto;
+  }
+
+  .public-bg-left {
+    width: 155px;
+    top: 15%;
+    left: -30px;
+    transform: rotate(-15deg);
+  }
+
+  .public-bg-right {
+    width: 190px;
+    bottom: 12%;
+    right: -30px;
+    transform: rotate(20deg);
+  }
+
+  .public-cta-card {
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 20px 25px 0 rgba(31, 41, 55, 0.10), 0 10px 10px 0 rgba(31, 41, 55, 0.04);
+
+    h2 {
+      color: $secondary-500;
+    }
+    h1 {
+      font-size: $fs-xl !important;
+      color: $gray-900;
+    }
+    a {
+      width: fit-content;
+      padding: 16px 18px;
+    }
+
+  }
+
+}

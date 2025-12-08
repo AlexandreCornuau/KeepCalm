@@ -93,7 +93,7 @@
   </div>
 
   <div class="btn-footer">
-    <a class="link-recap fw-500" href="<%= home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]) %>">Quitter sans enregistrer</a>
+    <%= link_to "Quitter sans enregistrer", home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "link-recap fw-500" %>
   </div>
 
 <div>

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :cases, only: [:index, :show]
 
+  get '/500', to: 'errors#internal_server'
 
   # Defines the root path route ("/")
   # root "posts#index"
