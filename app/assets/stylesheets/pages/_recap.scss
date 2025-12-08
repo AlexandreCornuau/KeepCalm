@@ -90,3 +90,25 @@
     color: $gray;
   }
 }
+
+
+// ----- Modal Recap -----
+
+
+.container-recap {
+  background-color: $white;
+}
+.modal-recap{
+    display: flex;
+    background-color: $primary-050;
+    border-radius: 16px;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+.row-label-modal-recap {
+  color: $gray-600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
