@@ -1,3 +1,9 @@
 @import "config/colors";
 
+.btn-outline-primary {
+  color: $primary-500 !important;
+}
 
+.btn-ghost {
+  border: none !important;
+}

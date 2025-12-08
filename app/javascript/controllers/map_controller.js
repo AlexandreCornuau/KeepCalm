@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 const options = {
   enableHighAccuracy: false, // normalement sur true, Précision typique : 5 à 20 mètres En extérieur, souvent < 10 mètres, et sur false : En ville dense : souvent 20–50 m En campagne : 100 m voir plus
-  timeout: 5000, // essayer a 10 000 pour plus de temps
+  timeout: 10000, // essayer a 10 000 pour plus de temps
   maximumAge: 0
 };
 // Connects to data-controller="map"
@@ -12,13 +12,14 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
-    interventionId: String,
+    // interventionId: String,
     caseId: String,
     lat: String,
     long: String,
     interactive: Boolean,
     daeLat: String,
-    daeLong: String
+    daeLong: String,
+    zoom: String
   }
   static targets = [
     "mapContainer"
@@ -32,7 +33,7 @@ export default class extends Controller {
       this.map = new mapboxgl.Map({
         container: this.mapContainerTarget,
         center: [parseFloat(this.longValue), parseFloat(this.latValue)],
-        zoom: 15,
+        zoom: this.zoomValue,
         maxZoom: 17,
         minZoom: 14,
         style: "mapbox://styles/mapbox/streets-v10",
@@ -79,37 +80,27 @@ export default class extends Controller {
           });
       });
     }
-
-    // this.#addMarkersToMap()
   }
 
-  // #addMarkersToMap() {
-  // this.markersValue.forEach((marker) => {
-  //   new mapboxgl.Marker()
-  //     .setLngLat([ marker.long, marker.lat ])
-  //     .addTo(this.map)
-  // })
+  // async success(pos) {
+  //   const crd = pos.coords;
+  //   const lat = crd.latitude;
+  //   const long = crd.longitude;
+
+  //   const city = await this.cityReverseGeocode(lat, long);
+  //   const address = await this.addressReverseGeocode(lat, long);
+  //   console.log("Ville détectée :", city);
+  //   console.log('Your current position is:');
+  //   console.log(`Latitude : ${lat}`);
+  //   console.log(`Longitude: ${long}`);
+  //   console.log(`More or less ${crd.accuracy} meters.`);
+  //   console.log(pos);
+  //   window.location.href = `/interventions/${this.interventionIdValue}?lat=${lat}&long=${long}&case_id=${this.caseIdValue}&city=${city}&address=${address}`
   // }
 
-  async success(pos) {
-    const crd = pos.coords;
-    const lat = crd.latitude;
-    const long = crd.longitude;
-
-    const city = await this.cityReverseGeocode(lat, long);
-    const address = await this.addressReverseGeocode(lat, long);
-    console.log("Ville détectée :", city);
-    console.log('Your current position is:');
-    console.log(`Latitude : ${lat}`);
-    console.log(`Longitude: ${long}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-    console.log(pos);
-    window.location.href = `/interventions/${this.interventionIdValue}?lat=${lat}&long=${long}&case_id=${this.caseIdValue}&city=${city}&address=${address}`
-  }
-
-  error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
+  // error(err) {
+  //   console.warn(`ERROR(${err.code}): ${err.message}`);
+  // }
 
   async cityReverseGeocode(lat, lng) {
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${this.apiKeyValue}`;
@@ -160,7 +151,7 @@ export default class extends Controller {
     return addressWithoutCountry;
   }
 
-  getLocation() {
-    navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error, options);
-  }
+  // getLocation() {
+  //   navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error, options);
+  // }
 }

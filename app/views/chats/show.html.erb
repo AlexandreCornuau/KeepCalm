@@ -1,7 +1,14 @@
 <div data-controller="modal-urgence" data-modal-urgence-response-value=<%= @chat.messages.where(role: "user").last.content %> data-modal-urgence-counter-value=<%= @chat.messages.where(role: "user").count%>>
 
 
+<<<<<<< HEAD
   <div class="show-chat" >
+=======
+    <div class="header-chat">
+      <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary" %>
+      <h4>Quitter</h4>
+    </div>
+>>>>>>> master
 
     <div class="chat-container">
 
@@ -73,16 +80,11 @@
       </div>
     </div>
 
-    <%# SI l'on retire l'IA, après le message "C'est un arrêt cardiaque", faire apparaître la le bouton (2sec après ??) %>
-
-    <!-- Lien temporaire
-
-    <p>Lien temporaire pour faire le tour de l'appli :</p> -->
-    <% @cases.each do |cas| %>
-      <%= link_to case_path(cas.id, intervention_id: @intervention.id),class: "btn-massage d-flex align-items-center justify-content-center gap-2" do %>
-          <%= image_tag "emergency-2.png", alt: "Urgence", class: "btn-massage border-0" %>
-          <p class="fw-600">Aide massage cardiaque</p>
-      <% end %>
+  <p>Lien temporaire pour faire le tour de l'appli :</p> -->
+  <% @cases.each do |cas| %>
+    <%= link_to case_path(cas.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]),class: "btn-massage d-flex align-items-center justify-content-center gap-2" do %>
+        <%= image_tag "emergency-2.png", alt: "Urgence", class: "btn-massage border-0" %>
+        <p class="fw-600">Aide massage cardiaque</p>
     <% end %>
   </div>
 </div>

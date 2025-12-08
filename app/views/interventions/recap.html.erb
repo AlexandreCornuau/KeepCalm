@@ -36,7 +36,7 @@
     </div>
 
     <div class="text-recap justify-content-between">
-      <div class="row-label">
+      <div class="row-label-red">
         <i class="ph-bold ph-clock"></i>
         <p>Début de la RCP estimée</p>
       </div>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="text-recap justify-content-between">
-      <div class="row-label">
+      <div class="row-label-red">
         <i class="ph-bold ph-hourglass-low"></i>
         <p>Durée de la RCP</p>
       </div>
@@ -93,7 +93,7 @@
   </div>
 
   <div class="btn-footer">
-    <a class="link-recap fw-500" href="<%= root_path %>">Quitter sans enregistrer</a>
+    <%= link_to "Quitter sans enregistrer", home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "link-recap fw-500" %>
   </div>
 
 <div>
