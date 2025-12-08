@@ -6,8 +6,8 @@
     data-map-lat-value="<%= params[:lat] %>"
     data-map-long-value="<%= params[:long] %>"
     <%# ligne supprimée, regarder .txt %>
-    data-map-dae-long-value="<%= @daes.first.long %>"
-    data-map-dae-lat-value="<%= @daes.first.lat %>"
+    data-map-dae-long-value="<%= @daes.first&.long %>"
+    data-map-dae-lat-value="<%= @daes.first&.lat %>"
     data-map-interactive-value="true"
     data-map-zoom-value="15"
     data-map-target="mapContainer">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="link-dae">
-  <%= link_to  "Le plus proche se trouve  #{@daes.first.street}".html_safe,"https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}", target: "_blank" %>
+  <%= link_to  "Le plus proche se trouve  #{@daes.first&.street}".html_safe,"https://www.google.com/maps/dir/?api=1&destination=#{@daes.first&.lat},#{@daes.first&.long}", target: "_blank" %>
     </div>
   </div>
 
@@ -27,7 +27,7 @@
   <div class="Flashez-QRCODE">
     <p>Flashez ce QR code si une autre personne souhaite s’y rendre :</p>
 
-    <% url = "https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}"%>
+    <% url = "https://www.google.com/maps/dir/?api=1&destination=#{@daes.first&.lat},#{@daes.first&.long}"%>
 <%# Génération du QR code %>
   <% qrcode = RQRCode::QRCode.new(url) %>
 
