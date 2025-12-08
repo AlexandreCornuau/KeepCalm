@@ -1,6 +1,11 @@
 .show-container {
   display: block;
 
+  .alert {
+    position: inherit;
+    z-index: initial;
+  }
+
   .gif-container {
     position: sticky;
     top: 0;
