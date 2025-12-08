@@ -16,7 +16,7 @@ class InterventionsController < ApplicationController
     @intervention.address = params[:address]
     unless @intervention.start_time.present?
       now = Time.current
-      @intervention.start_time = Time.zone.local(now.year, now.month, now.day, now.hour, now.min)
+      @intervention.start_time ||= Time.zone.local(now.year, now.month, now.day, now.hour, now.min, now.sec)
     end
     @intervention.save
   end
@@ -28,7 +28,7 @@ class InterventionsController < ApplicationController
   def recap
     @chat = @intervention.chat
     now = Time.current
-    @intervention.end_time = Time.zone.local(now.year, now.month, now.day, now.hour, now.min)
+    @intervention.end_time ||= Time.zone.local(now.year, now.month, now.day, now.hour, now.min, now.sec)
     @intervention.save
   end
 
