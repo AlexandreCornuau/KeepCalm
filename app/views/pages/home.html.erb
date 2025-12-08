@@ -1,6 +1,6 @@
 
 <!-- DIV Container -->
-<div class="home-container">
+<div class="home-container" data-controller="modal-home">
   <div class="top-home">
     <%= render "shared/navbar" %>
     <!-- DIV Section Help -->
@@ -15,7 +15,7 @@
           <h2>Besoin d'aide ?</h2>
         </div>
         <p class="p-secondary fs-m">Restez calme<br>et laissez-vous guider</p>
-        <%= link_to chats_path, class: "btn-help d-flex align-items-center justify-content-center gap-2 w-100", data: { turbo_method: :post } do %>
+        <%= link_to chats_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn-help d-flex align-items-center justify-content-center gap-2 w-100", data: { turbo_method: :post } do %>
           <i class="ph-bold ph-first-aid"></i>
           <span>Aidez-moi</span>
         <% end %>
@@ -47,5 +47,16 @@
       <% end %>
     </div>
   </div>
-
+  <button id="myBtn-dae" data-modal-home-target="btnDae" data-action="click->modal-home#openModal">Défibrilateur le plus proche</button>
+      <div id="myModal-dae" data-modal-home-target="modalDae" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Défibrilateur le plus proche</h2>
+            <span class="close" data-modal-home-target="closeDae" data-action="click->modal-home#closeModal">&times;</span>
+          </div>
+          <div class="modal-body">
+            <%= render partial: "interventions/modal_dae", daes: @daes%>
+          </div>
+        </div>
+      </div>
 </div>
