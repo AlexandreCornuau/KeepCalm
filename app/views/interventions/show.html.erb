@@ -1,6 +1,6 @@
 <%= render "intervention-nav", intervention: @intervention %>
 
-<div class="intervention-container p-2 d-flex flex-column gap-3" data-controller="modal">
+<div class="intervention-container p-2 d-flex flex-column gap-3" data-controller="modal metronome">
 
   <%# GIF Tuto  %>
   <div class ="gif-container rounded">
@@ -12,13 +12,19 @@
   </div>
 
   <%# ALERT Relais %>
-  <div class="alert alert-primary d-flex align-items-start gap-2" role="alert">
-    <i class="ph-bold ph-info"></i>
-    Si possible, faites un relais avec une autre personne afin de rester efficace
+  <div class="alert-container" data-controller="alert"
+     data-alert-interval-value="60000"
+     data-alert-duration-value="30000">
+    <div class="alert alert-primary d-flex align-items-start gap-2" role="alert">
+      <i class="ph-bold ph-info"></i>
+      <p>Si possible, faites un relais avec une autre personne afin de rester efficace</p>
+    </div>
   </div>
 
   <%# GIF PULSE %>
-  <div class="gif-pulse">
+  <div class="gif-pulse" >
+    
+
     <%= image_tag "gif-pulse.gif" %>
   </div>
 
