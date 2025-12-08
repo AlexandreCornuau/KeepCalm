@@ -1,6 +1,6 @@
 
 <!-- DIV Container -->
-<div class="home-container">
+<div class="home-container" data-controller="modal-home">
   <div class="top-home">
     <%= render "shared/navbar" %>
     <!-- DIV Section Help -->
@@ -15,7 +15,7 @@
           <h2>Besoin d'aide ?</h2>
         </div>
         <p class="p-secondary fs-m">Restez calme<br>et laissez-vous guider</p>
-        <%= link_to chats_path, class: "btn-help d-flex align-items-center justify-content-center gap-2 w-100", data: { turbo_method: :post } do %>
+        <%= link_to chats_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn-help d-flex align-items-center justify-content-center gap-2 w-100", data: { turbo_method: :post } do %>
           <i class="ph-bold ph-first-aid"></i>
           <span>Aidez-moi</span>
         <% end %>
@@ -29,13 +29,28 @@
 
     <div class="scrolling-cards d-flex gap-3 pb-2">
       <!-- Card Défibrilateurs -->
-      <%= link_to "#", class: "card scrolling-card shadow-sm flex-shrink-0" do %>
+      <%#= link_to "#", class: "card scrolling-card shadow-sm flex-shrink-0" do %>
+      <button id="myBtn-dae" type="button" data-modal-home-target="btnDae" data-action="click->modal-home#openModal" class="card scrolling-card shadow-sm flex-shrink-0">
         <div class="card-head d-flex align-items-center gap-2 mb-2 fw-semibold">
           <i class="ph-bold ph-heartbeat"></i>
           <p>Défibrilateurs</p>
         </div>
-        <img src="https://about-france.com/cities/citypix/plan-nantes.jpg" alt="Carte">
-      <% end %>
+        <%# <img src="https://about-france.com/cities/citypix/plan-nantes.jpg" alt="Carte"> %>
+        <div class="maps" style="width: 100%; height: 100%;"
+        data-controller="map"
+        <%# ligne supprimée, regarder .txt %>
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-map-lat-value="<%= params[:lat] %>"
+        data-map-long-value="<%= params[:long] %>"
+        <%# ligne supprimée, regarder .txt %>
+        data-map-dae-long-value="<%= @daes.first.long %>"
+        data-map-dae-lat-value="<%= @daes.first.lat %>"
+        data-map-interactive-value="false"
+        data-map-zoom-value="13"
+        data-map-target="mapContainer">
+      </div>
+      </button>
+      <%# end %>
 
       <!-- Card Simulations -->
       <%= link_to "#", class: "card scrolling-card shadow-sm flex-shrink-0" do %>
@@ -47,5 +62,18 @@
       <% end %>
     </div>
   </div>
-
+  <%# <button id="myBtn-dae" data-modal-home-target="btnDae" data-action="click->modal-home#openModal" class="card scrolling-card shadow-sm flex-shrink-0">Défibrilateur le plus proche</button> %>
+      <div id="myModal-dae" data-modal-home-target="modalDae" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Défibrilateur le plus proche</h4>
+            <span class="close" data-modal-home-target="closeDae" data-action="click->modal-home#closeModal">
+              <i class="ph-bold ph-x"></i>
+            </span>
+          </div>
+          <div class="modal-body">
+            <%= render partial: "interventions/modal_dae", daes: @daes%>
+          </div>
+        </div>
+      </div>
 </div>

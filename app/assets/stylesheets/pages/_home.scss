@@ -4,6 +4,9 @@
   .top-home {
     position: sticky;
     top: 0;
+    z-index: 9;
+  }
+  .modal {
     z-index: 99;
   }
   // Images de fond
