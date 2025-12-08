@@ -12,9 +12,15 @@
     padding: 16px;
     width: 100%;
     flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: $primary-500;
+
     a {
 
-      text-decoration: none !important; //fonctionne pas!
+      text-decoration: none !important;
+      color: $black;
 
     }
 
@@ -33,9 +39,10 @@
       padding: 16px;
       background-color: $white;
       border-radius: 7.17px;
-      height: 100px !important;
+      height: 160px;
+
       svg {
-      max-height: fit-content;
+height: 150px;
       }
     }
 

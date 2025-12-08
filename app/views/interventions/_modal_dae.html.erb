@@ -15,8 +15,13 @@
         data-map-target="mapContainer">
       </div>
       <div class="adresse-lien">
+        <div class="icone-map">
+          <i class="ph-bold ph-map-pin"></i>
+        </div>
 
-      <%= link_to '<i class="ph-bold ph-map-pin"></i>' "Le plus proche se trouve  #{@daes.first.street}".html_safe,"https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}", target: "_blank" %>
+        <div class="link-dae">
+      <%= link_to  "Le plus proche se trouve  #{@daes.first.street}".html_safe,"https://www.google.com/maps/dir/?api=1&destination=#{@daes.first.lat},#{@daes.first.long}", target: "_blank" %>
+        </div>
       </div>
 
       <%# DEBUT div QR CODE %>
