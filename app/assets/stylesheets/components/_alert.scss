@@ -20,4 +20,9 @@
   &.alert-warning {
     border-color: $warning-300;
   }
+
+}
+
+.alert-container {
+  visibility: hidden
 }
