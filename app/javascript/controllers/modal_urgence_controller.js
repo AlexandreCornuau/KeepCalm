@@ -1,23 +1,34 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["btn", "modal", "close"]
+  static targets = ["btn", "modalDiag", "close", "diag"]
+  static values = {
+    response: String,
+    counter: Number
+  }
 
-  // connect() {
-  //   this.element.addEventListener("click", (event) => {
-  //     if (event.target == this.modalTarget) {
-  //       this.modalTarget.style.display = "none";
-  //     }
-  //   })
-  // }
+  connect() {
+    console.log(this.modalDiagTarget);
+  }
 
-  openModal(event) {
-    if (event.target == this.btnTarget) {
-      this.modalTarget.style.display = "block";
+
+
+  // ouverture automatique de la modal
+  popModal(event) {
+    if (this.responseValue === "non" && this.counterValue >= 2) {
+      this.modalDiagTarget.style.display = "block";
+    } else {
+      console.log("pas value");
     }
   }
-
+  // fermer la modal
   closeModal(event) {
-    this.modalTarget.style.display = "none";
+    this.modalDiagTarget.style.display = "none";
   }
+
+  // openModal(event) {
+    // if (event.target == this.btnTarget) {
+      // this.modalTarget.style.display = "block";
+    // }
+   // }
 }
