@@ -13,8 +13,8 @@
       data-map-case-id-value="<%= @case.id%>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       <%# <button data-action="click->map#getLocation" class="btn btn-primary fs-l flex-grow-1"> %>
-      <%= link_to intervention_path(@intervention.id, case_id: @case.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class:"btn btn-primary fs-l flex-grow-1" do%>
-        Je suis prêt, commencer
+      <%= link_to intervention_path(@intervention.id, case_id: @case.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class:"d-flex align-items-center justify-content-center gap-2 btn btn-primary fs-l flex-grow-1" do%>
+        <p>Je suis prêt, commencer</p>
         <i class="ph-bold ph-arrow-right"></i>
       <% end %>
       <%# </button> %>
