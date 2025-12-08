@@ -1,6 +1,6 @@
 <%= render "intervention-nav", intervention: @intervention %>
 
-<div class="intervention-container p-2 d-flex flex-column gap-3" data-controller="modal">
+<div class="intervention-container p-2 d-flex flex-column gap-3" data-controller="modal metronome">
 
   <%# GIF Tuto  %>
   <div class ="gif-container rounded">
@@ -18,7 +18,9 @@
   </div>
 
   <%# GIF PULSE %>
-  <div class="gif-pulse">
+  <div class="gif-pulse" >
+    
+
     <%= image_tag "gif-pulse.gif" %>
   </div>
 
