@@ -12,7 +12,9 @@
   </div>
 
   <%# ALERT Relais %>
-  <div class="alert-container">
+  <div class="alert-container" data-controller="alert"
+     data-alert-interval-value="60000"
+     data-alert-duration-value="30000">
     <div class="alert alert-primary d-flex align-items-start gap-2" role="alert">
       <i class="ph-bold ph-info"></i>
       <p>Si possible, faites un relais avec une autre personne afin de rester efficace</p>
