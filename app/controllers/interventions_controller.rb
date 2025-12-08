@@ -8,9 +8,9 @@ class InterventionsController < ApplicationController
   end
 
   def show
-    setUpMap()
+    getCity()
+    getDaes()
     @case = Case.find(params[:case_id])
-    # @daes = Dae.where(city: @city)
     @intervention.address = params[:address]
     unless @intervention.start_time.present?
       now = Time.current

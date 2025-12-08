@@ -1,14 +1,19 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
-  def setUpMap
+  def getCity
     @city = params[:city]
+  end
+  def setUpMap
     daes_list(@city)
-    @daes = Dae.near([params[:lat], params[:long]], 1)
     puts "setupmap ok"
   end
 
-    def dae_token
+  def getDaes
+    @daes = Dae.near([params[:lat], params[:long]], 1)
+  end
+
+  def dae_token
     response = HTTParty.post(
       "https://api-geodae.sante.gouv.fr/api/login",
       body: {

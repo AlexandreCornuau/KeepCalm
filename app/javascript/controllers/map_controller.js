@@ -18,7 +18,8 @@ export default class extends Controller {
     long: String,
     interactive: Boolean,
     daeLat: String,
-    daeLong: String
+    daeLong: String,
+    zoom: String
   }
   static targets = [
     "mapContainer"
@@ -32,7 +33,7 @@ export default class extends Controller {
       this.map = new mapboxgl.Map({
         container: this.mapContainerTarget,
         center: [parseFloat(this.longValue), parseFloat(this.latValue)],
-        zoom: 15,
+        zoom: this.zoomValue,
         maxZoom: 17,
         minZoom: 14,
         style: "mapbox://styles/mapbox/streets-v10",
