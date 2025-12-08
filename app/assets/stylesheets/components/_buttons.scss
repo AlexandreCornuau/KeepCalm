@@ -7,3 +7,30 @@
 .btn-ghost {
   border: none !important;
 }
+
+
+// PROGRESS BUTTON
+
+.auto-progress-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  padding: 18px;
+  background-color: $primary-300 !important;
+}
+
+.auto-progress-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: $primary-500;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: -1;
+  transition: none;
+}
+
+.auto-progress-btn.auto-progress--active::before {
+  transform: scaleX(1);
+  transition: transform 6s linear; /* même durée que durationValue */
+}
