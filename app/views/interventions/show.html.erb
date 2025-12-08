@@ -36,11 +36,13 @@
     <div id="myModal-recap" data-modal-target="modalRecap" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <h2>Infos récapitulatif</h2>
-          <span class="close" data-modal-target="closeRecap" data-action="click->modal#closeModal">&times;</span>
+          <h4>Récapitulatif temps réel</h4>
+          <span class="close" data-modal-target="closeRecap" data-action="click->modal#closeModal">
+            <i class="ph-bold ph-x"></i>
+          </span>
         </div>
         <div class="modal-body">
-          <%= render "modal_recap" %>
+          <%= render "modal_recap", intervention: @intervention %>
         </div>
       </div>
     </div>
@@ -49,8 +51,10 @@
       <div id="myModal-dae" data-modal-target="modalDae" class="modal">
         <div class="modal-content">
           <div class="modal-header">
-            <h2>Défibrilateur le plus proche</h2>
-            <span class="close" data-modal-target="closeDae" data-action="click->modal#closeModal">&times;</span>
+            <h4>Défibrilateur le plus proche</h4>
+            <span class="close" data-modal-target="closeDae" data-action="click->modal#closeModal">
+              <i class="ph-bold ph-x"></i>
+            </span>
           </div>
           <div class="modal-body">
             <%= render partial: "modal_dae", daes: @daes, intervention: @intervention %>

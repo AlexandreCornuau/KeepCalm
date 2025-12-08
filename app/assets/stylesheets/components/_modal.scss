@@ -17,10 +17,13 @@
 }
 
 .close {
-  color: #0E0000;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  color: $gray-900;
+  background-color: $primary-100;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 20px;
+  height: 44px;
+  display: flex;
 }
 
 .close:hover,
@@ -34,18 +37,26 @@
 .modal-content {
   position: fixed;
   bottom: 0;
-  background-color: #F4F4F4;
+  background-color: $white;
   width: 100%;
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.4s;
   animation-name: slideIn;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  border-radius: 2rem 2rem 0 0;
+  overflow: hidden;
+  box-shadow: 0 25px 50px 0 rgba(31, 41, 55, 0.25);
+  padding-bottom: 32px;
 }
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #F4F4F4;
+  background-color: $white;
+  border: none;
+  padding: 24px;
   color: #0E0000;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .modal-body {padding: 2px 16px;}
