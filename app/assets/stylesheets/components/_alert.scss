@@ -20,4 +20,16 @@
   &.alert-warning {
     border-color: $warning-300;
   }
+
+}
+// ----- Message Alert on/off -----
+.alert-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.alert-container.visible {
+  visibility: visible;
+  opacity: 1;
 }

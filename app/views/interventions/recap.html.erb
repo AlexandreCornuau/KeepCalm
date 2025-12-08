@@ -57,9 +57,9 @@
       <p class="fw-500">
         <% if @intervention.start_time && @intervention.end_time %>
           <% duration = @intervention.end_time - @intervention.start_time %>
-          <% hours = (duration / 3600).to_i %>
-          <% minutes = ((duration % 3600) / 60).to_i %>
-          <%= "#{hours}h#{minutes.to_s.rjust(2, '0')}" %>
+          <% minutes = (duration / 60).to_i %>
+          <% seconds = (duration % 60).to_i %>
+          <%= "#{minutes}min #{seconds}s" %>
           <% else %>
             <%= "-" %>
         <% end %>
