@@ -1,22 +1,16 @@
 <div data-controller="modal-urgence" data-modal-urgence-response-value=<%= @chat.messages.where(role: "user").last.content %> data-modal-urgence-counter-value=<%= @chat.messages.where(role: "user").count%>>
 
 
-<<<<<<< HEAD
   <div class="show-chat" >
-=======
-    <div class="header-chat">
-      <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary" %>
-      <h4>Quitter</h4>
-    </div>
->>>>>>> master
 
     <div class="chat-container">
 
       <div class="header-chat">
-        <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, root_path, class: "btn btn-secondary" %>
+        <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary" %>
         <h4>Quitter</h4>
       </div>
 
+    <turbo-frame id="messages">
       <div class="the-chat">
 
         <% @chat.messages.each do |message| %>
@@ -56,6 +50,7 @@
             </div>
           <% else %>
 
+
         <!-- Boutton Modal ouverture automatique -->
         <div class="buttons d-flex align-items-center justify-content-center" data-action="click->modal-urgence#openModal">
           <button id="myBtn-urgence" class="btn-diagnostic fw-500 btn btn-primary d-flex align-items-center justify-content-center flex-grow-1 gap-2">
@@ -64,11 +59,13 @@
           </button>
           </div>
 
-            <div id="myModal-urgence" data-modal-urgence-target="modal" class="modal">
+            <div id="myModal-urgence" data-modal-urgence-target="modal" class="modal-chat">
               <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between">
                   <h4>Diagnostic</h4>
-                  <span class="close" data-action="click->modal-urgence#closeModal">&times;</span>
+                  <span class="close" data-action="click->modal-urgence#closeModal">
+                    <i class="ph-bold ph-x"></i>
+                  </span>
                 </div>
                 <div class="modal-body">
                   <%= render partial: "modal_urgence", local: {chat: @chat, message: @message} %>
@@ -78,13 +75,15 @@
         <% end %>
 
       </div>
+      </turbo-frame>
     </div>
 
-  <p>Lien temporaire pour faire le tour de l'appli :</p> -->
+  <!-- Lien temporaire pour faire le tour de l'appli : -->
   <% @cases.each do |cas| %>
     <%= link_to case_path(cas.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]),class: "btn-massage d-flex align-items-center justify-content-center gap-2" do %>
         <%= image_tag "emergency-2.png", alt: "Urgence", class: "btn-massage border-0" %>
         <p class="fw-600">Aide massage cardiaque</p>
     <% end %>
+  <% end %>
   </div>
 </div>
