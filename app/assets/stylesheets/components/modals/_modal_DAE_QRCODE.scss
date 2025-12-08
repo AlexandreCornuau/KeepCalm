@@ -1,21 +1,50 @@
-.modal-dae{
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
+.modal-dae {
 
-  .maps{
+  .maps {
     width: fit-content;
     height: 200px !important;
     border-radius: 16px;
 
   }
-  .adresse-lien{
+  .adresse-lien {
     background-color: $primary-050;
     border-radius: 16px;
     padding: 16px;
-    text-decoration: none;
-  }
-  
+    width: 100%;
+    flex-grow: 1;
+    a {
 
+      text-decoration: none !important; //fonctionne pas!
+
+    }
+
+  }
+
+  .Flashez-QRCODE {
+    width: fit-content;
+    background-color: $primary-050;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    .Qrcode {
+      padding: 16px;
+      background-color: $white;
+      border-radius: 7.17px;
+      height: 100px !important;
+      svg {
+      max-height: fit-content;
+      }
+    }
+
+  }
+
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  background-color: $white;
 }
