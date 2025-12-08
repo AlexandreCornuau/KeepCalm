@@ -1,6 +1,11 @@
 .intervention-container {
   overflow-x: hidden;
 
+  .alert {
+    position: inherit;
+    z-index: initial;
+  }
+
   .gif-container {
     overflow: hidden;
     height: 140px;
