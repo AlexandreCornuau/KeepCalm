@@ -26,7 +26,7 @@
 
     <div class="text-recap flex-column">
       <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
-      <%# Integrer le rapport de l'IA %>
+      <p class="fw-500"><%= @intervention.start_time.strftime("%-d/%m/%Y") %></p>
       <p class="fw-500"><%= @chat.messages.last.content %></p>
     </div>
 
@@ -36,7 +36,7 @@
     </div>
 
     <div class="text-recap justify-content-between">
-      <div class="row-label">
+      <div class="row-label-red">
         <i class="ph-bold ph-clock"></i>
         <p>Début de la RCP estimée</p>
       </div>
@@ -50,17 +50,17 @@
     </div>
 
     <div class="text-recap justify-content-between">
-      <div class="row-label">
+      <div class="row-label-red">
         <i class="ph-bold ph-hourglass-low"></i>
         <p>Durée de la RCP</p>
       </div>
       <p class="fw-500">
         <% if @intervention.start_time && @intervention.end_time %>
           <% duration = @intervention.end_time - @intervention.start_time %>
-          <% hours = (duration / 3600).to_i %>
           <% minutes = ((duration % 3600) / 60).to_i %>
-          <%= "#{hours}h#{minutes.to_s.rjust(2, '0')}" %>
-          <% else %>
+          <% seconds = (duration % 60).to_i %>
+          <%= "#{minutes}min #{seconds}s" %>
+        <% else %>
             <%= "-" %>
         <% end %>
       </p>
