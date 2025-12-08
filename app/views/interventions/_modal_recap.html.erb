@@ -1,3 +1,43 @@
+<div class="card-recap d-flex flex-column gap-2">
 
-<p>Page modal recap</p>
+  <div class="text-recap justify-content-between">
+    <div class="row-label-red">
+      <i class="ph-bold ph-clock"></i>
+      <p>Début de la RCP estimée</p>
+    </div>
+    <p class="fw-500">
+      <%= if @intervention.start_time.present?
+            @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M")
+          else
+            "-"
+          end %>
+    </p>
+  </div>
 
+  <div class="text-recap justify-content-between">
+  <div class="row-label-red">
+    <i class="ph-bold ph-hourglass-low"></i>
+    <p>Durée de la RCP</p>
+  </div>
+    <p id="rcp-duration" class="fw-500"
+      data-controller="rcp-timer"
+      data-rcp-timer-start-value="<%= @intervention.start_time.to_i %>"
+      data-rcp-timer-end-value="<%= @intervention.end_time&.to_i %>">
+
+      <% if @intervention.end_time.present? %>
+        <% duration = @intervention.end_time - @intervention.start_time %>
+        <% minutes = (duration / 60).to_i %>
+        <% seconds = (duration % 60).to_i %>
+        <%= "#{minutes}min #{seconds}s" %>
+      <% else %>
+        Calcul…
+      <% end %>
+    </p>
+  </div>
+
+  <div class="text-recap flex-column">
+    <p class="row-label"><i class="ph-bold ph-gps-fix"></i>Localisation</p>
+    <p class="fw-500"><%= @intervention.address %></p>
+  </div>
+
+</div>
