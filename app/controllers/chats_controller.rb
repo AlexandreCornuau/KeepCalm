@@ -17,7 +17,7 @@ class ChatsController < ApplicationController
         prompt = "Ton but est d'accompagner l'utilisateur dans un contexte d'urgence médicale ,#{SYSTEM_PROMPT}"
         response = @ruby_llm_chat.with_instructions(prompt).ask(@message.content)
         Message.create(role: "assistant", content: response.content, chat: @chat)
-        redirect_to chat_path(@chat)
+        redirect_to chat_path(@chat, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address])
       end
   end
 
