@@ -25,10 +25,10 @@ export default class extends Controller {
     "mapContainer"
   ]
   connect() {
-    console.log(this.idValue);
+    // console.log(this.idValue);
     mapboxgl.accessToken = this.apiKeyValue
-    console.log("markers", this.markersValue);
-    console.log(this.hasMapContainerTarget)
+    // console.log("markers", this.markersValue);
+    // console.log(this.hasMapContainerTarget)
     if (this.hasMapContainerTarget) {
       this.map = new mapboxgl.Map({
         container: this.mapContainerTarget,
@@ -73,7 +73,7 @@ export default class extends Controller {
                 'line-cap': 'round'
               },
               paint: {
-                'line-color': '#ff0505',
+                'line-color': '#398afe',
                 'line-width': 8
               }
             });
@@ -111,7 +111,7 @@ export default class extends Controller {
     const cityFeature = data.features.find(f => f.place_type.includes("place"));
     const city = cityFeature ? cityFeature.text : null;
 
-    console.log("Ville :", city);
+    // console.log("Ville :", city);
     return city;
   }
 
@@ -122,7 +122,7 @@ export default class extends Controller {
     const data = await response.json();
 
     if (!data.features || data.features.length === 0) {
-      console.log("Aucune adresse trouvée.");
+      // console.log("Aucune adresse trouvée.");
       return null;
     }
 
@@ -135,7 +135,7 @@ export default class extends Controller {
       `${feature.properties?.address || ""} ${feature.text || ""}`.trim();
 
     if (!rawAddress) {
-      console.log("Impossible de récupérer une adresse.");
+      // console.log("Impossible de récupérer une adresse.");
       return null;
     }
 
@@ -146,7 +146,7 @@ export default class extends Controller {
       .join(",")
       .trim();
 
-    console.log("Adresse sans pays :", addressWithoutCountry);
+    // console.log("Adresse sans pays :", addressWithoutCountry);
 
     return addressWithoutCountry;
   }

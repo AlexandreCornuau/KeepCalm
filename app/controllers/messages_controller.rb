@@ -64,7 +64,11 @@ class MessagesController < ApplicationController
       # prompt = "#{emmergency_case},#{SYSTEM_PROMPT}"
       # response = @ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
       # Message.create(role: "assistant", content: response.content, chat: @chat)
-      redirect_to chat_path(@chat, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address])
+      unless params[:city] == "" && params[:long] == "" && params[:lat] == "" && params[:address] == ""
+        redirect_to chat_path(@chat, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address])
+      else
+        redirect_to chat_path(@chat)
+      end
 
     else
       render "chats/show", status: :unprocessable_content

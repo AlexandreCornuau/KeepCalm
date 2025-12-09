@@ -12,10 +12,10 @@ export default class extends Controller {
     apiKey: String
   }
   connect() {
-    console.log("hello");
-    console.log(this.apiKeyValue)
+    // console.log("hello");
+    // console.log(this.apiKeyValue)
     mapboxgl.accessToken = this.apiKeyValue;
-    console.log("1");
+    // console.log("1");
     this.getLocation();
   }
 
@@ -23,18 +23,19 @@ export default class extends Controller {
     const crd = pos.coords;
     const lat = crd.latitude;
     const long = crd.longitude;
-    console.log("3");
+    // console.log("3");
     const city = await this.cityReverseGeocode(lat, long);
     const address = await this.addressReverseGeocode(lat, long);
-    console.log("Ville détectée :", city);
-    console.log(`Latitude : ${lat}`);
-    console.log(`Longitude: ${long}`);
-    console.log(pos);
+    // console.log("Ville détectée :", city);
+    // console.log(`Latitude : ${lat}`);
+    // console.log(`Longitude: ${long}`);
+    // console.log(pos);
     window.location.href = `/home?lat=${lat}&long=${long}&city=${city}&address=${address}`
   }
 
   error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
+    window.location.href = `/home`
   }
 
   async cityReverseGeocode(lat, lng) {
@@ -46,7 +47,7 @@ export default class extends Controller {
     const cityFeature = data.features.find(f => f.place_type.includes("place"));
     const city = cityFeature ? cityFeature.text : null;
 
-    console.log("Ville :", city);
+    // console.log("Ville :", city);
     return city;
   }
 
@@ -81,13 +82,13 @@ export default class extends Controller {
       .join(",")
       .trim();
 
-    console.log("Adresse sans pays :", addressWithoutCountry);
+    // console.log("Adresse sans pays :", addressWithoutCountry);
 
     return addressWithoutCountry;
   }
 
   getLocation() {
-    console.log("2");
+    // console.log("2");
     navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error, options);
   }
 }

@@ -1,56 +1,63 @@
 <div class="modal-dae">
-  <div class="maps" style="width: 100%; height: 300px;"
-    data-controller="map"
-    <%# ligne supprimée, regarder .txt %>
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-map-lat-value="<%= params[:lat] %>"
-    data-map-long-value="<%= params[:long] %>"
-    <%# ligne supprimée, regarder .txt %>
-    data-map-dae-long-value="<%= @daes.first&.long %>"
-    data-map-dae-lat-value="<%= @daes.first&.lat %>"
-    data-map-interactive-value="true"
-    data-map-zoom-value="15"
-    data-map-target="mapContainer">
-  </div>
+  <% if params[:lat] && params[:long] %>
+    <div class="maps" style="width: 100%; height: 300px;"
+      data-controller="map"
+      <%# ligne supprimée, regarder .txt %>
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-map-lat-value="<%= params[:lat] %>"
+      data-map-long-value="<%= params[:long] %>"
+      <%# ligne supprimée, regarder .txt %>
+      data-map-dae-long-value="<%= @daes.first&.long %>"
+      data-map-dae-lat-value="<%= @daes.first&.lat %>"
+      data-map-interactive-value="true"
+      data-map-zoom-value="15"
+      data-map-target="mapContainer">
+    </div>
+  <% else %>
+    <div class="adresse-lien">
+      <p>Désolé nous n'avons pas pu trouver votre localisation</p>
+    </div>
+  <% end %>
 
-  <div class="adresse-lien">
-    <div class="icone-map">
-      <i class="ph-bold ph-map-pin"></i>
+  <% if params[:lat] && params[:long] %>
+    <div class="adresse-lien">
+      <div class="icone-map">
+        <i class="ph-bold ph-map-pin"></i>
+      </div>
+
+      <div class="link-dae">
+    <%= link_to  "Le plus proche se trouve  #{@daes.first&.street}".html_safe,"https://www.google.com/maps/dir/?api=1&destination=#{@daes.first&.lat},#{@daes.first&.long}", target: "_blank" %>
+      </div>
     </div>
 
-    <div class="link-dae">
-  <%= link_to  "Le plus proche se trouve  #{@daes.first&.street}".html_safe,"https://www.google.com/maps/dir/?api=1&destination=#{@daes.first&.lat},#{@daes.first&.long}", target: "_blank" %>
+    <%# DEBUT div QR CODE %>
+    <div class="Flashez-QRCODE">
+      <p>Flashez ce QR code si une autre personne souhaite s’y rendre :</p>
+
+      <% url = "https://www.google.com/maps/dir/?api=1&destination=#{@daes.first&.lat},#{@daes.first&.long}"%>
+  <%# Génération du QR code %>
+    <% qrcode = RQRCode::QRCode.new(url) %>
+
+    <%# Génération du PNG %>
+    <% png = qrcode.as_png(
+      bit_depth: 1,
+      border_modules: 1,
+      color_mode: ChunkyPNG::COLOR_GRAYSCALE,
+      color: "black",
+      fill: "white",
+      module_px_size: 6,
+      size: 160,
+      resize_exactly_to: 160,
+      resize_gte_to: false,
+      file: nil
+    ) %>
+
+    <%# Conversion pour éviter les problèmes d'encodage %>
+    <% @png_data_url = "data:image/png;base64,#{Base64.strict_encode64(png.to_s)}" %>
+
+    <%# Affichage du QR code %>
+    <div class="Qrcode">
+      <%= image_tag @png_data_url, alt: "QR code", class: "qrcode-image" %>
     </div>
-  </div>
-
-  <%# DEBUT div QR CODE %>
-  <div class="Flashez-QRCODE">
-    <p>Flashez ce QR code si une autre personne souhaite s’y rendre :</p>
-
-    <% url = "https://www.google.com/maps/dir/?api=1&destination=#{@daes.first&.lat},#{@daes.first&.long}"%>
-<%# Génération du QR code %>
-  <% qrcode = RQRCode::QRCode.new(url) %>
-
-  <%# Génération du PNG %>
-  <% png = qrcode.as_png(
-    bit_depth: 1,
-    border_modules: 1,
-    color_mode: ChunkyPNG::COLOR_GRAYSCALE,
-    color: "black",
-    fill: "white",
-    module_px_size: 6,
-    size: 160,
-    resize_exactly_to: 160,
-    resize_gte_to: false,
-    file: nil
-  ) %>
-
-  <%# Conversion pour éviter les problèmes d'encodage %>
-  <% @png_data_url = "data:image/png;base64,#{Base64.strict_encode64(png.to_s)}" %>
-
-  <%# Affichage du QR code %>
-  <div class="Qrcode">
-    <%= image_tag @png_data_url, alt: "QR code", class: "qrcode-image" %>
-  </div>
-
+  <% end %>
 </div>
