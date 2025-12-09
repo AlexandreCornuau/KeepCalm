@@ -24,6 +24,7 @@ class InterventionsController < ApplicationController
   end
 
   def recap
+    @case = Case.find(params[:case_id])
     @chat = @intervention.chat
     now = Time.current
     @intervention.end_time ||= Time.zone.local(now.year, now.month, now.day, now.hour, now.min, now.sec)

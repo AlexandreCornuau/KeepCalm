@@ -21,7 +21,8 @@
         <i class="ph-bold ph-clock"></i>
         <p>Déclenchement de l'aide</p>
       </div>
-      <p class="fw-500"><%= help_start = @chat.created_at.in_time_zone("Europe/Paris").strftime("%kh%M") %></p>
+      <p class="fw-500"><%= @chat.created_at.in_time_zone("Europe/Paris").strftime("%kh%M") %></p>
+      <% help_start_time = @chat.created_at %>
     </div>
 
     <div class="text-recap flex-column">
@@ -31,17 +32,29 @@
         <% seconds = (duration % 60).to_i %>
         <% rcp_duration = "#{minutes}min #{seconds}s" %>
       <% else %>
-        <%  = "-" %>
+        <%= "-" %>
       <% end %>
-      <% if @intervention.end_time.present?
-           rcp_start = @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M")
-          else
-              "-"
-          end %>
-      <%= render "recap_situation", intervention: @intervention, rcp_duration: rcp_duration, rcp_start_time: @intervention.start_time, help_start_time: @chat.created_at %>
+      <% if @intervention.end_time.present? %>
+        <% rcp_start = @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M") %>
+        <% rcp_start_time = @intervention.end_time %>
+
+      <% else %>
+        <% "-" %>
+      <% end %>
+
       <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
-      <p class="fw-500"><%= @intervention.start_time.in_time_zone("Europe/Paris").strftime("%-d/%-m/%Y") %></p>
-      <p class="fw-500"><%= @chat.messages.last.content %></p>
+      <%# Integrer le rapport de l'IA %>
+      <ul class="ps-3 m-0">
+        <li>La personne a été victime d'un <strong><%= @case.name.downcase %></strong></li>
+        <li>Durée du no-flow:
+          <% duration_no_flow = rcp_start_time - help_start_time %>
+          <% minutes = (duration_no_flow / 60).to_i %>
+          <% seconds = (duration_no_flow % 60).to_i %>
+          <strong><%= "#{minutes}min #{seconds}s" %></strong>
+        </li>
+        <li>Durée du low-flow: <strong><%= rcp_duration %></strong></li>
+      </ul>
+
     </div>
 
     <div class="text-recap flex-column">
