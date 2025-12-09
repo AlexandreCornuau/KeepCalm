@@ -39,14 +39,22 @@ class ApplicationController < ActionController::Base
 
     all_daes = response_capitalize.parsed_response + response_downcase.parsed_response
 
-    # all_daes.each do |dae|
-    #   Dae.find_or_create_by(
-    #     lat: dae["latCoor1"],
-    #     long: dae["longCoor1"],
-    #     street: dae["adrVoie"],
-    #     postcode: dae["comCp"],
-    #     city: dae["comNom"]
-    #     )
-    # end
+    puts all_daes
+
+    if all_daes.is_a?(Hash) || all_daes.is_a?(Array)
+      puts "c'est du JSON valide"
+      all_daes.each do |dae|
+        Dae.find_or_create_by(
+          lat: dae["latCoor1"],
+          long: dae["longCoor1"],
+          street: dae["adrVoie"],
+          postcode: dae["comCp"],
+          city: dae["comNom"]
+          )
+      end
+    else
+      puts "ce n'est pas du JSON valide"
+    end
+
   end
 end
