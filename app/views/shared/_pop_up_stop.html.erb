@@ -8,22 +8,22 @@
         <h3>Êtes-vous sûr de vouloir arrêter l'intervention ?</h3>
       </div>
 
-      <div class="d-grid gap-2">
-        <div class="btn btn-primary" type="button">
-          <%= link_to recap_intervention_path(intervention, case_id: case_id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
-          <p class="fs-m">Oui, les secours sont arrivés</p>
+      <div class="link-button-pop-up d-grid gap-2">
+        <div>
+          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary button-pop-up" do %>
+          <p class="fs-m btn-one">Oui, les secours sont arrivés</p>
           <% end %>
         </div>
 
-        <div class="btn btn-light" type="button">
-          <%= link_to recap_intervention_path(intervention, case_id: case_id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light" do %>
-          <p class="fs-m btn-two">Oui, tout vas bien finalement</p>
+        <div>
+          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light button-pop-up" do %>
+          <p class="fs-m btn-two">Oui, tout va bien finalement</p>
           <% end %>
         </div>
 
-        <div class="btn btn-secondary" type="button">
-          <%= link_to "", class: "btn btn-secondary", data: { action: "click->pop-up#return" } do %>
-          <p class="fs-m">Non, je continue</p>
+        <div>
+          <%= link_to "", class: "btn button-pop-up",  dat_bs_toggle: "button", data: { action: "click->pop-up#return" } do %>
+          <p class="fs-m btn-tree">Non, je continue</p>
           <% end %>
         </div>
       </div>
