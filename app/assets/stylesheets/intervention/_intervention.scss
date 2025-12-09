@@ -1,5 +1,6 @@
 .intervention-container {
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100vh;
 
   .alert {
     position: inherit;
@@ -26,9 +27,66 @@
   }
 
   .gif-pulse {
-    img {
-      width: 100%;
+    border: 1px solid $secondary-500;
+    border-radius: 1rem;
+    background-color: $secondary-050;
+    display: flex;
+    padding: 2rem 4rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+    color: $secondary-500 !important;
+
+    animation: .279s ease-in infinite alternate bg-pulse;
+
+    .heart {
+      width: 85px;
+      height: 85px;
+
+      img {
+        width: 100%;
+        animation: .279s ease-in infinite alternate pulse;
+      }
     }
+
+    @-webkit-keyframes bg-pulse {
+      from {
+        background-color: $secondary-050;
+      }
+      to {
+        background-color: $secondary-200;
+      }
+    }
+    @keyframes bg-pulse {
+      from {
+        background-color: $secondary-050;
+      }
+      to {
+        background-color: $secondary-200;
+      }
+    }
+
+    @-webkit-keyframes pulse {
+      from {
+        transform: scale(.8);
+      }
+      to {
+        transform: scale(1.2);
+      }
+    }
+    @keyframes pulse {
+      from {
+        transform: scale(.8);
+      }
+      to {
+        transform: scale(1.2);
+      }
+    }
+
+
+
   }
 
 

@@ -39,14 +39,14 @@ class ApplicationController < ActionController::Base
 
     all_daes = response_capitalize.parsed_response + response_downcase.parsed_response
 
-    all_daes.each do |dae|
-      Dae.find_or_create_by(
-        lat: dae["latCoor1"],
-        long: dae["longCoor1"],
-        street: dae["adrVoie"],
-        postcode: dae["comCp"],
-        city: dae["comNom"]
-        )
-    end
+    # all_daes.each do |dae|
+    #   Dae.find_or_create_by(
+    #     lat: dae["latCoor1"],
+    #     long: dae["longCoor1"],
+    #     street: dae["adrVoie"],
+    #     postcode: dae["comCp"],
+    #     city: dae["comNom"]
+    #     )
+    # end
   end
 end

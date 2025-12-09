@@ -1,8 +1,18 @@
-<%= render "intervention-nav", intervention: @intervention %>
 
 <div class="intervention-container p-2 d-flex flex-column gap-3" data-controller="modal metronome">
+<%= render "intervention-nav", intervention: @intervention %>
 
-  <%# GIF Tuto  %>
+  <%# ALERT Relais %>
+  <div class="alert-container" data-controller="alert"
+     data-alert-interval-value="60000"
+     data-alert-duration-value="30000">
+    <div class="alert alert-warning d-flex align-items-start gap-2" role="alert">
+      <i class="ph-bold ph-info"></i>
+      <p>Si possible, faites un relais avec une autre personne afin de rester efficace</p>
+    </div>
+  </div>
+
+   <%# GIF Tuto  %>
   <div class ="gif-container rounded">
       <%= image_tag(@case.gif_url) %>
       <%= link_to case_path(@case.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class:"btn btn-blur btn-tuto-replay bg-blur" do %>
@@ -11,22 +21,8 @@
       <% end %>
   </div>
 
-  <%# ALERT Relais %>
-  <div class="alert-container" data-controller="alert"
-     data-alert-interval-value="60000"
-     data-alert-duration-value="30000">
-    <div class="alert alert-primary d-flex align-items-start gap-2" role="alert">
-      <i class="ph-bold ph-info"></i>
-      <p>Si possible, faites un relais avec une autre personne afin de rester efficace</p>
-    </div>
-  </div>
-
   <%# GIF PULSE %>
-  <div class="gif-pulse" >
-    
-
-    <%= image_tag "gif-pulse.gif" %>
-  </div>
+  <%= render "pulsation-card" %>
 
   <%# Cards à rendre fonctionnel : %>
   <div class="actions-cards d-flex gap-2">
@@ -78,7 +74,7 @@
   </div>
 
 
-  <%# CODE JULIEN BOUTONS MODAL FONCTIONNELS %>
+  <%# CODE DES MODALES %>
   <div class="buttons">
 
     <div id="myModal-recap" data-modal-target="modalRecap" class="modal">
