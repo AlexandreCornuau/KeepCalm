@@ -45,6 +45,27 @@
 }
 
 // ----- Button -----
-.btn-two {
-  color: $gray-800 !important;
+.link-button-pop-up {
+
+  .button-pop-up {
+    padding-inline: 34px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+  .btn-one {
+    font-weight: 500 !important;
+  }
+
+  .btn-two {
+    color: $gray-800 !important;
+    font-weight: 500 !important;
+  }
+
+  .btn-tree {
+    color: $secondary-500;
+    font-weight: 500 !important;
+  }
 }
