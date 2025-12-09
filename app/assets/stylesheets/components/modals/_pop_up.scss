@@ -1,15 +1,6 @@
+// ----- div principale -----
 .d-none {
   display: none !important;
-}
-
-.container-pop-up {
-  background-color: $white;
-  border-radius: 24px;
-  padding: 20px;
-  width: 80%;
-  max-width: 400px;
-  z-index: 9999;
-  width: 80%; // 92% pour tout couvrir
 }
 
 .pop-up-overlay {
@@ -25,8 +16,35 @@
   animation: fadeIn 0.4s ease;
 }
 
+// ----- div container -----
+.container-pop-up {
+  background-color: $white;
+  border-radius: 24px;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  z-index: 9999;
+  width: 85%; // 92% pour tout couvrir
+
+  // ----- p = font buttun -----
+  .p {
+    font-weight: 500 !important;
+  }
+}
+
 .card-pop-up {
   background-color: $white;
   border-radius: 24px;
+}
 
+// ----- Title h3 -----
+.title-pop-up {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+// ----- Button -----
+.btn-two {
+  color: $gray-800 !important;
 }

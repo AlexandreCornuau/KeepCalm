@@ -4,26 +4,29 @@
       <div class="card-img-recap">
         <%= image_tag "first-aid-kit.png" %>
       </div>
+      <div class="title-pop-up">
+        <h3>Êtes-vous sûr de vouloir arrêter l'intervention ?</h3>
+      </div>
 
-      <h3>Êtes-vous sûr de vouloir arrêter l'intervention ?</h3>
-
-        <div class="justify-content-center">
+      <div class="d-grid gap-2">
+        <div class="btn btn-primary" type="button">
           <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
-          Oui, les secours sont arrivés
+          <p class="fs-m">Oui, les secours sont arrivés</p>
           <% end %>
         </div>
 
-        <div class="justify-content-center">
-          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
-          Oui, tout vas bien finalement
+        <div class="btn btn-light" type="button">
+          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light" do %>
+          <p class="fs-m btn-two">Oui, tout vas bien finalement</p>
           <% end %>
         </div>
 
-        <div class="justify-content-center">
+        <div class="btn btn-secondary" type="button">
           <%= link_to "", class: "btn btn-secondary", data: { action: "click->pop-up#return" } do %>
-          Non, je continue
+          <p class="fs-m">Non, je continue</p>
           <% end %>
         </div>
+      </div>
     </div>
   </div>
 </div>
