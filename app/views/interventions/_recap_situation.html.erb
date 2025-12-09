@@ -1,7 +1,7 @@
 <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
   <%# Integrer le rapport de l'IA %>
 <ul class="ps-3 m-0">
-  <li>La personne a été victime d'un <strong><%= @intervention.case.name %></strong></li>
+  <li>La personne a été victime d'un <strong><%= @case.name %></strong></li>
   <li>Durée du no-flow:
     <% duration_no_flow = rcp_start_time - help_start_time %>
     <% minutes = (duration_no_flow / 60).to_i %>

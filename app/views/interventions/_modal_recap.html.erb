@@ -38,7 +38,11 @@
 
   <div class="modal-recap flex-column">
     <p class="row-label-modal-recap"><i class="ph-bold ph-gps-fix"></i>Localisation</p>
-    <p class="fw-500"><%= @intervention.address %></p>
+    <% if params[:address] %>
+      <p class="fw-500"><%= @intervention.address %></p>
+    <% else %>
+      <p class="fw-500">aucune adresse</p>
+    <% end %>
   </div>
 
 </div>
