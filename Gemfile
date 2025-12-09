@@ -80,3 +80,4 @@ gem "httparty"
 gem "ruby_llm", "~> 1.2.0"
 gem "geocoder"
 gem "rqrcode"
+gem 'grover' # génération de pdf
