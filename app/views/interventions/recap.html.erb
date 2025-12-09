@@ -25,9 +25,15 @@
     </div>
 
     <div class="text-recap flex-column">
-      <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
-      <%# Integrer le rapport de l'IA %>
-      <p class="fw-500"><%= @chat.messages.last.content %></p>
+      <% if @intervention.start_time && @intervention.end_time %>
+        <% duration = @intervention.end_time - @intervention.start_time %>
+        <% minutes = (duration / 60).to_i %>
+        <% seconds = (duration % 60).to_i %>
+        <% rcp_duration = "#{minutes}min #{seconds}s" %>
+      <% else %>
+        <% rcp_duration = "-" %>
+      <% end %>
+      <%= render "recap_situation", intervention: @intervention, rcp_duration: rcp_duration %>
     </div>
 
     <div class="text-recap flex-column">
@@ -54,16 +60,7 @@
         <i class="ph-bold ph-hourglass-low"></i>
         <p>Durée de la RCP</p>
       </div>
-      <p class="fw-500">
-        <% if @intervention.start_time && @intervention.end_time %>
-          <% duration = @intervention.end_time - @intervention.start_time %>
-          <% minutes = (duration / 60).to_i %>
-          <% seconds = (duration % 60).to_i %>
-          <%= "#{minutes}min #{seconds}s" %>
-          <% else %>
-            <%= "-" %>
-        <% end %>
-      </p>
+      <p class="fw-500"><%= rcp_duration %></p>
     </div>
 
     <div class="text-recap justify-content-between">
