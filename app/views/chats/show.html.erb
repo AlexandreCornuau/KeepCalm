@@ -36,7 +36,7 @@
         <% end %>
 
           <%if @chat.messages.where(role: "user").count < 3  %>
-            <div class= "btn-yes-or-no">
+            <div class= "btn-yes-or-no" data-modal-urgence-target="form">
               <%= simple_form_for [@chat, @message], html: { class: 'd-flex flex-grow-1' } do |f| %>
                 <%= f.hidden_field :content, value: "oui" %>
                 <%= hidden_field_tag :address, params[:address] %>
@@ -59,17 +59,17 @@
 
 
         <!-- Boutton Modal ouverture automatique -->
-        <div class="buttons d-flex align-items-center justify-content-center" data-action="click->modal-urgence#openModal">
+        <div class="buttons d-flex align-items-center justify-content-center" data-action="click->modal-urgence#openModal" data-modal-urgence-target="btn">
           <button id="myBtn-urgence" class="btn-diagnostic fw-500 btn btn-primary d-flex align-items-center justify-content-center flex-grow-1 gap-2">
             <i class="ph-bold ph-hospital"></i>
-            Afficher mon diagnostic
+            Afficher les instructions
           </button>
           </div>
 
-            <div id="myModal-urgence" data-modal-urgence-target="modal" class="modal-chat">
+            <div id="myModal-urgence" data-modal-urgence-target="modal" class="modal">
               <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between">
-                  <h4>Diagnostic</h4>
+                  <h4>Instructions</h4>
                   <span class="close" data-action="click->modal-urgence#closeModal">
                     <i class="ph-bold ph-x"></i>
                   </span>

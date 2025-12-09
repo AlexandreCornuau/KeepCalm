@@ -26,13 +26,17 @@
 
     <div class="text-recap flex-column">
       <p class="row-label"><i class="ph-bold ph-chat-circle-dots"></i>Situation</p>
-      <%# Integrer le rapport de l'IA %>
+      <p class="fw-500"><%= @intervention.start_time.in_time_zone("Europe/Paris").strftime("%-d/%-m/%Y") %></p>
       <p class="fw-500"><%= @chat.messages.last.content %></p>
     </div>
 
     <div class="text-recap flex-column">
       <p class="row-label"><i class="ph-bold ph-map-pin-area"></i>Adresse</p>
-      <p class="fw-500"><%= @intervention.address %></p>
+      <% if params[:address] %>
+        <p class="fw-500"><%= @intervention.address %></p>
+      <% else %>
+        <p class="fw-500">aucune adresse</p>
+      <% end %>
     </div>
 
     <div class="text-recap justify-content-between">

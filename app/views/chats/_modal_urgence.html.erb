@@ -17,7 +17,11 @@
   <!-- Div CTA -->
     <%= link_to "J'appelle le 15", "tel:0778194918", class: "btn-appel" %>
     <% @cases.each do |cas| %>
-        <%= link_to "Une autre personne appelle le 15", case_path(cas.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn-no-appel" %>
+        <% if params[:city] && params[:long] && params[:lat] && params[:address] %>
+          <%= link_to "Une autre personne appelle le 15", case_path(cas.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn-no-appel" %>
+        <% else %>
+          <%= link_to "Une autre personne appelle le 15", case_path(cas.id, intervention_id: @intervention.id), class: "btn-no-appel" %>
+        <% end %>
       <% end %>
 
   </div>

@@ -1,31 +1,17 @@
 class MessagesController < ApplicationController
-  # SYSTEM_PROMPT =  <<-PROMPT
-  # Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
-
-  # Tu dois obtenir la réponse a deux questions: 1 = La personne est elle consciente? 2 = La personne respire t'elle?
-  # Lorsque tu connais les réponses de 1 ET 2 , tu évoques clairement la situation dans laquelle nous sommes.
-  # Tu dois faire des phrases concises, tu es calme.
-
-  # UNIQUEMENT dans le cadre ou la personne n'est pas consciente et ne respire pas, Tu DOIS dire que c'est un arrêt cardiaque et inciter l'utilisateur a cliquer sur continuer pour acceder aux instructions.
-
-
-  #  UNIQUEMENT Si une des deux est positive, ce n'est pas un arrêt cardiaque, repond 'Appelez le 15 ils vont vous guider'
-  # PROMPT
-
-  #Tu as l'interdiction de répondre à l'utilisateur tant qu'il ne t'as pas répondu oui ou non.
 
   PROMPT_NO_CONSCIENS = <<-PROMPT
   Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
   La victime est inconsciente.
-  Tu dois IMPERATIVEMENT demander une premiere fois 'Est ce qu'elle respire?' TU dois poser cette question UNE seule et UNIQUE fois.
+  Tu dois IMPERATIVEMENT demander une premiere fois 'Est ce qu'elle respire? (Placez votre main sur le thorax pour sentir les mouvements respiratoires).' TU dois poser cette question UNE seule et UNIQUE fois.
 
-  Si l'utilisateur repond 'oui' tu dois IMPERATIVEMENT repondre 'appelez les secours et mettez la personne en Position Latérale de Sécurité '
-  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'Il s'agit d'un un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l'application vas vous guider pour les manoeuvre de secours.'
+  Si l'utilisateur repond 'oui' tu dois IMPERATIVEMENT repondre 'Appelez le 15 et mettez la personne en Position Latérale de Sécurité.'
+  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'Il semble s’agir d’un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l’application va vous guider pour les gestes de premiers secours.'
   PROMPT
   PROMPT_AWAKE = <<-PROMPT
    Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
   La victime est consciente.
-  Tu dois répondre IMPERATIVEMENT 'Si la personne est consciente ne la touchez pas si vous n'êtes pas formée et appeler le 15'
+  Tu dois répondre IMPERATIVEMENT 'Si la personne est consciente, n’initiez pas de gestes si vous n’êtes pas formé, et appelez le 15.'
   PROMPT
   def create
     @chat = Chat.find(params[:chat_id])
@@ -64,7 +50,11 @@ class MessagesController < ApplicationController
       # prompt = "#{emmergency_case},#{SYSTEM_PROMPT}"
       # response = @ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
       # Message.create(role: "assistant", content: response.content, chat: @chat)
-      redirect_to chat_path(@chat, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address])
+      unless params[:city] == "" && params[:long] == "" && params[:lat] == "" && params[:address] == ""
+        redirect_to chat_path(@chat, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address])
+      else
+        redirect_to chat_path(@chat)
+      end
 
     else
       render "chats/show", status: :unprocessable_content
