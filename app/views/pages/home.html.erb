@@ -43,8 +43,8 @@
         data-map-lat-value="<%= params[:lat] %>"
         data-map-long-value="<%= params[:long] %>"
         <%# ligne supprimée, regarder .txt %>
-        data-map-dae-long-value="<%= @daes.first.long %>"
-        data-map-dae-lat-value="<%= @daes.first.lat %>"
+        data-map-dae-long-value="<%= @daes.first&.long %>"
+        data-map-dae-lat-value="<%= @daes.first&.lat %>"
         data-map-interactive-value="false"
         data-map-zoom-value="13"
         data-map-target="mapContainer">
