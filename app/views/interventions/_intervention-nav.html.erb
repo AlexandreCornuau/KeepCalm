@@ -1,13 +1,9 @@
 <div class="container nav-container">
   <div class="d-flex justify-content-between align-items-center">
     <h4>Intervention en cours</h4>
-    <button class="btn btn-secondary" data-action="pop-up#show">
-    <i class="ph-bold ph-x"></i>
+    <%= link_to "", class: "btn btn-secondary", data: { action: "click->pop-up#show" } do %>
+      <i class="ph-bold ph-x"></i>
       Arrêter
-    </button>
-    <%#= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary" do %>
-      <%# <i class="ph-bold ph-x"></i> %>
-     <%# Arrêter %>
-    <%# end %>
+    <% end %>
   </div>
 </div>

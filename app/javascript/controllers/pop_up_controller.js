@@ -1,13 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="pop-up"
 export default class extends Controller {
   static targets = ["modal"]
 
-  show() {
-    this.modalTarget.classList.remove("hidden")
+  connect() {
   }
 
-  hide() {
-    this.modalTarget.classList.add("hidden")
+  show(event) {
+    event.preventDefault()
+    this.modalTarget.classList.remove("d-none")
+  }
+
+  return() {
+    this.modalTarget.classList.add("d-none")
   }
 }
