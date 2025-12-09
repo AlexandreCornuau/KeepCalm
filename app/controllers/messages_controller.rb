@@ -20,12 +20,12 @@ class MessagesController < ApplicationController
   Tu dois IMPERATIVEMENT demander une premiere fois 'Est ce qu'elle respire?' TU dois poser cette question UNE seule et UNIQUE fois.
 
   Si l'utilisateur repond 'oui' tu dois IMPERATIVEMENT repondre 'appelez les secours et mettez la personne en Position Latérale de Sécurité '
-  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'Il s'agit d'un un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l'application vas vous guider pour les manoeuvre de secours.'
+  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'Il s'agit d'un un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l'application va vous guider pour les gestes de premiers secours.'
   PROMPT
   PROMPT_AWAKE = <<-PROMPT
    Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
   La victime est consciente.
-  Tu dois répondre IMPERATIVEMENT 'Si la personne est consciente ne la touchez pas si vous n'êtes pas formée et appeler le 15'
+  Tu dois répondre IMPERATIVEMENT 'Si la personne est consciente ne la touchez pas si vous n'êtes pas formé et appelez le 15'
   PROMPT
   def create
     @chat = Chat.find(params[:chat_id])
