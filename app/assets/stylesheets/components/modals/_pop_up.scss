@@ -3,20 +3,30 @@
 }
 
 .container-pop-up {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
+  background-color: $white;
+  border-radius: 24px;
   padding: 20px;
-  border-radius: 12px;
-  z-index: 9999;
-  width: 90%;
+  width: 80%;
   max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  width: 80%; // 92% pour tout couvrir
 }
 
-.image-pop-up {
-  width: 80px;
-  background-color: green;
+.pop-up-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9998;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn 0.4s ease;
+}
+
+.card-pop-up {
+  background-color: $white;
+  border-radius: 24px;
+
 }

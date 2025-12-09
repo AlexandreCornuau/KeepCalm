@@ -1,27 +1,29 @@
-<div data-pop-up-target="modal" class="container-pop-up d-none">
-  <div class="card-recap d-flex flex-column gap-2">
-    <div class="image-pop-up">
-      <%= image_tag "first-aid-kit.png" %>
+<div class="pop-up-overlay d-none" data-pop-up-target="modal">
+  <div class="container-pop-up">
+    <div class="card-pop-up d-flex flex-column gap-2">
+      <div class="card-img-recap">
+        <%= image_tag "first-aid-kit.png" %>
+      </div>
+
+      <h3>Êtes-vous sûr de vouloir arrêter l'intervention ?</h3>
+
+        <div class="justify-content-center">
+          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
+          Oui, les secours sont arrivés
+          <% end %>
+        </div>
+
+        <div class="justify-content-center">
+          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
+          Oui, tout vas bien finalement
+          <% end %>
+        </div>
+
+        <div class="justify-content-center">
+          <%= link_to "", class: "btn btn-secondary", data: { action: "click->pop-up#return" } do %>
+          Non, je continue
+          <% end %>
+        </div>
     </div>
-
-    <h3>Êtes-vous sûr de vouloir arrêter l'intervention ?</h3>
-
-      <div class="justify-content-center">
-        <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
-        Oui, les secours sont arrivés
-        <% end %>
-      </div>
-
-      <div class="justify-content-center">
-        <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
-        Oui, tout vas bien finalement
-        <% end %>
-      </div>
-
-      <div class="justify-content-center">
-        <%= link_to "", class: "btn btn-secondary", data: { action: "click->pop-up#return" } do %>
-        Non, je continue
-        <% end %>
-      </div>
   </div>
 </div>
