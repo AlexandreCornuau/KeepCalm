@@ -1,0 +1,6 @@
+  # config/meta.yml
+ meta_product_name: "KeepCalm"
+ meta_title: "KeepCalm  - Saves lives"
+ meta_description: "Guide d'urgence lors d'un arrêt cardiaque. Instructions pas à pas pour sauver une vie."
+ meta_image: "cover.png" # should exist in `app/assets/images/`
+
