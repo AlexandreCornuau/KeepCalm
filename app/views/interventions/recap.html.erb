@@ -84,12 +84,26 @@
 
   <%# ----- Faire le lien du bouton partager ----- %>
   <div class="btn-footer">
+
+    <!-- OLD SHARE BTN
     <%= link_to user_session_path, class: "share btn btn-outline-primary" do %>
       <div class="btn-share">
         <p class="fs-s">Partager</p>
         <i class="ph-bold ph-share"></i>
       </div>
-      <% end %>
+    <% end %>  -->
+
+    <div data-controller="share-recap"
+     data-share-recap-url-value="<%= recap_pdf_intervention_path(@intervention, format: :pdf) %>"
+     data-share-recap-title-value="Intervention : <%= @intervention.title %>"
+     data-share-recap-text-value="Intervention du <%= @intervention.start_time&.in_time_zone('Europe/Paris')&.strftime('%d/%m/%Y à %Hh%M') %> - <%= @intervention.address %>">
+
+      <button data-action="click->share-recap#share" class="btn btn-outline-primary btn-share">
+        <i class="ph-bold ph-share"></i>
+        <p class="fs-s">Partager</p>
+      </button>
+    </div>
+
   </div>
 
   <div class="btn-footer">
