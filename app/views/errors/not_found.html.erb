@@ -1,0 +1,29 @@
+<div class="public position-relative d-flex align-items-center justify-content-center">
+
+  <!-- Images de fond -->
+  <%= image_tag "emergency-2.png", class: "public-bg-img public-bg-left" %>
+  <%= image_tag "ambu.png", class: "public-bg-img public-bg-right" %>
+  <!-- CARD -->
+  <div class="public-cta-card text-center d-flex flex-column gap-4 bg-blur w-100">
+
+    <div class="d-flex flex-column gap-2">
+      <h2 class="text-center">404..</h2>
+      <h1>not found error</h1>
+    </div>
+
+    <p>This page does not exist. Please go back.... 😰🚨</p>
+
+    <div class="d-flex flex-column gap-2 align-items-center">
+      <%= link_to "", class: "d-flex align-items-center gap-2 justify-content-center btn btn-outline-primary btn-ghost" do %>
+        <i class="ph-bold ph-arrow-clockwise"></i>
+        <p>Recharger la page</p>
+      <% end %>
+      <%= link_to root_path, class: "d-flex align-items-center gap-2 justify-content-center btn btn-primary" do %>
+        <i class="ph-bold ph-house"></i>
+        <p>Retourner à l'accueil</p>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
