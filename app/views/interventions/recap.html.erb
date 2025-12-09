@@ -21,7 +21,7 @@
         <i class="ph-bold ph-clock"></i>
         <p>Déclenchement de l'aide</p>
       </div>
-      <p class="fw-500"><%= @chat.created_at.in_time_zone("Europe/Paris").strftime("%kh%M") %></p>
+      <p class="fw-500"><%= help_start = @chat.created_at.in_time_zone("Europe/Paris").strftime("%kh%M") %></p>
     </div>
 
     <div class="text-recap flex-column">
@@ -33,7 +33,12 @@
       <% else %>
         <% rcp_duration = "-" %>
       <% end %>
-      <%= render "recap_situation", intervention: @intervention, rcp_duration: rcp_duration %>
+      <% if @intervention.end_time.present?
+           rcp_start = @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M")
+          else
+              "-"
+          end %>
+      <%= render "recap_situation", intervention: @intervention, rcp_duration: rcp_duration, rcp_start_time: @intervention.start_time, help_start_time: @chat.created_at %>
     </div>
 
     <div class="text-recap flex-column">
@@ -44,21 +49,17 @@
     <div class="text-recap justify-content-between">
       <div class="row-label-red">
         <i class="ph-bold ph-clock"></i>
-        <p>Début de la RCP estimée</p>
+        <p>Heure estimée du début du massage</p>
       </div>
       <p class="fw-500">
-        <%= if @intervention.start_time.present?
-              @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M")
-            else
-              "-"
-            end %>
+        <%= rcp_start %>
       </p>
     </div>
 
     <div class="text-recap justify-content-between">
       <div class="row-label-red">
         <i class="ph-bold ph-hourglass-low"></i>
-        <p>Durée de la RCP</p>
+        <p>Durée du massage</p>
       </div>
       <p class="fw-500"><%= rcp_duration %></p>
     </div>
