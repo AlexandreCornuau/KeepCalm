@@ -1,0 +1,127 @@
+<!-- app/views/layouts/pdf.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Récapitulatif d'intervention <%= @intervention.start_time.in_time_zone("Europe/Paris").strftime("%-d-%-m-%Y") %></title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        color: #181E38FF;
+        padding: 32px;
+        background: #fff;
+      }
+
+      .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 15px;
+      }
+
+      .logo {
+        height: 32px;
+        width: auto;
+      }
+
+      .header h1 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .header-card {
+        background: #F4F6FFFF;
+        border-radius: 12px;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .header-card p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .card-recap {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .text-recap {
+        background-color: #FAFAFAFF !important;
+        border: 1px solid #DEDFE0FF;
+        border-radius: 12px;
+        padding: 8px 16px;
+        display: flex;
+      }
+
+      .text-recap.justify-between {
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .text-recap.flex-column {
+        flex-direction: column;
+      }
+
+      .row-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #398AFEFF;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .row-label-red {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #F5394BFF;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .row-label p, .row-label-red p {
+        margin: 0;
+      }
+
+      .icon {
+        font-size: 18px;
+      }
+
+      .value {
+        font-weight: 600;
+        color: #1a1a1a;
+        font-size: 15px;
+      }
+
+      .footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 13px;
+        color: #666;
+        padding-top: 20px;
+      }
+
+      .footer strong {
+        color: #3B82F6;
+      }
+
+      .footer-small {
+        font-size: 11px;
+        color: #999;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
