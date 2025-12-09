@@ -10,13 +10,13 @@
 
       <div class="d-grid gap-2">
         <div class="btn btn-primary" type="button">
-          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
+          <%= link_to recap_intervention_path(intervention, case_id: case_id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary" do %>
           <p class="fs-m">Oui, les secours sont arrivés</p>
           <% end %>
         </div>
 
         <div class="btn btn-light" type="button">
-          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light" do %>
+          <%= link_to recap_intervention_path(intervention, case_id: case_id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light" do %>
           <p class="fs-m btn-two">Oui, tout vas bien finalement</p>
           <% end %>
         </div>
