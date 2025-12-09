@@ -2,9 +2,11 @@ class PagesController < ApplicationController
 
   def home
    @chat = Chat.new
-   getCity()
-   setUpMap()
-   getDaes()
+   if params[:city] && params[:long] && params[:lat]
+    getCity()
+    setUpMap()
+    getDaes()
+   end
   end
 
 end

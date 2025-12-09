@@ -32,7 +32,11 @@
 
     <div class="text-recap flex-column">
       <p class="row-label"><i class="ph-bold ph-map-pin-area"></i>Adresse</p>
-      <p class="fw-500"><%= @intervention.address %></p>
+      <% if params[:address] %>
+        <p class="fw-500"><%= @intervention.address %></p>
+      <% else %>
+        <p class="fw-500">aucune adresse</p>
+      <% end %>
     </div>
 
     <div class="text-recap justify-content-between">

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :cases, only: [:index, :show]
 
   get '/500', to: 'errors#internal_server'
+  get '/404', to: 'errors#not_found'
 
   # Defines the root path route ("/")
   # root "posts#index"
