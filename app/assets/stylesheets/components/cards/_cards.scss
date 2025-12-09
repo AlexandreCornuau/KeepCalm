@@ -3,6 +3,7 @@
 
   .card-head {
     display: flex;
+    justify-content: flex-start;
     gap: 8px;
     .ph-bold {
       margin-top: 2px;
@@ -23,4 +24,9 @@
       height: 100%;
     }
   }
+}
+
+#card-home-dae-img {
+  height: 100%;
+  width: auto;
 }
