@@ -3,9 +3,10 @@
   <div class="modal-recap justify-content-between">
     <div class="row-label-modal-recap">
       <i class="ph-bold ph-clock"></i>
-      <p>Début de la RCP estimée</p>
+      <p>Heure estimée du début du massage </p>
     </div>
     <p class="fw-500">
+
       <%= if @intervention.start_time.present?
             @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M")
           else
@@ -17,7 +18,7 @@
   <div class="modal-recap justify-content-between">
   <div class="row-label-modal-recap">
     <i class="ph-bold ph-hourglass-low"></i>
-    <p>Durée de la RCP</p>
+    <p>Durée du massage</p>
   </div>
     <p id="rcp-duration" class="fw-500"
       data-controller="rcp-timer"

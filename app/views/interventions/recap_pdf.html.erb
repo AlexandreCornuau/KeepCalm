@@ -1,0 +1,85 @@
+<!-- app/views/interventions/recap_pdf.html.erb -->
+<div class="header">
+  <div class="header-top">
+    <img src="data:image/png;base64,<%= @logo_base64 %>" alt="KeepCalm" class="logo">
+    <h1>Récapitulatif</h1>
+  </div>
+  <div class="header-card">
+    <span style="font-size: 30px;">📋</span>
+    <p>Voici un récapitulatif de votre intervention à transmettre aux secours ou au médecin si besoin.</p>
+  </div>
+</div>
+
+<div class="card-recap">
+
+  <div class="text-recap justify-between">
+    <div class="row-label">
+      <span class="icon">📅</span>
+      <p>Date de l'intervention</p>
+    </div>
+    <p class="value"><%= @intervention.start_time.present? ? @intervention.start_time.in_time_zone("Europe/Paris").strftime("%-d/%-m/%Y") : "-" %></p>
+  </div>
+
+  <div class="text-recap justify-between">
+    <div class="row-label">
+      <span class="icon">🕐</span>
+      <p>Déclenchement de l'aide</p>
+    </div>
+    <p class="value"><%= @chat&.created_at&.in_time_zone("Europe/Paris")&.strftime("%kh%M") || "-" %></p>
+  </div>
+
+  <div class="text-recap flex-column">
+    <div class="row-label">
+      <span class="icon">💬</span>
+      <p>Situation</p>
+    </div>
+    <p class="value"><%= @chat&.messages&.last&.content || "-" %></p>
+  </div>
+
+  <div class="text-recap flex-column">
+    <div class="row-label">
+      <span class="icon">📍</span>
+      <p>Adresse</p>
+    </div>
+    <p class="value"><%= @intervention.address || "-" %></p>
+  </div>
+
+  <div class="text-recap justify-between">
+    <div class="row-label-red">
+      <span class="icon">🕐</span>
+      <p>Début de la RCP estimée</p>
+    </div>
+    <p class="value"><%= @intervention.start_time.present? ? @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M") : "-" %></p>
+  </div>
+
+  <div class="text-recap justify-between">
+    <div class="row-label-red">
+      <span class="icon">⏳</span>
+      <p>Durée de la RCP</p>
+    </div>
+    <p class="value">
+      <% if @intervention.start_time && @intervention.end_time %>
+        <% duration = @intervention.end_time - @intervention.start_time %>
+        <% minutes = (duration / 60).to_i %>
+        <% seconds = (duration % 60).to_i %>
+        <%= "#{minutes}min #{seconds}s" %>
+      <% else %>
+        -
+      <% end %>
+    </p>
+  </div>
+
+  <div class="text-recap justify-between">
+    <div class="row-label">
+      <span class="icon">🏁</span>
+      <p>Heure de fin</p>
+    </div>
+    <p class="value"><%= @intervention.end_time.present? ? @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M") : "-" %></p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Généré par <strong>KeepCalm</strong></p>
+  <p class="footer-small">Intervention #<%= @intervention.id %> • <%= Time.current.in_time_zone("Europe/Paris").strftime("%d/%m/%Y à %Hh%M") %></p>
+</div>

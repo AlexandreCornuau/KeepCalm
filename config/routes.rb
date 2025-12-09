@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :cases, only: :show
     member do
       get :recap
+      get :recap_pdf
     end
   end
 
