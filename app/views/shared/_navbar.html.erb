@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon nav-color">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center gap-3" do %>
+      <%= image_tag "logo.png" %>
       <h3>Bonjour !</h3>
     <% end %>
 
@@ -36,7 +37,7 @@
             </div>
           </li>
           -->
-          
+
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
