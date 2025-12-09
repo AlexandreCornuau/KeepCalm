@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "postinstall": "npx puppeteer browsers install chrome"
+  },
   "dependencies": {
     "puppeteer": "^24.32.1"
   },
