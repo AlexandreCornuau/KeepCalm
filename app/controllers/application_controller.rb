@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
     #     Dae.find_or_create_by(
     #       lat: dae["latCoor1"],
     #       long: dae["longCoor1"],
-    #       street: dae["adrVoie"],
+    #       street: "#{dae["adrNum"]} #{dae["adrVoie"]}",
     #       postcode: dae["comCp"],
     #       city: dae["comNom"]
     #       )

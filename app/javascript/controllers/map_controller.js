@@ -39,10 +39,15 @@ export default class extends Controller {
         style: "mapbox://styles/mapbox/streets-v10",
         interactive: this.interactiveValue /////////////////////////////////////////////////////////////
       })
-      new mapboxgl.Marker()
+      const userMarker = document.createElement("div")
+      userMarker.className = "marker-user"
+      const daeMarker = document.createElement("div")
+      daeMarker.className = "marker-dae"
+
+      new mapboxgl.Marker({ element: userMarker })
         .setLngLat([ this.longValue, this.latValue ])
         .addTo(this.map)
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({ element: daeMarker })
         .setLngLat([ parseFloat(this.daeLongValue), parseFloat(this.daeLatValue) ])
         .addTo(this.map)
 
