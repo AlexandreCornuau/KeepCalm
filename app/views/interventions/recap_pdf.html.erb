@@ -33,7 +33,27 @@
       <span class="icon">💬</span>
       <p>Situation</p>
     </div>
-    <p class="value"><%= @chat&.messages&.last&.content || "-" %></p>
+    <ul class="value">
+        <li>La personne a été victime d'un <strong><%= @case.name.downcase %></strong></li>
+        <li>Durée du no-flow:
+          <% help_start_time = @chat.created_at %>
+          <% rcp_start = @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M") %>
+          <% rcp_start_time = @intervention.start_time %>
+          <%# no-flow %>
+          <% duration_no_flow = rcp_start_time - help_start_time %>
+          <% minutes = (duration_no_flow / 60).to_i %>
+          <% seconds = (duration_no_flow % 60).to_i %>
+          <% rcp_duration_no_f = "#{minutes}min #{seconds}s" %>
+          <strong><%= rcp_duration_no_f %></strong>
+        </li>
+        <li>Durée du low-flow:
+          <%# low-flow %>
+          <% duration = @intervention.end_time - @intervention.start_time %>
+          <% low_minutes = (duration / 60).to_i %>
+          <% low_seconds = (duration % 60).to_i %>
+          <% rcp_duration = "#{low_minutes}min #{low_seconds}s" %>
+          <strong><%= rcp_duration %></strong></li>
+      </ul>
   </div>
 
   <div class="text-recap flex-column">

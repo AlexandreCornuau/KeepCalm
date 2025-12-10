@@ -2,7 +2,7 @@ require "json"
 
 class InterventionsController < ApplicationController
     before_action :set_intervention, only: [:show, :update, :recap, :recap_pdf]
-    before_action :set_chat, only: [:recap, :recap_pdf]
+    before_action :set_chat_case, only: [:recap, :recap_pdf]
 
   def index
     # Affiche seulement les interventions dans la page index intervention, lorsque le chat est fini, et le case id créer
@@ -27,16 +27,13 @@ class InterventionsController < ApplicationController
   end
 
   def recap
-    # Rajouter pour l'index intervention pour que le case suivent bien jusqu'à la page recap
-    @case = @intervention.case
-    # @case = Case.find(params[:case_id]) (ancien code)
-    @chat = @intervention.chat
     now = Time.current
     @intervention.end_time ||= Time.zone.local(now.year, now.month, now.day, now.hour, now.min, now.sec)
     @intervention.save
   end
 
   def recap_pdf
+
     template = File.read(Rails.root.join("app/views/interventions/recap_pdf.html.erb"))
     layout = File.read(Rails.root.join("app/views/layouts/pdf.html.erb"))
 
@@ -67,8 +64,9 @@ private
     @intervention = Intervention.find(params[:id])
   end
 
-  def set_chat
+  def set_chat_case
     @chat = @intervention.chat
+    @case = @intervention.case
   end
 
   def intervention_params
