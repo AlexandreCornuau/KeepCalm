@@ -5,7 +5,9 @@ class InterventionsController < ApplicationController
     before_action :set_chat, only: [:recap, :recap_pdf]
 
   def index
-    @interventions = Intervention.all
+    # Affiche seulement les inter lorsque le chat est fini, et le case id créer
+    @interventions = Intervention.where.not(case_id: nil)
+    # @interventions = Intervention.all (ancien code)
   end
 
   def show
@@ -25,7 +27,9 @@ class InterventionsController < ApplicationController
   end
 
   def recap
-    @case = Case.find(params[:case_id])
+    # Rajouter pour l'index intervention pour que le case suivent bien jusqu'à la page recap
+    @case = @intervention.case
+    # @case = Case.find(params[:case_id]) (ancien code)
     @chat = @intervention.chat
     now = Time.current
     @intervention.end_time ||= Time.zone.local(now.year, now.month, now.day, now.hour, now.min, now.sec)
