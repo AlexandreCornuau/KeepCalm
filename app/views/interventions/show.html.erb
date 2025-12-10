@@ -16,7 +16,7 @@
 
     <%# GIF Tuto  %>
     <div class ="gif-container rounded">
-        <%= image_tag(@case.gif_url) %>
+        <%= cl_image_tag(@case.gif_url) %>
         <%= link_to case_path(@case.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class:"btn btn-blur btn-tuto-replay bg-blur" do %>
           <i class="ph-bold ph-arrow-counter-clockwise"></i>
           Revoir le tuto
@@ -38,7 +38,7 @@
           </div>
 
           <div class="card-img p-2">
-            <%= image_tag "DAE.png" %>
+            <%= cl_image_tag "DAE_r1jcc1" %>
           </div>
 
         </div>
