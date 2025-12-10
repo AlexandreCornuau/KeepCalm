@@ -5,7 +5,7 @@ class InterventionsController < ApplicationController
     before_action :set_chat, only: [:recap, :recap_pdf]
 
   def index
-    # Affiche seulement les inter lorsque le chat est fini, et le case id créer
+    # Affiche seulement les interventions dans la page index intervention, lorsque le chat est fini, et le case id créer
     @interventions = Intervention.where.not(case_id: nil)
     # @interventions = Intervention.all (ancien code)
   end
