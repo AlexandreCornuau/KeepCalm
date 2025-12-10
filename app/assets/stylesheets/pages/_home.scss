@@ -102,6 +102,16 @@
         height: 156px;
         object-fit: cover;
       }
+
+      .card-img {
+        height: 160px;
+        padding: 16px;
+
+        img {
+          height: 100%;
+          width: auto;
+        }
+      }
     }
 
   }
