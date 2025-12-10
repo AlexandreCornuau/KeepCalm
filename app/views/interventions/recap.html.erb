@@ -34,9 +34,9 @@
       <% else %>
         <%= "-" %>
       <% end %>
-      <% if @intervention.end_time.present? %>
-        <% rcp_start = @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M") %>
-        <% rcp_start_time = @intervention.end_time %>
+      <% if @intervention.start_time.present? %>
+        <% rcp_start = @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M") %>
+        <% rcp_start_time = @intervention.start_time %>
 
       <% else %>
         <% "-" %>
