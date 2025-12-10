@@ -5,7 +5,10 @@
         <%= cl_image_tag "first-aid-kit_o2zntz" %>
       </div>
       <div class="title-pop-up">
-        <h3>Êtes-vous sûr de vouloir arrêter l'intervention ?</h3>
+        <h3>Arrêter l'intervention ?</h3>
+        <p>
+          Confirmez-vous vouloir stopper votre massage cardiaque ?
+        </p>
       </div>
 
       <div class="link-button-pop-up d-grid gap-2">
@@ -16,8 +19,8 @@
         </div>
 
         <div>
-          <%= link_to recap_intervention_path(intervention, case_id: case_id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light button-pop-up" do %>
-          <p class="fs-m btn-two">Oui, tout va bien finalement</p>
+          <%= link_to root_path, class: "btn btn-light button-pop-up" do %>
+          <p class="fs-m btn-two">Oui tout va bien, quitter</p>
           <% end %>
         </div>
 

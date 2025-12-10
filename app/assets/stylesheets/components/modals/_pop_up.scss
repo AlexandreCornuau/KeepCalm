@@ -8,12 +8,11 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 9998;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   animation: fadeIn 0.4s ease;
+  padding: 24px;
 }
 
 // ----- div container -----
@@ -21,12 +20,9 @@
   background-color: $white;
   border-radius: 24px;
   padding: 20px;
-  width: 80%;
-  max-width: 400px;
   z-index: 9999;
-  width: 85%; // 92% pour tout couvrir
 
-  // ----- p = font buttun -----
+  // ----- p = font button -----
   .p {
     font-weight: 500 !important;
   }
@@ -42,6 +38,12 @@
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
+
+  p {
+    color: $gray-500;
+    font-size: $fs-l;
+    margin-top: 16px !important;
+  }
 }
 
 // ----- Button -----
