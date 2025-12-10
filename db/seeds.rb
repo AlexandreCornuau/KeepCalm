@@ -18,7 +18,7 @@ last_step_info = "<div>
                   </div>"
 
 puts "+++ Creating Case and steps..."
-case_rcp = Case.create(name: "Massage Cardiaque", gif_url: "rcp-video.gif")
+case_rcp = Case.create(name: "Arrêt cardiaque", gif_url: "rcp-video.gif")
 
 puts "Step 0 infos"
 Step.create!(step_type: "information", case: case_rcp, details: "<p> Installez la victime en <b>position horizontale</b>, sur le <b>dos</b>, de préférence sur un <b>plan dur</b> (sol, table, etc).</p>")
