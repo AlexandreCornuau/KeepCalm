@@ -3,12 +3,17 @@ class MessagesController < ApplicationController
   PROMPT_NO_CONSCIENS = <<-PROMPT
   Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
   La victime est inconsciente.
-  Tu dois IMPERATIVEMENT demander une premiere fois 'Est ce qu'elle respire? Placez votre main sur le thorax pour sentir les mouvements respiratoires' TU dois poser cette question UNE seule et UNIQUE fois.
+  Etape 1:
+  Tu dois OBLIGATOIREMENT demander une premiere fois 'Est ce qu'elle respire? Placez votre main sur le thorax pour sentir les mouvements respiratoires'
+  TU dois poser cette question UNE seule et UNIQUE fois.
+  Si dans la discussion tu as déjà posé la question alors tu passes a l'étape 2
+
+  Etape 2:
 
   Si l'utilisateur repond 'oui' tu dois IMPERATIVEMENT repondre 'appelez le 15 et mettez la personne en Position Latérale de Sécurité '
   Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'Il semble s'agir d'un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l'application va vous guider pour les gestes de premiers secours.
   PROMPT
-  
+
   PROMPT_AWAKE = <<-PROMPT
    Oublies la politesse. Tu es la pour orienter sur une décision. Quelqu'un vient d'avoir un problème médical.
   La victime est consciente.
