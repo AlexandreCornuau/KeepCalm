@@ -1,7 +1,7 @@
 <div class=" p-2 d-flex flex-column gap-3">
   <div class="card-head">
     <h4>Recapitulatif</h4>
-      <%= link_to user_session_path, class: "btn btn-primary" do %>
+      <%= link_to home_path, class: "btn btn-primary" do %>
       <div class="btn-save">
         <i class="ph-bold ph-check"></i>
         <p class="fs-s">Enregistrer</p>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="card" id="info-recap">
-    <div class="card-img-recap"><%= image_tag "medical-app.png" %></div>
+    <div class="card-img-recap"><%= cl_image_tag "medical-app_ttv2fh" %></div>
     <p class="fw-500">Voici un récapitulatif de votre intervention à transmettre aux secours ou au médecin si besoin :</p>
   </div>
 
@@ -34,9 +34,9 @@
       <% else %>
         <%= "-" %>
       <% end %>
-      <% if @intervention.end_time.present? %>
-        <% rcp_start = @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M") %>
-        <% rcp_start_time = @intervention.end_time %>
+      <% if @intervention.start_time.present? %>
+        <% rcp_start = @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M") %>
+        <% rcp_start_time = @intervention.start_time %>
 
       <% else %>
         <% "-" %>

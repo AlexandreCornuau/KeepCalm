@@ -1,7 +1,15 @@
+<div class="intervention-container p-2 d-flex flex-column gap-3">
 
-<p>Page index de toutes les interventions</p>
-<ul>
-  <% @interventions.each do | intervention | %>
-    <li><%= link_to intervention.title, intervention_path(intervention) %></li>
-  <% end %>
-</ul>
+  <div>
+    <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary" %>
+    <h4>Quitter</h4>
+  </div>
+
+  <h3>Toutes les interventions</h3>
+    <ul>
+      <% @interventions.each do | intervention | %>
+        <li><%= link_to intervention.start_time&.in_time_zone('Europe/Paris')&.strftime('%d/%m/%Y à %Hh%M'),
+        recap_intervention_path(intervention) %></li>
+      <% end %>
+    </ul>
+</div>
