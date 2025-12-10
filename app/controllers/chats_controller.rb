@@ -26,6 +26,7 @@ class ChatsController < ApplicationController
     @message = Message.new
     @cases = Case.all
     @intervention = Intervention.find_by(chat: @chat)
+  
   end
 
   def destroy

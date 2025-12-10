@@ -12,7 +12,7 @@
 
       <div class="the-chat">
 
-        <% @chat.messages.each do |message| %>
+        <% @chat.messages.order(:created_at).each do |message| %>
 
           <div id="messages">
             <% if message.role == "user" %>
