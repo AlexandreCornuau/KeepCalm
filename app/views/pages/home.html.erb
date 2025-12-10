@@ -6,12 +6,12 @@
     <!-- DIV Section Help -->
     <div class="home-hero position-relative">
         <!-- Images de fond -->
-        <%= image_tag "heart_2.png", class: "home-bg-img home-bg-left" %>
-        <%= image_tag "ambu.png", class: "home-bg-img home-bg-right" %>
+        <%= cl_image_tag "heart_2_cuqejy", class: "home-bg-img home-bg-left" %>
+        <%= cl_image_tag "ambu_fsub6a", class: "home-bg-img home-bg-right" %>
       <!-- CARD -->
       <div class="home-cta-card bg-blur p-2 text-center">
         <div class="d-flex align-items-center justify-content-center gap-2 mb-2 mt-4">
-          <%= image_tag "emergency-2.png", alt: "Urgence", class: "home-icon" %>
+          <%= cl_image_tag "emergency-2_g3egip", alt: "Urgence", class: "home-icon" %>
           <h2>Besoin d'aide ?</h2>
         </div>
         <p class="p-secondary fs-m">Restez calme<br>et laissez-vous guider</p>
@@ -49,7 +49,7 @@
           </div>
         <% else %>
             <div class="card-img">
-              <%= image_tag "DAE.png", id: "card-home-dae-img"%>
+              <%= cl_image_tag "DAE_r1jcc1", id: "card-home-dae-img"%>
             </div>
         <% end %>
 
