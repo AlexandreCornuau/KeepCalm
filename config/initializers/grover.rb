@@ -8,6 +8,6 @@ Grover.configure do |config|
       '--disable-dev-shm-usage',
       '--disable-gpu'
     ],
-    executable_path: ENV.fetch('GOOGLE_CHROME_SHIM', nil)
+    executable_path: ENV.fetch('CHROME_BIN', nil)
   }
 end
