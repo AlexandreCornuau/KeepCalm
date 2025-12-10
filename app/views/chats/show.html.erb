@@ -87,7 +87,7 @@
   <!-- Lien temporaire pour faire le tour de l'appli : -->
   <% @cases.each do |cas| %>
     <%= link_to case_path(cas.id, intervention_id: @intervention.id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]),class: "btn-massage d-flex align-items-center justify-content-center gap-2" do %>
-        <%= image_tag "emergency-2.png", alt: "Urgence", class: "btn-massage border-0" %>
+        <%= image_tag "emergency-2.png", alt: "Urgence", class: "border-0" %>
         <p class="fw-600">Aide massage cardiaque</p>
     <% end %>
   <% end %>
