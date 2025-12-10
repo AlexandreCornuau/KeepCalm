@@ -10,8 +10,8 @@ class MessagesController < ApplicationController
 
   Etape 2:
 
+  Si l'utilisateur repond 'non' tu dois OBLIGATOIREMENT Repondre 'Il semble s'agir d'un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l'application va vous guider pour les gestes de premiers secours.
   Si l'utilisateur repond 'oui' tu dois IMPERATIVEMENT repondre 'appelez le 15 et mettez la personne en Position Latérale de Sécurité '
-  Si la personne ne respire pas tu dois OBLIGATOIREMENT Repondre 'Il semble s'agir d'un arrêt cardiaque. Vous devez commencer un massage cardiaque. Restez calme, l'application va vous guider pour les gestes de premiers secours.
   PROMPT
 
   PROMPT_AWAKE = <<-PROMPT
