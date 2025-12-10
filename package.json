@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "npx puppeteer browsers install chrome",
+    "heroku-postbuild": "mkdir -p ./.cache && mv /app/.cache/puppeteer ./.cache || true",
     "test": "echo \"no tests\""
   },
   "dependencies": {
