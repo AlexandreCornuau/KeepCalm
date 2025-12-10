@@ -10,13 +10,13 @@
 
       <div class="link-button-pop-up d-grid gap-2">
         <div>
-          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary button-pop-up" do %>
+          <%= link_to recap_intervention_path(intervention, case_id: case_id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-primary button-pop-up" do %>
           <p class="fs-m btn-one">Oui, les secours sont arrivés</p>
           <% end %>
         </div>
 
         <div>
-          <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light button-pop-up" do %>
+          <%= link_to recap_intervention_path(intervention, case_id: case_id, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-light button-pop-up" do %>
           <p class="fs-m btn-two">Oui, tout va bien finalement</p>
           <% end %>
         </div>
