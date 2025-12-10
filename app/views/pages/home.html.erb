@@ -30,13 +30,13 @@
     <div class="scrolling-cards d-flex gap-3 pb-2">
       <!-- Card Défibrillateurs -->
       <%#= link_to "#", class: "card scrolling-card shadow-sm flex-shrink-0" do %>
-      <button id="myBtn-dae" type="button" data-modal-home-target="btnDae" data-action="click->modal-home#openModal" class="card scrolling-card shadow-sm flex-shrink-0">
+      <button id="myBtn-dae" type="button" data-modal-home-target="btnDae" data-action="click->modal-home#openModal" class="card scrolling-card flex-shrink-0">
         <div class="card-head d-flex align-items-center gap-2 mb-2 fw-semibold">
           <i class="ph-bold ph-heartbeat"></i>
           <p>Défibrillateurs</p>
         </div>
         <% if params[:lat] && params[:long] %>
-          <div class="maps" style="width: 100%; height: 100%;"
+          <div class="maps" style="width: 100%; height: 100%; border-radius: 8px;"
           data-controller="map"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
           data-map-lat-value="<%= params[:lat] %>"
@@ -57,15 +57,18 @@
       <%# end %>
 
       <!-- Card Simulations -->
-      <%= link_to "#", class: "card scrolling-card shadow-sm flex-shrink-0" do %>
+      <%= link_to "#", class: "card scrolling-card flex-shrink-0" do %>
         <div class="card-head d-flex align-items-center gap-2 mb-2 text-dark fw-semibold">
           <i class="ph-bold ph-ambulance"></i>
           <p>Simulations</p>
         </div>
-          <img src="https://www.shutterstock.com/image-vector/illustration-first-medical-aid-indirect-260nw-2516317979.jpg" alt="Simulation">
+        <div class="card-img">
+          <%= cl_image_tag "position_jjj7uk", alt: "Simulation" %>
+        </div>
       <% end %>
     </div>
   </div>
+
   <%# <button id="myBtn-dae" data-modal-home-target="btnDae" data-action="click->modal-home#openModal" class="card scrolling-card shadow-sm flex-shrink-0">Défibrillateur le plus proche</button> %>
       <div id="myModal-dae" data-modal-home-target="modalDae" class="modal">
         <div class="modal-content">
