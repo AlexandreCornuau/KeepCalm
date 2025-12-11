@@ -6,7 +6,7 @@ export default class extends Controller {
 
 
   connect() {
-    this.audioVoice = new Audio('/voice.mp3')
+    this.audioVoice = new Audio('/voice_higher.mp3')
     this.audio = new Audio('/beep.mp3');
 
     this.playVoice()
