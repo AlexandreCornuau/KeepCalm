@@ -18,25 +18,29 @@ last_step_info = "<div>
                   </div>"
 
 puts "+++ Creating Case and steps..."
-case_rcp = Case.create(name: "Arrêt cardiaque", gif_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765362475/rcp-video_nm4lsg.gif")
+case_rcp = Case.create(name: "Arrêt cardiaque", gif_url: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTJ3Mm4ycnpxcHU3cGoyMTc4cnN3M3VibmYxOGF6cW9oMm4yMzZkZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d07PtnTq0oVsk/giphy.gif")
+
 
 puts "Step 0 infos"
 Step.create!(step_type: "information", case: case_rcp, details: "<p> Installez la victime en <b>position horizontale</b>, sur le <b>dos</b>, de préférence sur un <b>plan dur</b> (sol, table, etc).</p>")
 
 puts "Step 1"
-Step.create!(step_type: "instruction", number: 1, case: case_rcp, details: "Se placer à genoux au plus près de la victime sur son coté", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765362469/img-step-01_lwrnor.jpg")
+Step.create!(step_type: "instruction", number: 1, case: case_rcp, details: "Agenouillez-vous au plus près de la victime sur son coté", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/position_jjj7uk?_a=BACAGSEv")
 
 puts "Step 2"
-Step.create!(step_type: "instruction", number: 2, case: case_rcp, details: "Dénuder la poitrine de la victime, dans la mesure du possible")
+Step.create!(step_type: "instruction", number: 2, case: case_rcp, details: "Si possible, dénudez la poitrine de la victime")
 
 puts "Step 3"
-step3 = Step.create!(step_type: "instruction", number: 3, case: case_rcp, details: "Joignez vos mains comme ceci :", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765362470/img-step-03_q2k2zx.jpg")
+Step.create!(step_type: "instruction", number: 3, case: case_rcp, details: "Déterminez la zone d'appui, juste en dessous du milieu du sternum:", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765460546/3-zone_dj7egy.png")
 
 puts "Step 4"
-Step.create!(step_type: "instruction", number: 4, case: case_rcp, details: "Réaliser les compression au centre de la poitrine (sur la ligne médiane, moitié inférieure du sternum)", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765362471/img-step-04_f71bw0.jpg")
+Step.create!(step_type: "instruction", number: 4, case: case_rcp, details: "Appuyez sur la zone localisée avec le talon de votre main", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765460546/4-hand_rdvjba.png")
 
 puts "Step 5"
-Step.create!(step_type: "instruction", number: 5, case: case_rcp, details: "Réaliser des compressions thoraciques", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765362472/img-step-05_cat0t8.jpg")
+Step.create!(step_type: "instruction", number: 5, case: case_rcp, details: "Joignez vos mains comme ceci :", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765460546/5-hand-position_dvuw8h.png")
+
+puts "Step 6"
+Step.create!(step_type: "instruction", number: 6, case: case_rcp, details: "Réalisez les compressions thoraciques", picture_url: "https://res.cloudinary.com/dqohqi3zr/image/upload/v1765362475/rcp-video_nm4lsg.gif")
 
 puts "Last Step infos"
 Step.create!(step_type: "information", case: case_rcp, details: last_step_info)
