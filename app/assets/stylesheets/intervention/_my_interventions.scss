@@ -1,0 +1,54 @@
+
+// ----- Btn return -----
+.btn-index-inter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background-color: $primary-200;
+  color: $gray-900 !important;
+}
+
+// ----- Cards intervention -----
+.card-index {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background-color: $white;
+  border: solid 1px $gray-200;
+  border-radius: 24px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .title-index-inter {
+    padding-left: 8px;
+  }
+
+  .address-index-inter {
+    padding-left: 8px;
+    font-size: $fs-s;
+  }
+
+  .name-index-inter {
+    display: flex;
+    width: fit-content;
+    color: $secondary-500;
+    padding: 4px;
+    background-color: $secondary-100;
+    border-radius: 24px;
+    gap: 6px;
+    font-size: $fs-s !important;
+  }
+}
+
+  .caret-index-inter {
+    color: $gray-500;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 8px;
+  }

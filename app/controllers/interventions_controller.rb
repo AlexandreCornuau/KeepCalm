@@ -6,8 +6,7 @@ class InterventionsController < ApplicationController
 
   def index
     # Affiche seulement les interventions dans la page index intervention, lorsque le chat est fini, et le case id créer
-    @interventions = Intervention.where.not(case_id: nil)
-    # @interventions = Intervention.all (ancien code)
+    @interventions = current_user.interventions.where.not(case_id: nil).order(created_at: :desc)
   end
 
   def show
