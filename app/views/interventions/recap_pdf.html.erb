@@ -5,8 +5,7 @@
     <h1>Récapitulatif</h1>
   </div>
   <div class="header-card">
-    <span style="font-size: 30px;">📋</span>
-    <p>Voici un récapitulatif de votre intervention à transmettre aux secours ou au médecin si besoin.</p>
+    <p>Récapitulatif de votre intervention à transmettre aux secours ou au médecin si besoin :</p>
   </div>
 </div>
 
@@ -31,8 +30,8 @@
       <p>Situation</p>
     </div>
     <ul class="value">
-        <li>La personne a été victime d'un <strong><%= @case.name.downcase %></strong></li>
-        <li>Durée du no-flow:
+        <li>D'après les informations recueillies, la personne a été victime d'un <strong><%= @case.name.downcase %></strong></li>
+        <li>Durée du no-flow estimée:
           <% help_start_time = @chat.created_at %>
           <% rcp_start = @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M") %>
           <% rcp_start_time = @intervention.start_time %>
@@ -43,7 +42,7 @@
           <% rcp_duration_no_f = "#{minutes}min #{seconds}s" %>
           <strong><%= rcp_duration_no_f %></strong>
         </li>
-        <li>Durée du low-flow:
+        <li>Durée du low-flow estimée:
           <%# low-flow %>
           <% duration = @intervention.end_time - @intervention.start_time %>
           <% low_minutes = (duration / 60).to_i %>
