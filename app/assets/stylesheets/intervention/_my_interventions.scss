@@ -1,0 +1,45 @@
+
+// ----- Btn return -----
+.btn-index-inter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background-color: $primary-200;
+  color: $gray-900 !important;
+}
+
+// ----- Cards intervention -----
+
+.container-index-inter {
+
+}
+.card-index {
+  padding: 8px;
+  background-color: $white;
+  border: solid 1px $gray-200;
+  border-radius: 24px;
+
+  .title-index-inter {
+    padding-left: 8px;
+  }
+
+  .address-index-inter {
+    padding-left: 8px;
+    font-size: $fs-s;
+  }
+
+  .name-index-inter {
+    color: $secondary-500;
+    padding: 8px;
+    background-color: $secondary-100;
+
+    border-radius: 24px;
+  }
+
+  .caret-index-inter {
+    color: $gray-500;
+  }
+}

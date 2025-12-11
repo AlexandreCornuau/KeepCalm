@@ -1,15 +1,32 @@
 <div class="intervention-container p-2 d-flex flex-column gap-3">
 
-  <div>
-    <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary" %>
-    <h4>Quitter</h4>
+  <div class="navbar-toggler d-flex align-items-center gap-3 mt-4 mb-4">
+    <%= link_to '<i class="ph-bold ph-arrow-left"></i>'.html_safe, home_path(lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "btn btn-secondary btn-index-inter" %>
+    <h4>Mes interventions</h4>
   </div>
 
-  <h3>Toutes les interventions</h3>
-    <ul>
-      <% @interventions.each do | intervention | %>
-        <li><%= link_to intervention.start_time&.in_time_zone('Europe/Paris')&.strftime('%d/%m/%Y à %Hh%M'),
-        recap_intervention_path(intervention) %></li>
+    <% @interventions.each do | intervention | %>
+      <div class="card-index d-flex flex-column gap-2">
+        <div class="text-index-inter">
+
+        <p class="title-index-inter">Intervention du <strong>
+        <%= intervention.start_time&.in_time_zone('Europe/Paris')&.strftime('%d/%m/%Y') %>
+        </strong></p>
+
+        <p class="p-secondary address-index-inter"><%= intervention.address %></p>
+
+        <div class="name-index-inter">
+          <p class="p-name-index-inter"><i class="ph-bold ph-first-aid"></i><%= intervention.case.name %></p>
+        </div>
+      </div>
+
+    <div class="caret-index-inter">
+      <%= link_to ">", recap_intervention_path(intervention) %>
       <% end %>
-    </ul>
+    </div>
+  </div>
 </div>
+
+
+
+<%# intervention.start_time&.in_time_zone('Europe/Paris')&.strftime('%d/%m/%Y à %Hh%M') %>
