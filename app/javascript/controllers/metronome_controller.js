@@ -4,14 +4,23 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["icon"]
 
+
   connect() {
+    this.audioVoice = new Audio('/voice.mp3')
     this.audio = new Audio('/beep.mp3');
 
-    this.play()
+    this.playVoice()
     this.isPlaying = true
   }
 
-  play(event) {
+  playVoice(event){
+    this.audioVoice.play();
+    this.setTimeoutId = setTimeout(() => {
+      this.playBeep();
+    }, 3000);
+  }
+
+  playBeep(event) {
     this.intervalId = setInterval(() => {
       this.audio.currentTime = 0;
       this.audio.play();
@@ -19,18 +28,25 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.mute()
+    clearTimeout(this.setTimeoutId)
+    this.muteBeep()
+    this.muteVoice()
     this.isPlaying = false
   }
 
-  mute(event) {
+  muteBeep(event) {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
-
     if (this.audio) {
       this.audio.pause();
       this.audio.currentTime = 0;
+    }
+  }
+
+  muteVoice(event) {
+   if (this.audioVoice) {
+      this.audioVoice.pause();
     }
   }
 
@@ -38,11 +54,11 @@ export default class extends Controller {
     if (this.isPlaying) {
       this.iconTarget.classList.remove("ph-speaker-simple-high")
       this.iconTarget.classList.add("ph-speaker-simple-slash")
-      this.mute()
+      this.muteBeep()
       this.isPlaying = false
     }
     else {
-      this.play()
+      this.playBeep()
       this.iconTarget.classList.remove("ph-speaker-simple-slash")
       this.iconTarget.classList.add("ph-speaker-simple-high")
       this.isPlaying = true
