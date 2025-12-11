@@ -14,7 +14,6 @@
 
   <div class="text-recap justify-between">
     <div class="row-label">
-      <span class="icon">📅</span>
       <p>Date de l'intervention</p>
     </div>
     <p class="value"><%= @intervention.start_time.present? ? @intervention.start_time.in_time_zone("Europe/Paris").strftime("%-d/%-m/%Y") : "-" %></p>
@@ -22,7 +21,6 @@
 
   <div class="text-recap justify-between">
     <div class="row-label">
-      <span class="icon">🕐</span>
       <p>Déclenchement de l'aide</p>
     </div>
     <p class="value"><%= @chat&.created_at&.in_time_zone("Europe/Paris")&.strftime("%kh%M") || "-" %></p>
@@ -30,7 +28,6 @@
 
   <div class="text-recap flex-column">
     <div class="row-label">
-      <span class="icon">💬</span>
       <p>Situation</p>
     </div>
     <ul class="value">
@@ -58,7 +55,6 @@
 
   <div class="text-recap flex-column">
     <div class="row-label">
-      <span class="icon">📍</span>
       <p>Adresse</p>
     </div>
     <p class="value"><%= @intervention.address || "-" %></p>
@@ -66,7 +62,6 @@
 
   <div class="text-recap justify-between">
     <div class="row-label-red">
-      <span class="icon">🕐</span>
       <p>Début de la RCP estimée</p>
     </div>
     <p class="value"><%= @intervention.start_time.present? ? @intervention.start_time.in_time_zone("Europe/Paris").strftime("%kh%M") : "-" %></p>
@@ -74,7 +69,6 @@
 
   <div class="text-recap justify-between">
     <div class="row-label-red">
-      <span class="icon">⏳</span>
       <p>Durée de la RCP</p>
     </div>
     <p class="value">
@@ -91,7 +85,6 @@
 
   <div class="text-recap justify-between">
     <div class="row-label">
-      <span class="icon">🏁</span>
       <p>Heure de fin</p>
     </div>
     <p class="value"><%= @intervention.end_time.present? ? @intervention.end_time.in_time_zone("Europe/Paris").strftime("%kh%M") : "-" %></p>
