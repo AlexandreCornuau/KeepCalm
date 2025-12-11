@@ -65,6 +65,3 @@ export default class extends Controller {
     }
   }
 }
-
-// au chargement de la page - attendre un peu pour le bip
-// lancer automatique une voix
