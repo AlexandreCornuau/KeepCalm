@@ -6,7 +6,7 @@
   </div>
 
   <% @interventions.each do |intervention| %>
-    <%= link_to recap_intervention_path(intervention), class: "card-index-link" do %>
+    <%= link_to recap_intervention_path(intervention, lat: params[:lat], long: params[:long], city: params[:city], address: params[:address]), class: "card-index-link" do %>
 
       <div class="card-index">
         <div class="text-index-inter">
